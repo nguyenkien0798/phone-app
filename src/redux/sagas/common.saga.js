@@ -5,7 +5,7 @@ import { COMMON_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 
 function* getCityListSaga(action) {
   try {
-    const result = yield axios.get(`http://localhost:4000/cities`);
+    const result = yield axios.get(`https://phone-store-app-api.herokuapp.com/cities`);
     yield put({
       type: SUCCESS(COMMON_ACTION.GET_CITY_LIST),
       payload: {
@@ -22,7 +22,7 @@ function* getCityListSaga(action) {
 
 function* getDistrictListSaga(action) {
   try {
-    const result = yield axios.get(`http://localhost:4000/districts`);
+    const result = yield axios.get(`https://phone-store-app-api.herokuapp.com/districts`);
     yield put({
       type: SUCCESS(COMMON_ACTION.GET_DISTRICT_LIST),
       payload: {
@@ -39,7 +39,7 @@ function* getDistrictListSaga(action) {
 
 function* getWardListSaga(action) {
   try {
-    const result = yield axios.get(`http://localhost:4000/wards`);
+    const result = yield axios.get(`https://phone-store-app-api.herokuapp.com/wards`);
     yield put({
       type: SUCCESS(COMMON_ACTION.GET_WARD_LIST),
       payload: {

@@ -25,7 +25,7 @@ function* getProductListSaga(action) {
       });
     }
     const result = yield axios.get(
-      `http://localhost:4000/products?${categoryParam}`,
+      `https://phone-store-app-api.herokuapp.com/products?${categoryParam}`,
       {
         params: {
           _limit: limit,
@@ -65,7 +65,7 @@ function* getProductDetailSaga(action) {
   try {
     const { id } = action.payload;
     const result = yield axios.get(
-      `http://localhost:4000/products/${id}?_embed=productOptions&_embed=favorites`
+      `https://phone-store-app-api.herokuapp.com/products/${id}?_embed=productOptions&_embed=favorites`
     );
     yield put({
       type: SUCCESS(PRODUCT_ACTION.GET_PRODUCT_DETAIL),
@@ -82,7 +82,7 @@ function* getProductDetailSaga(action) {
 function* createProductSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.post("http://localhost:4000/products", data);
+    yield axios.post("https://phone-store-app-api.herokuapp.com/products", data);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.CREATE_PRODUCT),
     });
@@ -98,7 +98,7 @@ function* createProductSaga(action) {
 function* updateProductSaga(action) {
   try {
     const { id, data, callback } = action.payload;
-    yield axios.patch(`http://localhost:4000/products/${id}`, data);
+    yield axios.patch(`https://phone-store-app-api.herokuapp.com/products/${id}`, data);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.UPDATE_PRODUCT),
     });
@@ -114,7 +114,7 @@ function* updateProductSaga(action) {
 function* deleteProductSaga(action) {
   try {
     const { id } = action.payload;
-    yield axios.delete(`http://localhost:4000/products/${id}`);
+    yield axios.delete(`https://phone-store-app-api.herokuapp.com/products/${id}`);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.DELETE_PRODUCT),
     });

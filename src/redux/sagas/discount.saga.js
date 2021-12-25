@@ -9,7 +9,7 @@ function* checkDiscountSaga(action) {
   try {
     const { code } = action.payload;
     const result = yield axios.get(
-      `http://localhost:4000/discounts?code=${code}`
+      `https://phone-store-app-api.herokuapp.com/discounts?code=${code}`
     );
     if (result.data.length > 0) {
       if (result.data[0].endDate > moment().valueOf()) {

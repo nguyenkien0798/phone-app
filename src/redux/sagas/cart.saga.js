@@ -8,7 +8,7 @@ function* getCartListSaga(action) {
   try {
     const { userId } = action.payload;
     const result = yield axios.get(
-      "http://localhost:4000/carts?_expand=product&_expand=productOption",
+      "https://phone-store-app-api.herokuapp.com/carts?_expand=product&_expand=productOption",
       {
         params: {
           userId,
@@ -33,7 +33,7 @@ function* addToCartSaga(action) {
   try {
     const { userId } = action.payload;
     const result = yield axios.post(
-      `http://localhost:4000/carts`,
+      `https://phone-store-app-api.herokuapp.com/carts`,
       action.payload
     );
     yield put({
@@ -62,7 +62,7 @@ function* addToCartSaga(action) {
 function* updateCartProductSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.patch(`http://localhost:4000/carts/${data.id}`, {
+    yield axios.patch(`https://phone-store-app-api.herokuapp.com/carts/${data.id}`, {
       quantity: data.quantity,
     });
     yield put({
@@ -83,7 +83,7 @@ function* updateCartProductSaga(action) {
 function* removeCartProductSaga(action) {
   try {
     const { id } = action.payload;
-    yield axios.delete(`http://localhost:4000/carts/${id}`);
+    yield axios.delete(`https://phone-store-app-api.herokuapp.com/carts/${id}`);
     yield put({
       type: SUCCESS(CART_ACTION.REMOVE_CART_PRODUCT),
       payload: {

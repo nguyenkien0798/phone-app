@@ -6,7 +6,7 @@ import { COMMENT_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 function* getCommentListSaga(action) {
   try {
     const { productId } = action.payload;
-    const result = yield axios.get(`http://localhost:4000/comments`, {
+    const result = yield axios.get(`https://phone-store-app-api.herokuapp.com/comments`, {
       params: {
         productId,
         _expand: "user",
@@ -32,7 +32,7 @@ function* postCommentSaga(action) {
   try {
     const { productId } = action.payload;
     const result = yield axios.post(
-      `http://localhost:4000/comments`,
+      `https://phone-store-app-api.herokuapp.com/comments`,
       action.payload
     );
     yield put({
