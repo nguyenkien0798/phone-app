@@ -82,12 +82,12 @@ const Payment = ({ setCheckoutStep }) => {
                 <Space direction="vertical">
                   <Radio value="cod">Thanh toán tiền mặt khi nhận hàng</Radio>
                   <Radio value="momo">Thanh toán bằng ví MoMo</Radio>
-                  {/* <Radio value="atm">
+                  <Radio value="atm">
                     Thẻ ATM nội địa/Internet Banking (Hỗ trợ Internet Banking)
                   </Radio>
                   <Radio value="visa">
                     Thanh toán bằng thẻ quốc tế Visa, Master, JCB
-                  </Radio> */}
+                  </Radio>
                 </Space>
               </Radio.Group>
             </Form.Item>

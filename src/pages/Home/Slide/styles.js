@@ -1,12 +1,46 @@
 import styled from "styled-components";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
-export const Slide = styled.div`
-  margin-bottom: 24px;
+export const MainBanner = styled.div`
+  width: 100%;
+  height: 500px;
+  position: relative;
 
-  & img{
-    width: 100%;
+  .carousel {    
     height: 500px;
+      .img-banner {          
+          height: 500px !important;
+          object-fit: cover;
+        }
+    }
+
+    .carousel-control-prev {
+        top: 50%;
+        height: 8%;
+        left: -0.5%;
+        width: 4%;
+        background-color: #000;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    .carousel-control-next {
+        right: -0.5%;
+        width: 4%;
+        top: 50%;
+        height: 8%;
+        background-color: #000;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+
+  @media (min-width: 374px) and (max-width: 800px) {
+    display: none;
+    .carousel {
+        display: none;
+    }
+    .main__banner {
+        height: 260px;
+    }
   }
 `;

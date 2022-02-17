@@ -11,9 +11,16 @@ export const AboutContent = styled.div`
   text-align: center;
 
   Button {
-    background-color: #2f54eb;
+    height: 40px;
+    font-weight: bold;
+    background-color: #cd1817;
     border-radius: 20px;
     color: white;
+
+    &:hover {
+      color: #333;
+      border: 1px solid #cd1817;
+    }
   }
 `;
 

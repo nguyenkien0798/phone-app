@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import {
@@ -18,10 +18,13 @@ import {
   InputNumber,
   notification,
 } from "antd";
-import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
+import {
+  ShoppingCartOutlined,
+  HeartOutlined,
+  HeartFilled,
+} from "@ant-design/icons";
 
 import TopWrapper from "../../components/TopWrapper";
-
 import { BREADCRUMB } from "./constants";
 
 import {
@@ -36,6 +39,7 @@ import * as S from "./styles";
 
 const ProductDetailPage = ({ match, ...props }) => {
   const [productQuantity, setProductQuantity] = useState(1);
+  const [selectedOption, setSelectedOption] = useState(null);
   const id = match.params?.id;
 
   const [commentForm] = Form.useForm();
@@ -46,6 +50,11 @@ const ProductDetailPage = ({ match, ...props }) => {
   const { cartList } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
 
+  const isFavorite =
+    productDetail.data.favorites?.findIndex(
+      (item) => item.userId === userInfo.data.id
+    ) !== -1;
+
   useEffect(() => {
     if (id) {
       dispatch(getProductDetailAction({ id }));
@@ -53,38 +62,78 @@ const ProductDetailPage = ({ match, ...props }) => {
     }
   }, [id]);
 
+  const handleFavoriteProduct = () => {
+    if (isFavorite) {
+      // Call API DELETE Favorite
+    } else {
+      // Call API POST Favorite
+    }
+  };
+
   const handleAddToCart = () => {
     if (userInfo.data.id) {
-      const existCartProduct = cartList.data.find(
-        (item) => item.productId === parseInt(id)
-      );
-      if (existCartProduct) {
-       // notification.error({
-        //   message: "Error",
-        //   description: "Sản phẩm đã tồn tại trong giỏ hàng",
-        // });
-        dispatch(
-          updateCartProductAction({
-            data: {
-              id: existCartProduct.id,
-              quantity: existCartProduct.quantity + productQuantity,
-            },
-            callback: {
-              showSuccess: () =>
-                notification.success({
-                  message: "Thêm vào giỏ hàng thành công",
-                }),
-            },
-          })
-        );
+      if (productDetail.data.productOptions?.length) {
+        if (!selectedOption) {
+          notification.error({
+            message: "Vui lòng chọn một tùy chọn",
+          });
+        } else {
+          const existCartProduct = cartList.data.find(
+            (item) => item.productOptionId === selectedOption.id
+          );
+          if (existCartProduct) {
+            dispatch(
+              updateCartProductAction({
+                data: {
+                  id: existCartProduct.id,
+                  quantity: existCartProduct.quantity + productQuantity,
+                },
+                callback: {
+                  showSuccess: () =>
+                    notification.success({
+                      message: "Thêm vào giỏ hàng thành công",
+                    }),
+                },
+              })
+            );
+          } else {
+            dispatch(
+              addToCartAction({
+                quantity: productQuantity,
+                productId: parseInt(id),
+                productOptionId: selectedOption.id,
+              })
+            );
+          }
+        }
       } else {
-        dispatch(
-          addToCartAction({
-            quantity: productQuantity,
-            productId: parseInt(id),
-            userId: userInfo.data.id,
-          })
+        const existCartProduct = cartList.data.find(
+          (item) => item.productId === parseInt(id)
         );
+        if (existCartProduct) {
+          dispatch(
+            updateCartProductAction({
+              data: {
+                id: existCartProduct.id,
+                quantity: existCartProduct.quantity + productQuantity,
+              },
+              callback: {
+                showSuccess: () =>
+                  notification.success({
+                    message: "Thêm vào giỏ hàng thành công",
+                  }),
+              },
+            })
+          );
+        } else {
+          dispatch(
+            addToCartAction({
+              quantity: productQuantity,
+              productId: parseInt(id),
+              productOptionId: false,
+            })
+          );
+        }
       }
     } else {
       notification.error({
@@ -114,13 +163,26 @@ const ProductDetailPage = ({ match, ...props }) => {
     }
   };
 
-  const renderProductRate = () => {
+  const productRate = useMemo(() => {
     let total = 0;
+    if (!commentList.data.length) return 0;
     commentList.data.forEach((item) => {
       total = total + item.rate;
     });
     return (total / commentList.data.length).toFixed(1);
-  };
+  }, [commentList.data]);
+
+  const getProductOptions = useMemo(() => {
+    if (productDetail.data.productOptions?.length) {
+      return productDetail.data.productOptions.map((option) => {
+        return (
+          <Radio.Button key={option.id} value={option}>
+            {option.name}
+          </Radio.Button>
+        );
+      });
+    }
+  }, [productDetail.data]);
 
   return (
     <div>
@@ -136,7 +198,7 @@ const ProductDetailPage = ({ match, ...props }) => {
       <S.ProductDetailContainer>
         <Card size="small">
           <Row gutter={[16, 16]}>
-            <Col span={10}>
+            <Col md={10} xs={24}>
               {productDetail.loading ? (
                 <S.SkeletonImage>
                   <Skeleton.Image />
@@ -150,41 +212,47 @@ const ProductDetailPage = ({ match, ...props }) => {
                 />
               )}
             </Col>
-            <Col span={14}>
+            <Col md={14} xs={24}>
               {productDetail.loading ? (
                 <Skeleton active />
               ) : (
                 <>
                   <h2 style={{ marginBottom: 0 }}>{productDetail.data.name}</h2>
                   <Space align="baseline">
-                    <Rate
-                      allowHalf
-                      disabled
-                      value={renderProductRate()}
-                      style={{}}
-                    />
-                    <h3>{renderProductRate()}</h3>
+                    <Rate allowHalf disabled value={productRate} style={{}} />
+                    {!!productRate && <h3>{productRate}</h3>}
                   </Space>
 
-                  <div style={{ margin: "16px 0" }}>
-                    Loại sản phẩm:
-                    <div>
-                      <Radio.Group
-                        options={[
-                          { label: "4Gb RAM & 64Gb ROM", value: 1 },
-                          { label: "6Gb RAM & 128Gb ROM", value: 2 },
-                        ]}
-                        optionType="button"
-                      />
+                  {productDetail.data.productOptions?.length > 0 && (
+                    <div style={{ margin: "16px 0" }}>
+                      Loại sản phẩm:
+                      <div>
+                        <Radio.Group
+                          onChange={(e) => setSelectedOption(e.target.value)}
+                          optionType="button"
+                        >
+                          {getProductOptions}
+                        </Radio.Group>
+                      </div>
                     </div>
+                  )}
+
+                  <div>
+                    <InputNumber
+                      min={1}
+                      max={10}
+                      value={productQuantity}
+                      onChange={(value) => setProductQuantity(value)}
+                    />
                   </div>
-                  <InputNumber
-                    min={1}
-                    max={10}
-                    value={productQuantity}
-                    onChange={(value) => setProductQuantity(value)}
-                  />
-                  <h3>{productDetail.data.price?.toLocaleString()}</h3>
+
+                  <h3>
+                    {selectedOption
+                      ? (
+                          selectedOption.price + (productDetail.data.price || 0)
+                        ).toLocaleString()
+                      : productDetail.data.price?.toLocaleString()}
+                  </h3>
                 </>
               )}
 
@@ -203,24 +271,36 @@ const ProductDetailPage = ({ match, ...props }) => {
                   >
                     Thêm vào giỏ
                   </Button>
-                  <Button size="large" icon={<HeartOutlined />}>
+                  <Button
+                    size="large"
+                    danger={isFavorite}
+                    icon={
+                      isFavorite ? (
+                        <HeartFilled style={{ color: "red" }} />
+                      ) : (
+                        <HeartOutlined />
+                      )
+                    }
+                    onClick={() => handleFavoriteProduct()}
+                  >
                     Yêu thích
                   </Button>
+                  <div>{`(${productDetail.data.favorites?.length} đã thích)`}</div>
                 </Space>
               )}
             </Col>
           </Row>
         </Card>
         <Row gutter={[16, 16]} style={{ marginTop: 16 }}>
-          <Col span={16}>
+          <Col md={{ span: 16, order: 1 }} xs={{ span: 24, order: 2 }}>
             <Card size="small">
-              <h3 style={{ color: "#2f54eb" }}>Thông tin chi tiết</h3>
+              <h3 style={{color: "#cd1817"}}>Thông tin chi tiết</h3>
               <S.ProductDetailContent
                 dangerouslySetInnerHTML={{ __html: productDetail.data.content }}
               />
             </Card>
             <Card size="small" style={{ marginTop: 16 }}>
-              <h3 style={{ color: "#2f54eb" }}>Đánh giá & Bình luận</h3>
+              <h3 style={{color: "#cd1817"}}>Đánh giá & Bình luận</h3>
               {userInfo.data.id && (
                 <Form
                   form={commentForm}
@@ -277,36 +357,36 @@ const ProductDetailPage = ({ match, ...props }) => {
               />
             </Card>
           </Col>
-          <Col span={8}>
+          <Col md={{ span: 8, order: 2 }} xs={{ span: 24, order: 1 }}>
             <Card size="small">
-              <h3 style={{ color: "#2f54eb" }}>Thông số kĩ thuật</h3>
+              <h3 style={{color: "#cd1817"}}>Thông số kĩ thuật</h3>
               <Descriptions bordered size="small">
                 <Descriptions.Item label="Màn hình" span={3}>
-                  OLED6.1"Super Retina XDR
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.screen }}/>
+                </Descriptions.Item>
+                <Descriptions.Item label="Camera" span={3}>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.camera }}/>
+                </Descriptions.Item>
+                <Descriptions.Item label="RAM" span={3}>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.ram }}/>
+                </Descriptions.Item>
+                <Descriptions.Item label="ROM" span={3}>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.rom }}/>
+                </Descriptions.Item>
+                <Descriptions.Item label="CPU" span={3}>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.cpu }}/>
+                </Descriptions.Item>
+                <Descriptions.Item label="GPU" span={3}>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.gpu }}/>
+                </Descriptions.Item>
+                <Descriptions.Item label="Dung lượng pin" span={3}>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.pin }}/>
+                </Descriptions.Item>
+                <Descriptions.Item label="Thẻ sim" span={3}>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.sim }}/>
                 </Descriptions.Item>
                 <Descriptions.Item label="Hệ điều hành" span={3}>
-                  iOS 15
-                </Descriptions.Item>
-                <Descriptions.Item label="Camera trước" span={3}>
-                  12 MP
-                </Descriptions.Item>
-                <Descriptions.Item label="Camera sau" span={3}>
-                  2 camera 12 MP
-                </Descriptions.Item>
-                <Descriptions.Item label="Chip" span={3}>
-                  Apple A15 Bionic
-                </Descriptions.Item>
-                <Descriptions.Item label="Ram" span={3}>
-                  4GB
-                </Descriptions.Item>
-                <Descriptions.Item label="Bộ nhớ trong" span={3}>
-                  64GB
-                </Descriptions.Item>
-                <Descriptions.Item label="Sim" span={3}>
-                  1 Nano SIM và 1 eSIMHỗ trợ 5G
-                </Descriptions.Item>
-                <Descriptions.Item label="Pin" span={3}>
-                  3240 mAh, 20 W
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.hdh }}/>
                 </Descriptions.Item>
               </Descriptions>
             </Card>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import topWrapperImage from "../../assets/images/top_wrapper.jpg";
+import topWrapperImage from "../../assets/images/bg_sale_tet.png";
 
 export const TopContainer = styled.div`
   position: relative;
@@ -8,7 +8,7 @@ export const TopContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: ${({ height }) => (height ? `${height}px` : "200px")};
+  height: 300px;
   background-image: url(${topWrapperImage});
   background-size: cover;
   background-position: 50% 15%;

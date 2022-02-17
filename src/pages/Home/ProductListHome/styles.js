@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 export const ProductContainer = styled.div`
-  max-width: 1180px;
+  max-width: 1280px;
   margin: 0 auto;
+  margin-top: 32px;
   margin-bottom: 24px;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 0 16px;
 `;
 
 export const ProductItem = styled.div`
@@ -23,8 +27,8 @@ export const ProductItem = styled.div`
   }
 
   img {
-    height: 250px;
-    margin-top: 6px;
+    height: 300px;
+    margin: 10px;
   }
 
   .card-content{
@@ -43,7 +47,7 @@ export const ProductItem = styled.div`
     height: 16px;
     width: 42px;
     border-radius: 4px;
-    background-color: red;
+    background-color: #cd1817;
     color: white;
   }
 
@@ -55,18 +59,18 @@ export const ProductItem = styled.div`
     padding-left: 8px;
     font-weight: bold;
     color: white;
-    background-color: red;
+    background-color: #cd1817;
     width: 92px;
     border-radius: 10px;
   }
 `;
 
 export const ProductTitle = styled.div`
-  margin-top: 16px;
+  padding-top: 12px;
   margin-bottom: 36px;
 
-  h3 {
-    text-align: center;
-    color: rgb(94,90,255);
+  h3 {    
+    font-weight: bold;
+    color: #cd1817;
   }
 `;

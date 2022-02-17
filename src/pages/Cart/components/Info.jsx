@@ -40,10 +40,10 @@ const Info = ({ setCheckoutStep }) => {
       district: district.name,
       ward: ward.name,
     };
-    // console.log(
-    //   "🚀 ~ file: Info.jsx ~ line 38 ~ handleConfirmInfo ~ newValues",
-    //   newValues
-    // );
+    console.log(
+      "🚀 ~ file: Info.jsx ~ line 38 ~ handleConfirmInfo ~ newValues",
+      newValues
+    );
 
     dispatch(setOrderInfoAction(newValues));
     setCheckoutStep(2);
@@ -107,7 +107,7 @@ const Info = ({ setCheckoutStep }) => {
             <Form.Item
               label="Họ và tên"
               name="fullName"
-              rules={[{ required: true, message: "Bạn cần nhập họ và tên!" }]}
+              rules={[{ required: true, message: "Required!" }]}
             >
               <Input />
             </Form.Item>
@@ -117,7 +117,7 @@ const Info = ({ setCheckoutStep }) => {
                 <Form.Item
                   label="Email"
                   name="email"
-                  rules={[{ required: true, message: "Bạn cần nhập Email!" }]}
+                  rules={[{ required: true, message: "Required!" }]}
                 >
                   <Input />
                 </Form.Item>
@@ -126,7 +126,7 @@ const Info = ({ setCheckoutStep }) => {
                 <Form.Item
                   label="Số điện thoại"
                   name="phoneNumber"
-                  rules={[{ required: true, message: "Bạn cần nhập số điện thoại!" }]}
+                  rules={[{ required: true, message: "Required!" }]}
                 >
                   <Input />
                 </Form.Item>
@@ -138,7 +138,7 @@ const Info = ({ setCheckoutStep }) => {
                 <Form.Item
                   label="Tỉnh/Thành"
                   name="city"
-                  rules={[{ required: true, message: "Bạn cần nhập Tỉnh/Thành!" }]}
+                  rules={[{ required: true, message: "Required!" }]}
                 >
                   <Select
                     onChange={(value) => {
@@ -160,7 +160,7 @@ const Info = ({ setCheckoutStep }) => {
                 <Form.Item
                   label="Quận/Huyện"
                   name="district"
-                  rules={[{ required: true, message: "Bạn cần nhập Quận/Huyện!" }]}
+                  rules={[{ required: true, message: "Required!" }]}
                 >
                   <Select
                     onChange={(value) => {
@@ -178,7 +178,7 @@ const Info = ({ setCheckoutStep }) => {
                 <Form.Item
                   label="Phường/Xã"
                   name="ward"
-                  rules={[{ required: true, message: "Bạn cần nhập Phường/Xã!" }]}
+                  rules={[{ required: true, message: "Required!" }]}
                 >
                   <Select>{renderWardOption()}</Select>
                 </Form.Item>
@@ -188,7 +188,7 @@ const Info = ({ setCheckoutStep }) => {
             <Form.Item
               label="Địa chỉ"
               name="address"
-              rules={[{ required: true, message: "Bạn cần nhập địa chỉ!" }]}
+              rules={[{ required: true, message: "Required!" }]}
             >
               <Input />
             </Form.Item>

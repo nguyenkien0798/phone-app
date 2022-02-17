@@ -11,7 +11,7 @@ const Success = () => {
     <Card size="small">
       <Result
         icon={<SmileOutlined />}
-        title="Cảm ơn bạn đã mua sản phẩm!"
+        title="Cảm ơn bạn đã mua, sản phẩm sẽ được giao đến bạn sớm!"
         extra={
           <Space>
             <Button

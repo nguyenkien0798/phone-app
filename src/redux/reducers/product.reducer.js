@@ -1,7 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
   PRODUCT_ACTION,
-  AUTH_ACTION,
   REQUEST,
   SUCCESS,
   FAIL,
@@ -89,7 +88,7 @@ const productReducer = createReducer(initialState, {
       ...state,
       productDetail: {
         ...state.productDetail,
-        data,
+        data: data,
         loading: false,
         error: null,
       },

@@ -54,7 +54,7 @@ const cartReducer = createReducer(initialState, {
     };
   },
 
-  [REQUEST(CART_ACTION.ADD_TO_CART)]: (state, action) => {
+  [REQUEST(CART_ACTION.ADD_TO_CART)]: (state, action) => {   
     return {
       ...state,
       actionLoading: {
@@ -64,8 +64,19 @@ const cartReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(CART_ACTION.ADD_TO_CART)]: (state, action) => {
+    const {payload: {data: dataProduct}} = action
+    console.log("reducer success", action)
+    const newCart = [...state.cartList.data]
+    newCart.push(dataProduct)
+    // console.log(newCart) dataProduct
+    // const { data } = action.payload;
     return {
       ...state,
+      cartList: {
+        ...state.cartList,
+        data: newCart,
+        loading: false,
+      },
       actionLoading: {
         ...state.actionLoading,
         addToCart: false,
@@ -73,11 +84,17 @@ const cartReducer = createReducer(initialState, {
     };
   },
   [FAIL(CART_ACTION.ADD_TO_CART)]: (state, action) => {
+    const { error } = action.payload;
     return {
       ...state,
       actionLoading: {
         ...state.actionLoading,
         addToCart: false,
+      },
+      cartList: {
+        ...state.cartList,        
+        loading: false,
+        error
       },
     };
   },

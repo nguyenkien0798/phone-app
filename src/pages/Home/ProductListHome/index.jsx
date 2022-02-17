@@ -6,6 +6,7 @@ import {
   Row,
   Col
 } from "antd";
+import { FireOutlined } from '@ant-design/icons'
 
 import {
   getProductListAction,
@@ -30,7 +31,7 @@ const ProductListHome = () => {
 
   const renderProductList = useMemo(() => {
     return productList.data.map((item, index) => (
-      <Col lg={6} md={8} sm={8} xs={12} key={item.id}>
+      <Col lg={6} md={8} sm={12} xs={24} key={item.id}>
         <S.ProductItem
           onClick={() =>
             history.push(
@@ -39,7 +40,7 @@ const ProductListHome = () => {
           }
         >
           {item.isNew && <div className="new">NEW</div>}
-          <img src={item.image} className="image" alt="Điện thoại" />
+          <img src={item.image} className="image" alt={item.name} />
           <div className="card-content">
             <div className="name">{item.name}</div>
             <div className="price">{item.price.toLocaleString()}</div>
@@ -52,7 +53,7 @@ const ProductListHome = () => {
   return (
     <S.ProductContainer>
       <S.ProductTitle>        
-        <h3>Sản phẩm của shop</h3>        
+        <h3>Sản phẩm điện thoại</h3>        
       </S.ProductTitle>
       <Row gutter={[16, 16]} style={{ marginTop: 16 }}>
         {renderProductList}

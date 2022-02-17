@@ -14,44 +14,106 @@
   "products": [
     {
       "id": 1,
-      "name": "iPhone 13",
-      "price": 25000000,
+      "name": "iPhone 13 Pro Max 1TB",
+      "price": 60000000,
       "isNew": true,
-      "image": "https://tanhungphatit.vn/images/detailed/93/iphone-13-blue-1-600x600.jpg",
-      "categoryId": 1
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg",
+      "categoryId": 1,
+      "screen": "6.7 inch, Super Retina XDR, OLED, 2778 x 1284 Pixel",
+      "camera": "12.0 MP + 12.0 MP, 12.0 MP",
+      "ram": "6 GB",
+      "rom": "1 TB",
+      "cpu": "A15 Bionic",
+      "gpu": "Apple GPU 5 nhân",
+      "pin": "4352 mAh",
+      "sim": "2, 1 eSIM, 1 Nano SIM",
+      "hdh": "iOS 15"
     },
     {
       "id": 2,
-      "name": "iPhone 13 Mini",
-      "price": 23000000,
+      "name": "iPhone 13",
+      "price": 25000000,
       "isNew": true,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReJe2jlIQr9P9YMmbJuvUok384MO6nL_d09Q&usqp=CAU",
-      "categoryId": 1
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673224696649012_iphone-13-dd-1.jpg",
+      "categoryId": 1,
+      "screen": "6.1 inch, Super Retina XDR, OLED, 2532 x 1170 Pixel",
+      "camera": "12.0 MP + 12.0 MP, 12.0 MP",
+      "ram": "4 GB",
+      "rom": "128 GB",
+      "cpu": "A15 Bionic",
+      "gpu": "Apple GPU 4 nhân",
+      "pin": "3225 mAh",
+      "sim": "2, 1 eSIM, 1 Nano SIM",
+      "hdh": "iOS 15"
     },
     {
       "id": 3,
-      "name": "iPhone 13 Pro",
-      "price": 27000000,
+      "name": "iPhone 13 Mini",
+      "price": 23000000,
       "isNew": true,
-      "image": "https://cdn.hoanghamobile.com/i/productlist/dsp/Uploads/2021/09/15/image-removebg-preview-17.png",
-      "categoryId": 1
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673224696649012_iphone-13-dd-1.jpg",
+      "categoryId": 1,
+      "screen": "5.4 inch, Super Retina XDR, OLED, 1080 x 2340 Pixel",
+      "camera": "12.0 MP + 12.0 MP, 12.0 MP",
+      "ram": "4 GB",
+      "rom": "128 GB",
+      "cpu": "A15 Bionic",
+      "gpu": "Apple GPU 4 nhân",
+      "pin": "2406 mAh",
+      "sim": "2, 1 eSIM, 1 Nano SIM",
+      "hdh": "iOS 15"
     },
     {
       "id": 4,
-      "name": "iPhone 13 Pro Max",
-      "price": 30000000,
+      "name": "iPhone 13 Pro",
+      "price": 27000000,
       "isNew": true,
-      "image": "https://cdn.tgdd.vn/Products/Images/42/250262/iphone-13-pro-max-gold-1-600x600.jpg",
-      "categoryId": 1
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg",
+      "categoryId": 1,
+      "screen": "6.1 inch, Super Retina XDR, OLED, 2532 x 1170 Pixel",
+      "camera": "12.0 MP + 12.0 MP + 12.0 MP, 12.0 MP",
+      "ram": "6 GB",
+      "rom": "128 GB",
+      "cpu": "A15 Bionic",
+      "gpu": "Apple GPU 5 nhân",
+      "pin": "3095 mAh",
+      "sim": "2, 1 eSIM, 1 Nano SIM",
+      "hdh": "iOS 15"
     },
     {
       "id": 5,
+      "name": "iPhone 13 Pro Max",
+      "price": 30000000,
+      "isNew": true,
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg",
+      "categoryId": 1,
+      "screen": "6.7 inch, Super Retina XDR, OLED, 2778 x 1284 Pixel",
+      "camera": "12.0 MP + 12.0 MP + 12.0 MP, 12.0 MP",
+      "ram": "6 GB",
+      "rom": "128 GB",
+      "cpu": "A15 Bionic",
+      "gpu": "Apple GPU 5 nhân",
+      "pin": "4352 mAh",
+      "sim": "2, 1 eSIM, 1 Nano SIM",
+      "hdh": "iOS 15"
+    },
+    {
+      "id": 6,
       "name": "Xiaomi Mi 11",
       "price": 15000000,
       "isNew": false,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR32neNKCZxYl1WiVeE-KPlaJCKVp1Ypi9_og&usqp=CAU",
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528847781369467_xiaomi-mi-11-pro-dd.jpg",
       "categoryId": 3,
-      "content": "<h4>Thiết kế nổi bật với cụm camera độc nhất</h4><p>Có thể thấy, điểm sáng trong thiết kế của Mi 11 đến từ cụm 3 camera mặt sau được đặt trong mô-đun hình vuông, được phân tầng với 2 lớp kính tạo nên sự khác biệt và nổi bật ngay từ cái nhìn đầu tiên.</p><p><a href='https://www.thegioididong.com/images/42/226264/xiaomi-mi-11-002.jpg' target='_blank' style='color: rgb(21, 94, 193);'><img src='https://cdn.tgdd.vn/Products/Images/42/226264/xiaomi-mi-11-002.jpg' alt='Xiaomi Mi 11 | Thiết kế với cụm camera độc đáo'></a></p>"
+      "content": "<h4>Thiết kế nổi bật với cụm camera độc nhất</h4><p>Có thể thấy, điểm sáng trong thiết kế của Mi 11 đến từ cụm 3 camera mặt sau được đặt trong mô-đun hình vuông, được phân tầng với 2 lớp kính tạo nên sự khác biệt và nổi bật ngay từ cái nhìn đầu tiên.</p><p><a href='https://www.thegioididong.com/images/42/226264/xiaomi-mi-11-002.jpg' target='_blank' style='color: rgb(21, 94, 193);'><img src='https://cdn.tgdd.vn/Products/Images/42/226264/xiaomi-mi-11-002.jpg' alt='Xiaomi Mi 11 | Thiết kế với cụm camera độc đáo'></a></p>",
+      "screen": "6.81 inch, 1440 x 3200 Pixel",
+      "camera": "108 MP + 13 MP + 5 MP, 20 MP",
+      "ram": "8 GB",
+      "rom": "128 GB",
+      "cpu": "Qualcomm SM8350 Snapdragon 888 5G (5nm) 8 nhân",
+      "gpu": "Adreno 660",
+      "pin": "4600 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 11, MIUI 12.5"
     },
     {
       "name": "Samsung Galaxy S21",
@@ -59,31 +121,50 @@
       "price": 15000000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOqxcCD0-yLscd9vfwCsdr2Z_PQbudOSE8WQ&usqp=CAU",
-      "id": 6
+      "id": 7,
+      "screen": "6.8 inch, WQHD+, Dynamic AMOLED 2X, 1440 x 3200 Pixel",
+      "camera": "108.0 MP + 10.0 MP + 12.0 MP + 10.0 MP, 40.0 MP",
+      "ram": "12 GB",
+      "rom": "128 GB",
+      "cpu": "Exynos 2100",
+      "gpu": "ARM Mali-G78 MP14",
+      "pin": "5000 mAh",
+      "sim": "2, 2 Nano SIM hoặc 1 eSIM, 1 Nano SIM",
+      "hdh": "Android 11"
     },
     {
       "name": "iPhone 12 Pro",
       "categoryId": 1,
       "price": 17000000,
       "isNew": false,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrfQ1VpzZ151N0_NbW16E1vu7knhMxry1hOA&usqp=CAU",
-      "id": 7
-    },
-    {
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/10/14/637382721010154236_ip-12-pro-max-dd.png",
       "id": 8,
-      "name": "iPhone 13 Pro Max 1Tb",
-      "price": 60000000,
-      "isNew": true,
-      "image": "https://cdn.tgdd.vn/Products/Images/42/250262/iphone-13-pro-max-gold-1-600x600.jpg",
-      "categoryId": 1
+      "screen": "6.1 inch, Super Retina XDR, OLED, 2532 x 1170 Pixel",
+      "camera": "12.0 MP + 12.0 MP + 12.0 MP, 12.0 MP",
+      "ram": "6 GB",
+      "rom": "128 GB",
+      "cpu": "A14 Bionic",
+      "gpu": "Apple GPU 4 nhân",
+      "pin": "2815 mAh",
+      "sim": "2, 1 eSIM, 1 Nano SIM",
+      "hdh": "iOS 14"
     },
     {
       "id": 9,
       "name": "iPhone 12 Pro Max",
       "price": 19000000,
       "isNew": true,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbD1ymTJY4xV6V8j4zrDRSQRO6abIBq7JnLQ&usqp=CAU",
-      "categoryId": 1
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/10/14/637382721010154236_ip-12-pro-max-dd.png",
+      "categoryId": 1,
+      "screen": "6.7 inch, Super Retina XDR, OLED, 2778 x 1284 Pixel",
+      "camera": "12.0 MP + 12.0 MP + 12.0 MP, 12.0 MP",
+      "ram": "6 GB",
+      "rom": "128 GB",
+      "cpu": "A14 Bionic",
+      "gpu": "Apple GPU 4 nhân",
+      "pin": "3687 mAh",
+      "sim": "2, 1 eSIM, 1 Nano SIM",
+      "hdh": "iOS 14"
     },
     {
       "id": 10,
@@ -91,7 +172,16 @@
       "price": 20000000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwjCdY8j4j21SDWBM-fwQ5T3S7mzUcmrvntQ&usqp=CAU",
-      "categoryId": 2
+      "categoryId": 2,
+      "screen": "6.7 inch, FHD+, Super AMOLED, 1080 x 2400 Pixel",
+      "camera": "12.0 MP + 12.0 MP + 12.0 MP, 32.0 MP",
+      "ram": "8 GB",
+      "rom": "128 GB",
+      "cpu": "Exynos 9810",
+      "gpu": "ARM Mali-G72 MP18",
+      "pin": "4500 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 10.0"
     },
     {
       "id": 11,
@@ -99,7 +189,16 @@
       "price": 9000000,
       "isNew": false,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAGsMPI8-xQWO6c4g7segWsSoOCK0MUxksew&usqp=CAU",
-      "categoryId": 1
+      "categoryId": 1,
+      "screen": "5.8 inch, Super Retina, OLED, 1125 x 2436 Pixel",
+      "camera": "12.0 MP + 12.0 MP, 7.0 MP",
+      "ram": "4 GB",
+      "rom": "64 GB",
+      "cpu": "Apple A12 Bionic",
+      "gpu": "Apple GPU 4 nhân",
+      "pin": "2658 mAh",
+      "sim": "2, 1 eSIM, 1 Nano SIM",
+      "hdh": "iOS 12"
     },
     {
       "id": 12,
@@ -107,23 +206,50 @@
       "price": 12000000,
       "isNew": false,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaQ-3EzUbgOXpu9X1nwYHW5si3rNpxGgGliw&usqp=CAU",
-      "categoryId": 1
+      "categoryId": 1,
+      "screen": "6.5 inch, Super Retina, OLED, 1242 x 2688 Pixel",
+      "camera": "12.0 MP + 12.0 MP, 7.0 MP",
+      "ram": "4 GB",
+      "rom": "64 GB",
+      "cpu": "Apple A12 Bionic",
+      "gpu": "Apple GPU 4 nhân",
+      "pin": "3174 mAh",
+      "sim": "2, 1 eSIM, 1 Nano SIM",
+      "hdh": "iOS 12"
     },
     {
       "id": 13,
       "name": "iPhone 8",
       "price": 6000000,
       "isNew": false,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOcZ6OwcyZ7iZgoVJ_sfpf5bZ-izOBmuuFqA&usqp=CAU",
-      "categoryId": 1
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtRMKicWKq9fb5vnNK-PNwtFx87GaFMD30UA&usqp=CAU",
+      "categoryId": 1,
+      "screen": "6.5 inch, Super Retina, OLED, 1242 x 2688 Pixel",
+      "camera": "12.0 MP + 12.0 MP, 7.0 MP",
+      "ram": "3 GB",
+      "rom": "64 GB",
+      "cpu": "Apple A11 Bionic",
+      "gpu": "Apple GPU 3 nhân",
+      "pin": "2691 mAh",
+      "sim": "1 Nano SIM",
+      "hdh": "iOS 11"
     },
     {
       "id": 14,
       "name": "iPhone 8 Plus",
       "price": 7000000,
       "isNew": false,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaE0sIXIGCg-_wmnzr_2-gObJM2Is76IR8XA&usqp=CAU",
-      "categoryId": 1
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTIFbw5Vo3kC2bWVGieY7V2Ue20k0N8KiwlA&usqp=CAU",
+      "categoryId": 1,
+      "screen": "5.5 inch, LED-backlit IPS LCD, Retina HD",
+      "camera": "12.0 MP + 12.0 MP, 7.0 MP",
+      "ram": "3 GB",
+      "rom": "64 GB",
+      "cpu": "Apple A11 Bionic",
+      "gpu": "Apple GPU 3 nhân",
+      "pin": "2691 mAh",
+      "sim": "1 Nano SIM",
+      "hdh": "iOS 11"
     },
     {
       "id": 15,
@@ -131,7 +257,16 @@
       "price": 4500000,
       "isNew": false,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7X-daeyf2JKh2W2qi3tyKRnBPAfjZhfCeNQ&usqp=CAU",
-      "categoryId": 1
+      "categoryId": 1,
+      "screen": "4.7 inch, IPS LCD, 750 x 1334 Pixel",
+      "camera": "12.0 MP + 12.0 MP, 7.0 MP",
+      "ram": "3 GB",
+      "rom": "32 GB",
+      "cpu": "Apple A10 Bionic",
+      "gpu": "PowerVR Series7XT Plus 6 nhân",
+      "pin": "1960 mAh",
+      "sim": "1 Nano SIM",
+      "hdh": "iOS 10"
     },
     {
       "id": 16,
@@ -139,7 +274,16 @@
       "price": 5500000,
       "isNew": false,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcfwqeWsAb4Sfu8WQSAqzVl4WmKeidR9n_Q&usqp=CAU",
-      "categoryId": 1
+      "categoryId": 1,
+      "screen": "5.5 inch, IPS LCD, 1080 x 1920 Pixel",
+      "camera": "12.0 MP + 12.0 MP, 7.0 MP",
+      "ram": "3 GB",
+      "rom": "32 GB",
+      "cpu": "Apple A10 Bionic",
+      "gpu": "PowerVR Series7XT Plus 6 nhân",
+      "pin": "2900 mAh",
+      "sim": "1 Nano SIM",
+      "hdh": "iOS 10"
     },
     {
       "id": 17,
@@ -147,7 +291,16 @@
       "price": 9990000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWXi-v7dp1ZcwJ0FN_Z9q4BfrphQfyJZjt0A&usqp=CAU",
-      "categoryId": 2
+      "categoryId": 2,
+      "screen": "6.5 inch, FHD+, Super AMOLED, 1080 x 2400 Pixel",
+      "camera": "64.0 MP + 12.0 MP + 5.0 MP + 5.0 MP, 32.0 MP",
+      "ram": "8 GB",
+      "rom": "128 GB",
+      "cpu": "Snapdragon 778G",
+      "gpu": "Adreno 642L",
+      "pin": "4500 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 11.0"
     },
     {
       "id": 18,
@@ -155,7 +308,16 @@
       "price": 3390000,
       "isNew": false,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8swZFBOXg2EubBt0VdTx79TJowGJxBKv90w&usqp=CAU",
-      "categoryId": 2
+      "categoryId": 2,
+      "screen": "6.5 inch, HD+, PLS TFT LCD, 720 x 1600 Pixel",
+      "camera": "13.0 MP + 2.0 MP + 2.0 MP, 5.0 MP",
+      "ram": "4 GB",
+      "rom": "64 GB",
+      "cpu": "MediaTek MT6765",
+      "gpu": "IMG PowerVR GE8320",
+      "pin": "5000 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 11.0"
     },
     {
       "id": 19,
@@ -163,7 +325,16 @@
       "price": 5390000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPjFvMzvbdU_ihRF8xtU4JB8cNrC1mfGDaEQ&usqp=CAU",
-      "categoryId": 2
+      "categoryId": 2,
+      "screen": "6.6 inch, FHD+, TFT LCD, 1080 x 2400 Pixel",
+      "camera": "48.0 MP + 5.0 MP + 2.0 MP, 8.0 MP",
+      "ram": "6 GB",
+      "rom": "128 GB",
+      "cpu": "MediaTek Dimensity 700",
+      "gpu": "ARM Mali-G57 MC2",
+      "pin": "5000 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 11.0"
     },
     {
       "id": 20,
@@ -171,7 +342,16 @@
       "price": 39990000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeDAOGrkFn7ENLJkuM5AtspXvn9NO6XqCYoQ&usqp=CAU",
-      "categoryId": 2
+      "categoryId": 2,
+      "screen": "Màn hình chính: 7.6 inch, Màn hình phụ: 6.2 inch, HD+, Chính: Dynamic AMOLED 2X, phụ: Dynamic AMOLED 2X, 1768 x 2208 Pixel",
+      "camera": "12.0 MP + 12.0 MP + 12.0 MP, 10.0 MP",
+      "ram": "12 GB",
+      "rom": "256 GB",
+      "cpu": "Snapdragon 888",
+      "gpu": "---",
+      "pin": "4400 mAh",
+      "sim": "2, 2 Nano SIM hoặc 1 eSIM, 1 Nano SIM",
+      "hdh": "Android 11.0"
     },
     {
       "id": 21,
@@ -179,7 +359,16 @@
       "price": 22990000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfXvy9nbgpTyJdYE1JRbUQy0ODoV_tvLpkYw&usqp=CAU",
-      "categoryId": 2
+      "categoryId": 2,
+      "screen": "Màn hình chính: 6.7 inch, Màn hình phụ: 1.9 inch, FHD+, Chính: Dynamic AMOLED, phụ: Super AMOLED, 1080 x 2636 Pixel",
+      "camera": "12.0 MP + 12.0 MP, 10.0 MP",
+      "ram": "8 GB",
+      "rom": "128 GB",
+      "cpu": "Snapdragon 888",
+      "gpu": "---",
+      "pin": "3300 mAh",
+      "sim": "1, 1 eSIM, 1 Nano SIM",
+      "hdh": "Android 11.0"
     },
     {
       "id": 22,
@@ -187,7 +376,16 @@
       "price": 13490000,
       "isNew": false,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUa62eysp4LxRTub06XKv1BM5zB3tWIPjdzQ&usqp=CAU",
-      "categoryId": 2
+      "categoryId": 2,
+      "screen": "6.5 inch, FHD+, Super AMOLED, 1080 x 2400 Pixel",
+      "camera": "12.0 MP + 12.0 MP + 8.0 MP, 32.0 MP",
+      "ram": "8 GB",
+      "rom": "256 GB",
+      "cpu": "Snapdragon 865",
+      "gpu": "---",
+      "pin": "4500 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 10.0"
     },
     {
       "id": 23,
@@ -195,7 +393,16 @@
       "price": 14990000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwAbRmav3mgjaEd_tuRkeeIWkiuBKq2q2ddQ&usqp=CAU",
-      "categoryId": 3
+      "categoryId": 3,
+      "screen": "6.67 inch, FHD+, AMOLED DotDisplay, 1080 x 2400 Pixel",
+      "camera": "108.0 MP + 8.0 MP + 5.0 MP, 16.0 MP",
+      "ram": "12 GB",
+      "rom": "256 GB",
+      "cpu": "Snapdragon 888",
+      "gpu": "---",
+      "pin": "5000 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 11.0"
     },
     {
       "id": 24,
@@ -203,7 +410,16 @@
       "price": 9290000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR75xPwKsrpruJwmCv7ZAxj5cmTJ4RmTjQBg&usqp=CAU",
-      "categoryId": 3
+      "categoryId": 3,
+      "screen": "6.55 inch, FHD+, AMOLED DotDisplay, 1080 x 2400 Pixel",
+      "camera": "64.0 MP + 8.0 MP + 5.0 MP, 20.0 MP",
+      "ram": "8 GB",
+      "rom": "256 GB",
+      "cpu": "Snapdragon 778G",
+      "gpu": "---",
+      "pin": "4250 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 11.0"
     },
     {
       "id": 25,
@@ -211,7 +427,16 @@
       "price": 7290000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRflUeq6skUxzyJ2UpblRYUoJdxPZX5jfml2A&usqp=CAU",
-      "categoryId": 3
+      "categoryId": 3,
+      "screen": "6.67 inch, FHD+, IPS LCD, 1080 x 2400 Pixel",
+      "camera": "48.0 MP + 8.0 MP + 2.0 MP + 2.0 MP, 20.0 MP",
+      "ram": "8 GB",
+      "rom": "256 GB",
+      "cpu": "Snapdragon 860",
+      "gpu": "Adreno 640",
+      "pin": "5160 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 11.0"
     },
     {
       "id": 26,
@@ -219,15 +444,33 @@
       "price": 7490000,
       "isNew": true,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEhZxnmPNbVvX1cmC6tpBbYOFPLuYRCJxImw&usqp=CAU",
-      "categoryId": 3
+      "categoryId": 3,
+      "screen": "6.67 inch, FHD+, AMOLED, 1080 x 2400 Pixel",
+      "camera": "108.0 MP + 8.0 MP + 2.0 MP + 5.0 MP, 16.0 MP",
+      "ram": "8 GB",
+      "rom": "128 GB",
+      "cpu": "Snapdragon 732G",
+      "gpu": "Adreno 618",
+      "pin": "5020 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 11.0"
     },
     {
       "id": 27,
-      "name": "Xiaomi Redmi Note 11 Pro",
+      "name": "Xiaomi Redmi Note 10S",
       "price": 15000000,
       "isNew": true,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq-ccoeQSxELlJFL0udbWbz3kkfbYO_N4zbw&usqp=CAU",
-      "categoryId": 3
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/5/18/637569709583556232_xiaomi-note10s-xam-dd.jpg",
+      "categoryId": 3,
+      "screen": "6.43 inch, FHD+, AMOLED, 1080 x 2400 Pixel",
+      "camera": "64.0 MP + 8.0 MP + 2.0 MP + 2.0 MP, 13.0 MP",
+      "ram": "8 GB",
+      "rom": "128 GB",
+      "cpu": "MediaTek Helio G95",
+      "gpu": "Mali-G76 MC4",
+      "pin": "5000 mAh",
+      "sim": "2, Nano SIM",
+      "hdh": "Android 11.0"
     }
   ],
   "categories": [
@@ -289,6 +532,42 @@
       "createdAt": 1639986804684,
       "updatedAt": 1639986804684,
       "id": 5
+    },
+    {
+      "rate": 5,
+      "content": "đẹp",
+      "productId": 3,
+      "userId": 1,
+      "createdAt": 1641287312305,
+      "updatedAt": 1641287312305,
+      "id": 6
+    },
+    {
+      "rate": 5,
+      "content": "hàng đẹp!",
+      "productId": 4,
+      "userId": 1,
+      "createdAt": 1641458591634,
+      "updatedAt": 1641458591636,
+      "id": 7
+    },
+    {
+      "rate": 5,
+      "content": "Hàng đẹp giao nhanh!",
+      "productId": 1,
+      "userId": 1,
+      "createdAt": 1641544604226,
+      "updatedAt": 1641544604231,
+      "id": 8
+    },
+    {
+      "rate": 5,
+      "content": "Chuan, dep",
+      "productId": 6,
+      "userId": 1,
+      "createdAt": 1645104317258,
+      "updatedAt": 1645104317259,
+      "id": 9
     }
   ],
   "infoForms": [
@@ -322,6 +601,398 @@
       "createdAt": 1638797767965,
       "updatedAt": 1638798462122,
       "id": 3
+    },
+    {
+      "quantity": 1,
+      "productId": 3,
+      "userId": 1,
+      "createdAt": 1641229269542,
+      "updatedAt": 1641229269543,
+      "id": 4
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "userId": 1,
+      "createdAt": 1641238373687,
+      "updatedAt": 1641238373687,
+      "id": 5
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "userId": 1,
+      "createdAt": 1641238408789,
+      "updatedAt": 1641238408789,
+      "id": 6
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "userId": 1,
+      "createdAt": 1641280231746,
+      "updatedAt": 1641280231747,
+      "id": 7
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "userId": 1,
+      "createdAt": 1641280356232,
+      "updatedAt": 1641280356232,
+      "id": 8
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641281234038,
+      "updatedAt": 1641281234039,
+      "id": 9
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641281386254,
+      "updatedAt": 1641281386254,
+      "id": 10
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641284731051,
+      "updatedAt": 1641284731053,
+      "id": 11
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641285427804,
+      "updatedAt": 1641285427805,
+      "id": 12
+    },
+    {
+      "quantity": 1,
+      "productId": 5,
+      "productOptionId": false,
+      "createdAt": 1641287283979,
+      "updatedAt": 1641287283979,
+      "id": 13
+    },
+    {
+      "quantity": 1,
+      "productId": 3,
+      "productOptionId": false,
+      "createdAt": 1641287336028,
+      "updatedAt": 1641287336028,
+      "id": 14
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641288186165,
+      "updatedAt": 1641288186165,
+      "id": 15
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 2,
+      "createdAt": 1641457467189,
+      "updatedAt": 1641457467193,
+      "id": 16
+    },
+    {
+      "quantity": 1,
+      "productId": 3,
+      "productOptionId": false,
+      "createdAt": 1641457481518,
+      "updatedAt": 1641457481518,
+      "id": 17
+    },
+    {
+      "quantity": 1,
+      "productId": 4,
+      "productOptionId": false,
+      "createdAt": 1641458596498,
+      "updatedAt": 1641458596498,
+      "id": 18
+    },
+    {
+      "quantity": 1,
+      "productId": 14,
+      "productOptionId": false,
+      "createdAt": 1641474402761,
+      "updatedAt": 1641474402762,
+      "id": 19
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641478355961,
+      "updatedAt": 1641478355962,
+      "id": 20
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 2,
+      "createdAt": 1641478443133,
+      "updatedAt": 1641478443133,
+      "id": 21
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641481111867,
+      "updatedAt": 1641481111868,
+      "id": 22
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641481410901,
+      "updatedAt": 1641481410901,
+      "id": 23
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641481426602,
+      "updatedAt": 1641481426602,
+      "id": 24
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641481428941,
+      "updatedAt": 1641481428941,
+      "id": 25
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641481578461,
+      "updatedAt": 1641481578461,
+      "id": 26
+    },
+    {
+      "quantity": 2,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641481674919,
+      "updatedAt": 1641481817029,
+      "id": 27
+    },
+    {
+      "quantity": 6,
+      "productId": 7,
+      "productOptionId": false,
+      "createdAt": 1641481830733,
+      "updatedAt": 1641481885657,
+      "id": 28
+    },
+    {
+      "quantity": 2,
+      "productId": 8,
+      "productOptionId": false,
+      "createdAt": 1641481898937,
+      "updatedAt": 1641481899197,
+      "id": 29
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641482941284,
+      "updatedAt": 1641482941284,
+      "id": 30
+    },
+    {
+      "quantity": 1,
+      "productId": 8,
+      "productOptionId": false,
+      "createdAt": 1641482963103,
+      "updatedAt": 1641482963103,
+      "id": 31
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641483018364,
+      "updatedAt": 1641483018364,
+      "id": 32
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641483768395,
+      "updatedAt": 1641483768395,
+      "id": 33
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641483902194,
+      "updatedAt": 1641483902194,
+      "id": 34
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641484097588,
+      "updatedAt": 1641484097588,
+      "id": 35
+    },
+    {
+      "quantity": 1,
+      "productId": 3,
+      "productOptionId": false,
+      "createdAt": 1641484294352,
+      "updatedAt": 1641484294353,
+      "id": 36
+    },
+    {
+      "quantity": 1,
+      "productId": 3,
+      "productOptionId": false,
+      "createdAt": 1641484426219,
+      "updatedAt": 1641484426219,
+      "id": 37
+    },
+    {
+      "quantity": 1,
+      "productId": 8,
+      "productOptionId": false,
+      "createdAt": 1641484495125,
+      "updatedAt": 1641484495125,
+      "id": 38
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641484978757,
+      "updatedAt": 1641484978757,
+      "id": 39
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641485172198,
+      "updatedAt": 1641485172198,
+      "id": 40
+    },
+    {
+      "quantity": 1,
+      "productId": 2,
+      "productOptionId": false,
+      "createdAt": 1641485611237,
+      "updatedAt": 1641485611237,
+      "id": 41
+    },
+    {
+      "quantity": 1,
+      "productId": 4,
+      "productOptionId": false,
+      "createdAt": 1641485669115,
+      "updatedAt": 1641485669115,
+      "id": 42
+    },
+    {
+      "quantity": 1,
+      "productId": 4,
+      "productOptionId": false,
+      "createdAt": 1641485708694,
+      "updatedAt": 1641485708694,
+      "id": 43
+    },
+    {
+      "quantity": 1,
+      "productId": 4,
+      "productOptionId": false,
+      "createdAt": 1641485850612,
+      "updatedAt": 1641485850612,
+      "id": 44
+    },
+    {
+      "quantity": 1,
+      "productId": 4,
+      "productOptionId": false,
+      "createdAt": 1641486000941,
+      "updatedAt": 1641486000941,
+      "id": 45
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1641547970957,
+      "updatedAt": 1641547970958,
+      "id": 46
+    },
+    {
+      "quantity": 1,
+      "productId": 4,
+      "productOptionId": false,
+      "createdAt": 1641548166697,
+      "updatedAt": 1641548166697,
+      "id": 47
+    },
+    {
+      "quantity": 1,
+      "productId": 3,
+      "productOptionId": false,
+      "createdAt": 1641564730052,
+      "updatedAt": 1641564730053,
+      "id": 48
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 2,
+      "createdAt": 1641586204830,
+      "updatedAt": 1641586204832,
+      "id": 49
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 2,
+      "createdAt": 1641586543536,
+      "updatedAt": 1641586543539,
+      "id": 50
+    },
+    {
+      "quantity": 1,
+      "productId": 6,
+      "productOptionId": false,
+      "createdAt": 1645104324714,
+      "updatedAt": 1645104324714,
+      "id": 51
+    },
+    {
+      "quantity": 2,
+      "productId": 6,
+      "productOptionId": false,
+      "createdAt": 1645104503268,
+      "updatedAt": 1645104593984,
+      "id": 52
     }
   ],
   "orders": [

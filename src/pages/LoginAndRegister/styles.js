@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import bglogin from "../../assets/images/bg-login.jpg";
 import bg_login from "../../assets/images/bg_login.jpg";
 
 export const LoginContainer = styled.div`

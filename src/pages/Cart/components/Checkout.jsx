@@ -30,9 +30,6 @@ const Checkout = ({ setCheckoutStep }) => {
 
   const { cartList, selectedCarts } = useSelector((state) => state.cartReducer);
   const { discountInfo } = useSelector((state) => state.discountReducer);
-  useSelector(state => {
-    console.log(state)
-  })
 
   let totalPrice = 0;
 
@@ -160,16 +157,16 @@ const Checkout = ({ setCheckoutStep }) => {
               />
             </Col>
             <Col span={10}>
-              <h3>Tên sản phẩm</h3>
+              <h5>Tên sản phẩm</h5>
             </Col>
             <Col span={4}>
-              <h3>Đơn giá</h3>
+              <h5>Đơn giá</h5>
             </Col>
             <Col span={4}>
-              <h3>Số lượng</h3>
+              <h5>Số lượng</h5>
             </Col>
             <Col span={4}>
-              <h3>Thành tiền</h3>
+              <h5>Thành tiền</h5>
             </Col>
             <Col span={1}></Col>
           </Row>

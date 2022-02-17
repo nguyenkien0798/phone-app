@@ -20,7 +20,7 @@ export const FilterTitle = styled.div`
   padding: 0 8px;
   height: 36px;
   font-size: 18px;
-  background-color: #2f54eb;
+  background-color: #cd1817;
   color: white;
 `;
 

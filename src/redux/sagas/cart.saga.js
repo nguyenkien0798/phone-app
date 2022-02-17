@@ -12,6 +12,7 @@ function* getCartListSaga(action) {
       {
         params: {
           userId,
+          _expand: "products",
         },
       }
     );

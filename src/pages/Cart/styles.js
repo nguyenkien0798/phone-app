@@ -10,6 +10,7 @@ export const CartContainer = styled.div`
     margin-bottom: 0;
   }
 `;
+
 export const DiscountCard = styled.div`
   display: inline-flex;
   margin-top: 16px;
