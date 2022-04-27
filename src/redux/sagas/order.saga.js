@@ -6,7 +6,7 @@ import { ORDER_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 function* getOrderListSaga(action) {
   try {
     const { id } = action.payload;
-    const result = yield axios.get(`https://phone-store-app-api.herokuapp.com/orders`, {
+    const result = yield axios.get(`http://localhost:4000/orders`, {
       params: {
         userId: id,
         _order: "desc",
@@ -30,9 +30,9 @@ function* getOrderListSaga(action) {
 function* orderCartSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.post("https://phone-store-app-api.herokuapp.com/orders", data);
+    yield axios.post("http://localhost:4000/orders", data);
     yield data.products.forEach((productItem) => {
-      axios.delete(`https://phone-store-app-api.herokuapp.com/carts/${productItem.cartId}`);
+      axios.delete(`http://localhost:4000/carts/${productItem.cartId}`);
     });
 
     yield callback.success();

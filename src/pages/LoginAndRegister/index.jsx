@@ -10,20 +10,6 @@ const LoginAndRegisterPage = () => {
   const [userList, setUserList] = useState(USER_LIST);
   const [isLogin, setIsLogin] = useState(true);
 
-  // useEffect(() => {
-  //   // Mounting
-  // }, [])
-
-  // useEffect(() => {
-  //   // Mounting
-  // }, [isLogin])
-
-  // useEffect(() => {
-  //   return () => {
-  //     // UnMounting
-  //   }
-  // }, [])
-
   return (
     <S.LoginContainer>
       <S.LoginForm>

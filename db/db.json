@@ -676,22 +676,6 @@
     },
     {
       "quantity": 1,
-      "productId": 5,
-      "productOptionId": false,
-      "createdAt": 1641287283979,
-      "updatedAt": 1641287283979,
-      "id": 13
-    },
-    {
-      "quantity": 1,
-      "productId": 3,
-      "productOptionId": false,
-      "createdAt": 1641287336028,
-      "updatedAt": 1641287336028,
-      "id": 14
-    },
-    {
-      "quantity": 1,
       "productId": 1,
       "productOptionId": 1,
       "createdAt": 1641288186165,
@@ -705,30 +689,6 @@
       "createdAt": 1641457467189,
       "updatedAt": 1641457467193,
       "id": 16
-    },
-    {
-      "quantity": 1,
-      "productId": 3,
-      "productOptionId": false,
-      "createdAt": 1641457481518,
-      "updatedAt": 1641457481518,
-      "id": 17
-    },
-    {
-      "quantity": 1,
-      "productId": 4,
-      "productOptionId": false,
-      "createdAt": 1641458596498,
-      "updatedAt": 1641458596498,
-      "id": 18
-    },
-    {
-      "quantity": 1,
-      "productId": 14,
-      "productOptionId": false,
-      "createdAt": 1641474402761,
-      "updatedAt": 1641474402762,
-      "id": 19
     },
     {
       "quantity": 1,
@@ -748,38 +708,6 @@
     },
     {
       "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641481111867,
-      "updatedAt": 1641481111868,
-      "id": 22
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641481410901,
-      "updatedAt": 1641481410901,
-      "id": 23
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641481426602,
-      "updatedAt": 1641481426602,
-      "id": 24
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641481428941,
-      "updatedAt": 1641481428941,
-      "id": 25
-    },
-    {
-      "quantity": 1,
       "productId": 1,
       "productOptionId": 1,
       "createdAt": 1641481578461,
@@ -795,22 +723,6 @@
       "id": 27
     },
     {
-      "quantity": 6,
-      "productId": 7,
-      "productOptionId": false,
-      "createdAt": 1641481830733,
-      "updatedAt": 1641481885657,
-      "id": 28
-    },
-    {
-      "quantity": 2,
-      "productId": 8,
-      "productOptionId": false,
-      "createdAt": 1641481898937,
-      "updatedAt": 1641481899197,
-      "id": 29
-    },
-    {
       "quantity": 1,
       "productId": 1,
       "productOptionId": 1,
@@ -820,147 +732,11 @@
     },
     {
       "quantity": 1,
-      "productId": 8,
-      "productOptionId": false,
-      "createdAt": 1641482963103,
-      "updatedAt": 1641482963103,
-      "id": 31
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641483018364,
-      "updatedAt": 1641483018364,
-      "id": 32
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641483768395,
-      "updatedAt": 1641483768395,
-      "id": 33
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641483902194,
-      "updatedAt": 1641483902194,
-      "id": 34
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641484097588,
-      "updatedAt": 1641484097588,
-      "id": 35
-    },
-    {
-      "quantity": 1,
-      "productId": 3,
-      "productOptionId": false,
-      "createdAt": 1641484294352,
-      "updatedAt": 1641484294353,
-      "id": 36
-    },
-    {
-      "quantity": 1,
-      "productId": 3,
-      "productOptionId": false,
-      "createdAt": 1641484426219,
-      "updatedAt": 1641484426219,
-      "id": 37
-    },
-    {
-      "quantity": 1,
-      "productId": 8,
-      "productOptionId": false,
-      "createdAt": 1641484495125,
-      "updatedAt": 1641484495125,
-      "id": 38
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641484978757,
-      "updatedAt": 1641484978757,
-      "id": 39
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641485172198,
-      "updatedAt": 1641485172198,
-      "id": 40
-    },
-    {
-      "quantity": 1,
-      "productId": 2,
-      "productOptionId": false,
-      "createdAt": 1641485611237,
-      "updatedAt": 1641485611237,
-      "id": 41
-    },
-    {
-      "quantity": 1,
-      "productId": 4,
-      "productOptionId": false,
-      "createdAt": 1641485669115,
-      "updatedAt": 1641485669115,
-      "id": 42
-    },
-    {
-      "quantity": 1,
-      "productId": 4,
-      "productOptionId": false,
-      "createdAt": 1641485708694,
-      "updatedAt": 1641485708694,
-      "id": 43
-    },
-    {
-      "quantity": 1,
-      "productId": 4,
-      "productOptionId": false,
-      "createdAt": 1641485850612,
-      "updatedAt": 1641485850612,
-      "id": 44
-    },
-    {
-      "quantity": 1,
-      "productId": 4,
-      "productOptionId": false,
-      "createdAt": 1641486000941,
-      "updatedAt": 1641486000941,
-      "id": 45
-    },
-    {
-      "quantity": 1,
       "productId": 1,
       "productOptionId": 1,
       "createdAt": 1641547970957,
       "updatedAt": 1641547970958,
       "id": 46
-    },
-    {
-      "quantity": 1,
-      "productId": 4,
-      "productOptionId": false,
-      "createdAt": 1641548166697,
-      "updatedAt": 1641548166697,
-      "id": 47
-    },
-    {
-      "quantity": 1,
-      "productId": 3,
-      "productOptionId": false,
-      "createdAt": 1641564730052,
-      "updatedAt": 1641564730053,
-      "id": 48
     },
     {
       "quantity": 1,
@@ -980,19 +756,43 @@
     },
     {
       "quantity": 1,
-      "productId": 6,
-      "productOptionId": false,
-      "createdAt": 1645104324714,
-      "updatedAt": 1645104324714,
-      "id": 51
+      "productId": 1,
+      "productOptionId": 2,
+      "createdAt": 1645261091047,
+      "updatedAt": 1645261091048,
+      "id": 53
     },
     {
-      "quantity": 2,
-      "productId": 6,
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 2,
+      "createdAt": 1645269837039,
+      "updatedAt": 1645269837039,
+      "id": 54
+    },
+    {
+      "quantity": 1,
+      "productId": 1,
+      "productOptionId": 1,
+      "createdAt": 1646529711555,
+      "updatedAt": 1646529711556,
+      "id": 55
+    },
+    {
+      "quantity": 1,
+      "productId": 8,
       "productOptionId": false,
-      "createdAt": 1645104503268,
-      "updatedAt": 1645104593984,
-      "id": 52
+      "createdAt": 1651045675867,
+      "updatedAt": 1651045675867,
+      "id": 56
+    },
+    {
+      "quantity": 1,
+      "productId": 8,
+      "productOptionId": false,
+      "createdAt": 1651046110782,
+      "updatedAt": 1651046110783,
+      "id": 57
     }
   ],
   "orders": [

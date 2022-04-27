@@ -6,7 +6,7 @@ import { AUTH_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 function* loginSaga(action) {
   try {
     const { data, callback } = action.payload;
-    const result = yield axios.post("https://phone-store-app-api.herokuapp.com/login", data);
+    const result = yield axios.post("http://localhost:4000/login", data);
     yield localStorage.setItem(
       "userInfo",
       JSON.stringify({
@@ -41,7 +41,7 @@ function* loginSaga(action) {
 function* registerSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.post("https://phone-store-app-api.herokuapp.com/register", data);
+    yield axios.post("http://localhost:4000/register", data);
     yield put({ type: SUCCESS(AUTH_ACTION.REGISTER) });
     yield callback.goBackLogin();
   } catch (e) {
@@ -60,7 +60,7 @@ function* registerSaga(action) {
 function* getUserInfoSaga(action) {
   try {
     const { id } = action.payload;
-    const result = yield axios.get(`https://phone-store-app-api.herokuapp.com/users/${id}`);
+    const result = yield axios.get(`http://localhost:4000/users/${id}`);
     yield put({
       type: SUCCESS(AUTH_ACTION.GET_USER_INFO),
       payload: {
@@ -80,11 +80,11 @@ function* getUserInfoSaga(action) {
 function* changePasswordSaga(action) {
   try {
     const { id, data, callback } = action.payload;
-    yield axios.post("https://phone-store-app-api.herokuapp.com/login", {
+    yield axios.post("http://localhost:4000/login", {
       email: data.email,
       password: data.oldPassword,
     });
-    yield axios.patch(`https://phone-store-app-api.herokuapp.com/users/${id}`, {
+    yield axios.patch(`http://localhost:4000/users/${id}`, {
       password: data.newPassword,
     });
     yield callback.clearForm();

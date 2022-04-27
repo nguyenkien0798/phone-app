@@ -5,7 +5,7 @@ import { CATEGORY_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 
 function* getCategoryListSaga(action) {
   try {
-    const result = yield axios.get(`https://phone-store-app-api.herokuapp.com/categories`);
+    const result = yield axios.get(`http://localhost:4000/categories`);
     yield put({
       type: SUCCESS(CATEGORY_ACTION.GET_CATEGORY_LIST),
       payload: {

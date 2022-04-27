@@ -18,11 +18,7 @@ import {
   InputNumber,
   notification,
 } from "antd";
-import {
-  ShoppingCartOutlined,
-  HeartOutlined,
-  HeartFilled,
-} from "@ant-design/icons";
+import { ShoppingCartOutlined, HeartOutlined, HeartFilled } from "@ant-design/icons";
 
 import TopWrapper from "../../components/TopWrapper";
 import { BREADCRUMB } from "./constants";
@@ -50,10 +46,7 @@ const ProductDetailPage = ({ match, ...props }) => {
   const { cartList } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
 
-  const isFavorite =
-    productDetail.data.favorites?.findIndex(
-      (item) => item.userId === userInfo.data.id
-    ) !== -1;
+  const isFavorite = productDetail.data.favorites?.findIndex((item) => item.userId === userInfo.data.id) !== -1;
 
   useEffect(() => {
     if (id) {
@@ -78,9 +71,7 @@ const ProductDetailPage = ({ match, ...props }) => {
             message: "Vui lòng chọn một tùy chọn",
           });
         } else {
-          const existCartProduct = cartList.data.find(
-            (item) => item.productOptionId === selectedOption.id
-          );
+          const existCartProduct = cartList.data.find((item) => item.productOptionId === selectedOption.id);
           if (existCartProduct) {
             dispatch(
               updateCartProductAction({
@@ -107,9 +98,7 @@ const ProductDetailPage = ({ match, ...props }) => {
           }
         }
       } else {
-        const existCartProduct = cartList.data.find(
-          (item) => item.productId === parseInt(id)
-        );
+        const existCartProduct = cartList.data.find((item) => item.productId === parseInt(id));
         if (existCartProduct) {
           dispatch(
             updateCartProductAction({
@@ -144,9 +133,7 @@ const ProductDetailPage = ({ match, ...props }) => {
   };
 
   const handleSubmitComment = (values) => {
-    const isExist =
-      commentList.data.findIndex((item) => item.userId === userInfo.data.id) !==
-      -1;
+    const isExist = commentList.data.findIndex((item) => item.userId === userInfo.data.id) !== -1;
     if (isExist) {
       notification.warning({
         message: "Bạn đã bình luận",
@@ -204,12 +191,7 @@ const ProductDetailPage = ({ match, ...props }) => {
                   <Skeleton.Image />
                 </S.SkeletonImage>
               ) : (
-                <img
-                  src={productDetail.data.image}
-                  alt=""
-                  width="100%"
-                  height="auto"
-                />
+                <img src={productDetail.data.image} alt="" width="100%" height="auto" />
               )}
             </Col>
             <Col md={14} xs={24}>
@@ -227,10 +209,7 @@ const ProductDetailPage = ({ match, ...props }) => {
                     <div style={{ margin: "16px 0" }}>
                       Loại sản phẩm:
                       <div>
-                        <Radio.Group
-                          onChange={(e) => setSelectedOption(e.target.value)}
-                          optionType="button"
-                        >
+                        <Radio.Group onChange={(e) => setSelectedOption(e.target.value)} optionType="button">
                           {getProductOptions}
                         </Radio.Group>
                       </div>
@@ -248,9 +227,7 @@ const ProductDetailPage = ({ match, ...props }) => {
 
                   <h3>
                     {selectedOption
-                      ? (
-                          selectedOption.price + (productDetail.data.price || 0)
-                        ).toLocaleString()
+                      ? (selectedOption.price + (productDetail.data.price || 0)).toLocaleString()
                       : productDetail.data.price?.toLocaleString()}
                   </h3>
                 </>
@@ -263,24 +240,13 @@ const ProductDetailPage = ({ match, ...props }) => {
                 </Space>
               ) : (
                 <Space>
-                  <Button
-                    size="large"
-                    type="primary"
-                    icon={<ShoppingCartOutlined />}
-                    onClick={() => handleAddToCart()}
-                  >
+                  <Button size="large" type="primary" icon={<ShoppingCartOutlined />} onClick={() => handleAddToCart()}>
                     Thêm vào giỏ
                   </Button>
                   <Button
                     size="large"
                     danger={isFavorite}
-                    icon={
-                      isFavorite ? (
-                        <HeartFilled style={{ color: "red" }} />
-                      ) : (
-                        <HeartOutlined />
-                      )
-                    }
+                    icon={isFavorite ? <HeartFilled style={{ color: "red" }} /> : <HeartOutlined />}
                     onClick={() => handleFavoriteProduct()}
                   >
                     Yêu thích
@@ -294,13 +260,11 @@ const ProductDetailPage = ({ match, ...props }) => {
         <Row gutter={[16, 16]} style={{ marginTop: 16 }}>
           <Col md={{ span: 16, order: 1 }} xs={{ span: 24, order: 2 }}>
             <Card size="small">
-              <h3 style={{color: "#cd1817"}}>Thông tin chi tiết</h3>
-              <S.ProductDetailContent
-                dangerouslySetInnerHTML={{ __html: productDetail.data.content }}
-              />
+              <h3 style={{ color: "#cd1817" }}>Thông tin chi tiết</h3>
+              <S.ProductDetailContent dangerouslySetInnerHTML={{ __html: productDetail.data.content }} />
             </Card>
             <Card size="small" style={{ marginTop: 16 }}>
-              <h3 style={{color: "#cd1817"}}>Đánh giá & Bình luận</h3>
+              <h3 style={{ color: "#cd1817" }}>Đánh giá & Bình luận</h3>
               {userInfo.data.id && (
                 <Form
                   form={commentForm}
@@ -308,22 +272,11 @@ const ProductDetailPage = ({ match, ...props }) => {
                   initialValues={{ rate: 0, content: "" }}
                   onFinish={(values) => handleSubmitComment(values)}
                 >
-                  <Form.Item
-                    label="Đánh giá"
-                    name="rate"
-                    rules={[{ required: true, message: "Required !" }]}
-                  >
+                  <Form.Item label="Đánh giá" name="rate" rules={[{ required: true, message: "Required !" }]}>
                     <Rate allowHalf />
                   </Form.Item>
-                  <Form.Item
-                    label="Bình luận"
-                    name="content"
-                    rules={[{ required: true, message: "Required !" }]}
-                  >
-                    <Input.TextArea
-                      placeholder="Bình luận"
-                      autoSize={{ minRows: 2, maxRows: 4 }}
-                    />
+                  <Form.Item label="Bình luận" name="content" rules={[{ required: true, message: "Required !" }]}>
+                    <Input.TextArea placeholder="Bình luận" autoSize={{ minRows: 2, maxRows: 4 }} />
                   </Form.Item>
                   <Button htmlType="submit" type="primary">
                     Gửi
@@ -341,12 +294,7 @@ const ProductDetailPage = ({ match, ...props }) => {
                       author={item.user?.name}
                       content={
                         <div>
-                          <Rate
-                            disabled
-                            value={item.rate}
-                            allowHalf
-                            style={{ fontSize: 14 }}
-                          />
+                          <Rate disabled value={item.rate} allowHalf style={{ fontSize: 14 }} />
                           <p>{item.content}</p>
                         </div>
                       }
@@ -359,34 +307,34 @@ const ProductDetailPage = ({ match, ...props }) => {
           </Col>
           <Col md={{ span: 8, order: 2 }} xs={{ span: 24, order: 1 }}>
             <Card size="small">
-              <h3 style={{color: "#cd1817"}}>Thông số kĩ thuật</h3>
+              <h3 style={{ color: "#cd1817" }}>Thông số kĩ thuật</h3>
               <Descriptions bordered size="small">
                 <Descriptions.Item label="Màn hình" span={3}>
-                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.screen }}/>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.screen }} />
                 </Descriptions.Item>
                 <Descriptions.Item label="Camera" span={3}>
-                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.camera }}/>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.camera }} />
                 </Descriptions.Item>
                 <Descriptions.Item label="RAM" span={3}>
-                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.ram }}/>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.ram }} />
                 </Descriptions.Item>
                 <Descriptions.Item label="ROM" span={3}>
-                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.rom }}/>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.rom }} />
                 </Descriptions.Item>
                 <Descriptions.Item label="CPU" span={3}>
-                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.cpu }}/>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.cpu }} />
                 </Descriptions.Item>
                 <Descriptions.Item label="GPU" span={3}>
-                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.gpu }}/>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.gpu }} />
                 </Descriptions.Item>
                 <Descriptions.Item label="Dung lượng pin" span={3}>
-                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.pin }}/>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.pin }} />
                 </Descriptions.Item>
                 <Descriptions.Item label="Thẻ sim" span={3}>
-                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.sim }}/>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.sim }} />
                 </Descriptions.Item>
                 <Descriptions.Item label="Hệ điều hành" span={3}>
-                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.hdh }}/>
+                  <div dangerouslySetInnerHTML={{ __html: productDetail.data.hdh }} />
                 </Descriptions.Item>
               </Descriptions>
             </Card>
