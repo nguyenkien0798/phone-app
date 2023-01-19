@@ -16,16 +16,14 @@ export const MainBanner = styled.div`
     .carousel-control-prev {
         top: 50%;
         height: 8%;
-        left: -0.5%;
-        width: 4%;
+        width: 3%;
         background-color: #000;
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
     }
 
     .carousel-control-next {
-        right: -0.5%;
-        width: 4%;
+        width: 3%;
         top: 50%;
         height: 8%;
         background-color: #000;
