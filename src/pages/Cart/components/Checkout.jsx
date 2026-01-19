@@ -82,8 +82,8 @@ const Checkout = ({ setCheckoutStep }) => {
           (selectedCart) => selectedCart.id === cartItem.id
         ) !== -1;
       const unitPrice = cartItem.productOption
-        ? cartItem.productOption?.price + cartItem.product?.price
-        : cartItem.product?.price;
+        ? (cartItem.productOption?.price || 0) + (cartItem.product?.price || 0)
+        : (cartItem.product?.price || 0);
       const cartItemPrice = unitPrice * cartItem.quantity;
       totalPrice += isChecked ? cartItemPrice : 0;
       return (
@@ -99,12 +99,12 @@ const Checkout = ({ setCheckoutStep }) => {
               <Space size={16}>
                 <Image
                   src={cartItem.product?.image}
-                  alt={cartItem.product?.name}
+                  alt={cartItem.product?.name || 'Sản phẩm'}
                   width={100}
                   height={100}
                 />
                 <div>
-                  <h3>{cartItem.product?.name}</h3>
+                  <h3>{cartItem.product?.name || 'Sản phẩm không tồn tại'}</h3>
                   {cartItem.productOption && (
                     <h4>{cartItem.productOption.name}</h4>
                   )}
@@ -112,7 +112,7 @@ const Checkout = ({ setCheckoutStep }) => {
               </Space>
             </Col>
             <Col span={4}>
-              <span>{unitPrice?.toLocaleString()}₫</span>
+              <span>{unitPrice?.toLocaleString() || 0}₫</span>
             </Col>
             <Col span={4}>
               <InputNumber
@@ -122,7 +122,7 @@ const Checkout = ({ setCheckoutStep }) => {
               />
             </Col>
             <Col span={4}>
-              <span>{cartItemPrice?.toLocaleString()}₫</span>
+              <span>{cartItemPrice?.toLocaleString() || 0}₫</span>
             </Col>
             <Col span={1}>
               <Button

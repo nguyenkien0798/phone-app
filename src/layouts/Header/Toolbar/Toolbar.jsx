@@ -15,7 +15,6 @@ import {
 
 import logo from '../../../assets/images/logo.png'
 import * as S from "./styles";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Toolbar = () => {
   const history = useHistory();

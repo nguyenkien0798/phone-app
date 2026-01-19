@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router";
-import { Col } from 'antd';
 
 import logo_apple from '../../../assets/images/brand/logo_apple.png'
 import logo_samsung from '../../../assets/images/brand/logo_samsung.png'
@@ -95,17 +94,17 @@ function CategoryHome() {
   function renderCategory() {
     return categoryList.map((category, index) => {
       return (
-        <Col lg={4} md={6} sm={8} xs={12}>
-          <S.CategoryItem
-            key={index}
-            onClick={() => history.push(category.path)}
-          >
-            <div className="category-content">
-              <div className="category-image"><img src={category.image} alt={category.title} /><br /></div>
-              <div className="category-title">{category.title}</div>
+        <S.CategoryItem
+          key={index}
+          onClick={() => history.push(category.path)}
+        >
+          <div className="category-content">
+            <div className="category-image">
+              <img src={category.image} alt={category.title} />
             </div>
-          </S.CategoryItem>
-        </Col>
+            <div className="category-title">{category.title}</div>
+          </div>
+        </S.CategoryItem>
       );
     });
   }

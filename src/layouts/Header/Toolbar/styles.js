@@ -4,40 +4,32 @@ export const Toolbar = styled.div`
   max-width: 1280px;
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin: 0 auto;
+  padding: 8px 16px;
   background-color: #cd1817;
-
+  min-height: 60px;
 `;
 
 export const ToolbarLogo = styled.div`
-  display: inline-block;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   
   h3 {
-    margin-top: 10px;
+    margin: 0;
     color: #fff;
     font-weight: bolder;
+    white-space: nowrap;
   }
 
-  /* img{
-      width: 70px;
-      height: 50px;
-      float: left;
-    } */
-
-    @media screen and (max-width: 950px) {
-      margin-top: 8px;
-      margin-right: 24px;
-    }
-    @media screen and (max-width: 409px) {
-      margin-top: 12px;
-    }
+  @media screen and (max-width: 950px) {
+    margin-right: 16px;
+  }
 `;
 
 export const ToolbarMenu = styled.div`
-  margin-top: 16px;
-
   ul {
     display: flex;
     justify-content: space-around;
@@ -47,9 +39,9 @@ export const ToolbarMenu = styled.div`
     margin: 0;
   }
   li {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-right: 4rem;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-right: 2rem;
   }
   a {
     color: #fff;
@@ -67,85 +59,82 @@ export const ToolbarMenu = styled.div`
 `;
 
 export const ToolbarSearch = styled.div`
-  margin-top: 8px;
+  flex: 1;
+  max-width: 500px;
+  margin: 0 24px;
+
   form {
     display: flex;
   }
 
-  Input {
-    width: 400px;
+  .ant-input-affix-wrapper {
+    border-radius: 4px 0 0 4px;
   }
 
-  Button {
+  .ant-btn {
     color: #fff;
-    width: 50px;
-    height: 42px;
+    height: 40px;
     background-color: #333;
     border: 0;
+    border-radius: 0 4px 4px 0;
 
-
-    &:hover{
+    &:hover {
       color: #333;
-      border: 0;
+      background-color: #fff;
     }
   }
 
-  @media screen and (max-width: 1065px) {
-    form {
-      display: none;
-    }
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;
 
 export const ToolbarItem = styled.div`
   display: flex;
-  justify-content: space-around;
-  padding-top: 0;
-
-  .header__toolbar__item-order {
-    margin-right: 32px;
-  }
+  align-items: center;
+  gap: 8px;
 
   @media screen and (max-width: 950px) {
-    margin-right: 16px;
+    margin-right: 8px;
   }
 `;
 
 export const Username = styled.div`
-  margin-top: 6px;
-
-  @media screen and (max-width: 409px) {
-    text-align: center;
-  }
+  display: flex;
+  align-items: center;
+  color: #fff;
 `;
 
 export const Badge = styled.div`
+  display: flex;
+  align-items: center;
   
-  margin-top: 16px;
-  margin-right: 16px;
-  
-  Button {
+  .ant-btn {
     color: #fff;
   }
 
   ul {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     list-style: none;
     padding: 0;
     margin: 0;
+    gap: 16px;
   }
+
   li {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-right: 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
   }
+
   a {
     color: #fff;
     text-decoration: none;
-    font-weight: bolder;
-    padding-bottom: 15px;
+    font-weight: bold;
+    
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   @media screen and (max-width: 800px) {
@@ -153,29 +142,24 @@ export const Badge = styled.div`
       display: none;
     }
   }
-
-  @media screen and (max-width: 950px) {
-    margin-bottom: 10px;
-  }
-  @media screen and (max-width: 409px) {
-    margin-top: 20px;
-    margin-right: 16px;
-  }
 `;
 
 export const LoginItem = styled.div`
-  margin-top: 16px;
+  display: flex;
+  align-items: center;
 `;
 
 export const ToolbarIconMenu = styled.div`
   display: none;
 
   @media screen and (max-width: 950px) {
-    display: block;
-    margin-top: 18px;
-    margin-left: 16px;
-  }
-  @media screen and (max-width: 409px) {
-    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    
+    .anticon {
+      font-size: 20px;
+      cursor: pointer;
+    }
   }
 `;

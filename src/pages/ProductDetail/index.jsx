@@ -90,6 +90,7 @@ const ProductDetailPage = ({ match, ...props }) => {
           } else {
             dispatch(
               addToCartAction({
+                userId: userInfo.data.id,
                 quantity: productQuantity,
                 productId: parseInt(id),
                 productOptionId: selectedOption.id,
@@ -117,6 +118,7 @@ const ProductDetailPage = ({ match, ...props }) => {
         } else {
           dispatch(
             addToCartAction({
+              userId: userInfo.data.id,
               quantity: productQuantity,
               productId: parseInt(id),
               productOptionId: false,

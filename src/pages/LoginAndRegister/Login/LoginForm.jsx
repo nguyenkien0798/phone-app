@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Form } from "react-bootstrap";
+import { Input, Button } from "antd";
 import { useHistory } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
 import { ROUTER } from '../../../constants/router'
 
 import { loginAction } from '../../../redux/actions'
-
-import * as S from './styles'
 
 const schema = yup.object({
   email: yup
@@ -31,7 +29,7 @@ const LoginFormPage = ({ userList }) => {
   const dispatch = useDispatch()
 
   const {
-    register,
+    control,
     setError,
     handleSubmit,
     formState: { errors },
@@ -49,17 +47,6 @@ const LoginFormPage = ({ userList }) => {
         type: "manual",
         message: responseAction.login.error,
       });
-      // Cho AntD
-      // loginForm.setFields([
-      //   {
-      //     name: 'email',
-      //     errors: [" "],
-      //   },
-      //   {
-      //     name: 'password',
-      //     errors: [responseAction.login.error],
-      //   },
-      // ]);
     }
   }, [responseAction.login])
 
@@ -74,31 +61,43 @@ const LoginFormPage = ({ userList }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Form.Group className="mb-3">
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter email"
-          {...register("email")}
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div style={{ marginBottom: 16 }}>
+        <label style={{ display: 'block', marginBottom: 8 }}>Email</label>
+        <Controller
+          name="email"
+          control={control}
+          render={({ field }) => (
+            <Input
+              {...field}
+              placeholder="Enter email"
+              status={errors.email ? 'error' : ''}
+            />
+          )}
         />
-        <span className="text-danger">{errors.email?.message}</span>
-      </Form.Group>
+        {errors.email && <span style={{ color: '#ff4d4f' }}>{errors.email.message}</span>}
+      </div>
 
-      <Form.Group className="mb-3">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          {...register("password")}
+      <div style={{ marginBottom: 16 }}>
+        <label style={{ display: 'block', marginBottom: 8 }}>Password</label>
+        <Controller
+          name="password"
+          control={control}
+          render={({ field }) => (
+            <Input.Password
+              {...field}
+              placeholder="Password"
+              status={errors.password ? 'error' : ''}
+            />
+          )}
         />
-        <span className="text-danger">{errors.password?.message}</span>
-      </Form.Group>
+        {errors.password && <span style={{ color: '#ff4d4f' }}>{errors.password.message}</span>}
+      </div>
 
-      <Button type="submit" variant="primary" className="w-100">
+      <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
         Submit
       </Button>
-    </Form>
+    </form>
   );
 };
 

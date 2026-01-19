@@ -25,7 +25,6 @@ import { Switch, Route } from 'react-router';
 
 import './App.css';
 import 'antd/dist/antd.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const location = useLocation();

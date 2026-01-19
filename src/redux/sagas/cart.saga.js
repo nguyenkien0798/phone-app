@@ -8,13 +8,7 @@ function* getCartListSaga(action) {
   try {
     const { userId } = action.payload;
     const result = yield axios.get(
-      "http://localhost:4000/carts?_expand=product&_expand=productOption",
-      {
-        params: {
-          userId,
-          _expand: "products",
-        },
-      }
+      `http://localhost:4000/carts?userId=${userId}&_expand=product&_expand=productOption`
     );
     yield put({
       type: SUCCESS(CART_ACTION.GET_CART_LIST),
