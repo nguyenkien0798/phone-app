@@ -4,6 +4,8 @@ import axios from "axios";
 import { PRODUCT_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 import { DEFAULT_PRICE_FILTER } from "../../pages/Product/constants";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function* getProductListSaga(action) {
   // Gọi API lấy danh sách sản phẩm từ server
   try {
@@ -25,7 +27,7 @@ function* getProductListSaga(action) {
       });
     }
     const result = yield axios.get(
-      `http://localhost:4000/products?${categoryParam}`,
+      `${API_URL}/products?${categoryParam}`,
       {
         params: {
           _limit: limit,
@@ -65,7 +67,7 @@ function* getProductDetailSaga(action) {
   try {
     const { id } = action.payload;
     const result = yield axios.get(
-      `http://localhost:4000/products/${id}?_embed=productOptions&_embed=favorites`
+      `${API_URL}/products/${id}?_embed=productOptions&_embed=favorites`
     );
     yield put({
       type: SUCCESS(PRODUCT_ACTION.GET_PRODUCT_DETAIL),
@@ -82,7 +84,7 @@ function* getProductDetailSaga(action) {
 function* createProductSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.post("http://localhost:4000/products", data);
+    yield axios.post(`${API_URL}/products`, data);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.CREATE_PRODUCT),
     });
@@ -98,7 +100,7 @@ function* createProductSaga(action) {
 function* updateProductSaga(action) {
   try {
     const { id, data, callback } = action.payload;
-    yield axios.patch(`http://localhost:4000/products/${id}`, data);
+    yield axios.patch(`${API_URL}/products/${id}`, data);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.UPDATE_PRODUCT),
     });
@@ -114,7 +116,7 @@ function* updateProductSaga(action) {
 function* deleteProductSaga(action) {
   try {
     const { id } = action.payload;
-    yield axios.delete(`http://localhost:4000/products/${id}`);
+    yield axios.delete(`${API_URL}/products/${id}`);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.DELETE_PRODUCT),
     });

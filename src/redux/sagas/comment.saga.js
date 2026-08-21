@@ -3,10 +3,12 @@ import axios from "axios";
 
 import { COMMENT_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function* getCommentListSaga(action) {
   try {
     const { productId } = action.payload;
-    const result = yield axios.get(`http://localhost:4000/comments`, {
+    const result = yield axios.get(`${API_URL}/comments`, {
       params: {
         productId,
         _expand: "user",
@@ -32,7 +34,7 @@ function* postCommentSaga(action) {
   try {
     const { productId } = action.payload;
     const result = yield axios.post(
-      `http://localhost:4000/comments`,
+      `${API_URL}/comments`,
       action.payload
     );
     yield put({

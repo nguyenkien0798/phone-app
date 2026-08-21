@@ -3,9 +3,11 @@ import axios from "axios";
 
 import { CATEGORY_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function* getCategoryListSaga(action) {
   try {
-    const result = yield axios.get(`http://localhost:4000/categories`);
+    const result = yield axios.get(`${API_URL}/categories`);
     yield put({
       type: SUCCESS(CATEGORY_ACTION.GET_CATEGORY_LIST),
       payload: {

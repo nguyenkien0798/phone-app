@@ -4,11 +4,13 @@ import { notification } from "antd";
 
 import { CART_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function* getCartListSaga(action) {
   try {
     const { userId } = action.payload;
     const result = yield axios.get(
-      `http://localhost:4000/carts?userId=${userId}&_expand=product&_expand=productOption`
+      `${API_URL}/carts?userId=${userId}&_expand=product&_expand=productOption`
     );
     yield put({
       type: SUCCESS(CART_ACTION.GET_CART_LIST),
@@ -28,7 +30,7 @@ function* addToCartSaga(action) {
   try {
     const { userId } = action.payload;
     const result = yield axios.post(
-      `http://localhost:4000/carts`,
+      `${API_URL}/carts`,
       action.payload
     );
     yield put({
@@ -57,7 +59,7 @@ function* addToCartSaga(action) {
 function* updateCartProductSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.patch(`http://localhost:4000/carts/${data.id}`, {
+    yield axios.patch(`${API_URL}/carts/${data.id}`, {
       quantity: data.quantity,
     });
     yield put({
@@ -78,7 +80,7 @@ function* updateCartProductSaga(action) {
 function* removeCartProductSaga(action) {
   try {
     const { id } = action.payload;
-    yield axios.delete(`http://localhost:4000/carts/${id}`);
+    yield axios.delete(`${API_URL}/carts/${id}`);
     yield put({
       type: SUCCESS(CART_ACTION.REMOVE_CART_PRODUCT),
       payload: {

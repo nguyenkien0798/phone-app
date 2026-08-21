@@ -3,10 +3,12 @@ import axios from "axios";
 
 import { ORDER_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function* getOrderListSaga(action) {
   try {
     const { id } = action.payload;
-    const result = yield axios.get(`http://localhost:4000/orders`, {
+    const result = yield axios.get(`${API_URL}/orders`, {
       params: {
         userId: id,
         _order: "desc",
@@ -30,9 +32,9 @@ function* getOrderListSaga(action) {
 function* orderCartSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.post("http://localhost:4000/orders", data);
+    yield axios.post(`${API_URL}/orders`, data);
     yield data.products.forEach((productItem) => {
-      axios.delete(`http://localhost:4000/carts/${productItem.cartId}`);
+      axios.delete(`${API_URL}/carts/${productItem.cartId}`);
     });
 
     yield callback.success();

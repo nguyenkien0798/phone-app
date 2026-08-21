@@ -5,11 +5,13 @@ import moment from "moment";
 
 import { DISCOUNT_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function* checkDiscountSaga(action) {
   try {
     const { code } = action.payload;
     const result = yield axios.get(
-      `http://localhost:4000/discounts?code=${code}`
+      `${API_URL}/discounts?code=${code}`
     );
     if (result.data.length > 0) {
       if (result.data[0].endDate > moment().valueOf()) {
