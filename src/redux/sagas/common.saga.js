@@ -1,7 +1,8 @@
 import { put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
-import { COMMON_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
+import { COMMON_ACTION, SUCCESS, FAIL } from "../constants";
+import { getCityListAction, getDistrictListAction, getWardListAction } from "../slices/common.slice";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -56,11 +57,11 @@ function* getWardListSaga(action) {
   }
 }
 
-export default function* categorySaga() {
-  yield takeEvery(REQUEST(COMMON_ACTION.GET_CITY_LIST), getCityListSaga);
+export default function* commonSaga() {
+  yield takeEvery(getCityListAction.type, getCityListSaga);
   yield takeEvery(
-    REQUEST(COMMON_ACTION.GET_DISTRICT_LIST),
+    getDistrictListAction.type,
     getDistrictListSaga
   );
-  yield takeEvery(REQUEST(COMMON_ACTION.GET_WARD_LIST), getWardListSaga);
+  yield takeEvery(getWardListAction.type, getWardListSaga);
 }

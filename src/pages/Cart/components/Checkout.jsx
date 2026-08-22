@@ -19,8 +19,8 @@ import {
   updateCartProductAction,
   removeCartProductAction,
   setSelectedCartsAction,
-  checkDiscountAction,
-} from "../../../redux/actions";
+} from "../../../redux/slices/cart.slice";
+import { checkDiscountAction } from "../../../redux/slices/discount.slice";
 
 import * as S from "../styles";
 

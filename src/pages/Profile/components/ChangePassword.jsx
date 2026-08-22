@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
-import { changePasswordAction } from "../../../redux/actions";
+import { changePasswordAction } from "../../../redux/slices/auth.slice";
 
 const ChangePassword = () => {
   const [changePasswordForm] = Form.useForm();

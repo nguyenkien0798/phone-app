@@ -10,8 +10,8 @@ import { FireOutlined } from '@ant-design/icons'
 
 import {
   getProductListAction,
-  getCategoryListAction,
-} from "../../../redux/actions";
+} from "../../../redux/slices/product.slice";
+import { getCategoryListAction } from "../../../redux/slices/category.slice";
 
 import { PAGE_SIZE } from "../../../constants/pagination";
 import { ROUTER } from "../../../constants/router"
@@ -25,7 +25,7 @@ const ProductListHome = () => {
   const { productList } = useSelector((state) => state.productReducer);
 
   useEffect(() => {
-    dispatch(getProductListAction({ limit: PAGE_SIZE.USER_PRDUCT_HOME, page: 1 }));
+    dispatch(getProductListAction({ limit: PAGE_SIZE.USER_PRODUCT_HOME, page: 1 }));
     dispatch(getCategoryListAction());
   }, []);
 

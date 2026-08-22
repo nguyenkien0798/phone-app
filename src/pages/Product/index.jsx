@@ -19,10 +19,8 @@ import { PAGE_SIZE } from "../../constants/pagination";
 import { ROUTER } from "../../constants/router";
 import { BREADCRUMB, DEFAULT_PRICE_FILTER } from "./constants";
 
-import {
-  getProductListAction,
-  getCategoryListAction,
-} from "../../redux/actions";
+import { getProductListAction } from "../../redux/slices/product.slice";
+import { getCategoryListAction } from "../../redux/slices/category.slice";
 
 import * as S from "./styles";
 

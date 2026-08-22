@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Form, Button, Row, Col, Input, Select } from "antd";
 
+import { setOrderInfoAction } from "../../../redux/slices/order.slice";
 import {
-  setOrderInfoAction,
   getCityListAction,
   getDistrictListAction,
   getWardListAction,
-} from "../../../redux/actions";
+} from "../../../redux/slices/common.slice";
 
 const Info = ({ setCheckoutStep }) => {
   const [districtOptions, setDistrictOptions] = useState([]);

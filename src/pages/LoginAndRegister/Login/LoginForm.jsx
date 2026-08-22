@@ -8,7 +8,7 @@ import * as yup from "yup";
 
 import { ROUTER } from '../../../constants/router'
 
-import { loginAction } from '../../../redux/actions'
+import { loginAction } from '../../../redux/slices/auth.slice'
 
 const schema = yup.object({
   email: yup

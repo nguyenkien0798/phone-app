@@ -3,7 +3,8 @@ import axios from "axios";
 import { notification } from "antd";
 import moment from "moment";
 
-import { DISCOUNT_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
+import { DISCOUNT_ACTION, SUCCESS, FAIL } from "../constants";
+import { checkDiscountAction } from "../slices/discount.slice";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -49,6 +50,6 @@ function* checkDiscountSaga(action) {
   }
 }
 
-export default function* categorySaga() {
-  yield takeEvery(REQUEST(DISCOUNT_ACTION.CHECK_DISCOUNT), checkDiscountSaga);
+export default function* discountSaga() {
+  yield takeEvery(checkDiscountAction.type, checkDiscountSaga);
 }

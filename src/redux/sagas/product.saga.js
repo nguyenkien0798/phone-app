@@ -1,8 +1,9 @@
 import { put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
-import { PRODUCT_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
+import { PRODUCT_ACTION, SUCCESS, FAIL } from "../constants";
 import { DEFAULT_PRICE_FILTER } from "../../pages/Product/constants";
+import { getProductListAction, getProductDetailAction, createProductAction, updateProductAction, deleteProductAction } from "../slices/product.slice";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -121,7 +122,7 @@ function* deleteProductSaga(action) {
       type: SUCCESS(PRODUCT_ACTION.DELETE_PRODUCT),
     });
     yield put({
-      type: REQUEST(PRODUCT_ACTION.GET_PRODUCT_LIST),
+      type: getProductListAction.type,
       payload: { limit: 10, page: 1 },
     });
   } catch (e) {
@@ -133,12 +134,12 @@ function* deleteProductSaga(action) {
 }
 
 export default function* productSaga() {
-  yield takeEvery(REQUEST(PRODUCT_ACTION.GET_PRODUCT_LIST), getProductListSaga);
+  yield takeEvery(getProductListAction.type, getProductListSaga);
   yield takeEvery(
-    REQUEST(PRODUCT_ACTION.GET_PRODUCT_DETAIL),
+    getProductDetailAction.type,
     getProductDetailSaga
   );
-  yield takeEvery(REQUEST(PRODUCT_ACTION.CREATE_PRODUCT), createProductSaga);
-  yield takeEvery(REQUEST(PRODUCT_ACTION.UPDATE_PRODUCT), updateProductSaga);
-  yield takeEvery(REQUEST(PRODUCT_ACTION.DELETE_PRODUCT), deleteProductSaga);
+  yield takeEvery(createProductAction.type, createProductSaga);
+  yield takeEvery(updateProductAction.type, updateProductSaga);
+  yield takeEvery(deleteProductAction.type, deleteProductSaga);
 }

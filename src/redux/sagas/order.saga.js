@@ -1,7 +1,8 @@
 import { put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
-import { ORDER_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
+import { ORDER_ACTION, SUCCESS, FAIL } from "../constants";
+import { getOrderListAction, orderCartAction } from "../slices/order.slice";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -52,7 +53,7 @@ function* orderCartSaga(action) {
   }
 }
 
-export default function* categorySaga() {
-  yield takeEvery(REQUEST(ORDER_ACTION.GET_ORDER_LIST), getOrderListSaga);
-  yield takeEvery(REQUEST(ORDER_ACTION.ORDER_CART), orderCartSaga);
+export default function* orderSaga() {
+  yield takeEvery(getOrderListAction.type, getOrderListSaga);
+  yield takeEvery(orderCartAction.type, orderCartSaga);
 }

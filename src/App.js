@@ -20,7 +20,8 @@ import AboutPage from './pages/About'
 
 import { ROUTER } from "./constants/router";
 
-import { getUserInfoAction, getCartListAction } from "./redux/actions";
+import { getUserInfoAction } from "./redux/slices/auth.slice";
+import { getCartListAction } from "./redux/slices/cart.slice";
 import { Switch, Route } from 'react-router';
 
 import './App.css';

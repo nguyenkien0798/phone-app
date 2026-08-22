@@ -2,7 +2,8 @@ import { put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 import { notification } from "antd";
 
-import { CART_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
+import { CART_ACTION, SUCCESS, FAIL } from "../constants";
+import { getCartListAction, addToCartAction, updateCartProductAction, removeCartProductAction } from "../slices/cart.slice";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -34,7 +35,7 @@ function* addToCartSaga(action) {
       action.payload
     );
     yield put({
-      type: REQUEST(CART_ACTION.GET_CART_LIST),
+      type: getCartListAction.type,
       payload: {
         userId,
       },
@@ -95,15 +96,15 @@ function* removeCartProductSaga(action) {
   }
 }
 
-export default function* categorySaga() {
-  yield takeEvery(REQUEST(CART_ACTION.GET_CART_LIST), getCartListSaga);
-  yield takeEvery(REQUEST(CART_ACTION.ADD_TO_CART), addToCartSaga);
+export default function* cartSaga() {
+  yield takeEvery(getCartListAction.type, getCartListSaga);
+  yield takeEvery(addToCartAction.type, addToCartSaga);
   yield takeEvery(
-    REQUEST(CART_ACTION.UPDATE_CART_PRODUCT),
+    updateCartProductAction.type,
     updateCartProductSaga
   );
   yield takeEvery(
-    REQUEST(CART_ACTION.REMOVE_CART_PRODUCT),
+    removeCartProductAction.type,
     removeCartProductSaga
   );
 }

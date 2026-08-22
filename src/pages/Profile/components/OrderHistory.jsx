@@ -3,7 +3,7 @@ import { Table } from "antd";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getOrderListAction } from "../../../redux/actions";
+import { getOrderListAction } from "../../../redux/slices/order.slice";
 
 const OrderHistory = () => {
   const dispatch = useDispatch();

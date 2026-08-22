@@ -25,11 +25,15 @@ import { BREADCRUMB } from "./constants";
 
 import {
   getProductDetailAction,
+} from "../../redux/slices/product.slice";
+import {
   getCommentListAction,
   postCommentAction,
+} from "../../redux/slices/comment.slice";
+import {
   addToCartAction,
   updateCartProductAction,
-} from "../../redux/actions";
+} from "../../redux/slices/cart.slice";
 
 import * as S from "./styles";
 

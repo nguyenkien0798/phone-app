@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { registerAction } from '../../../redux/actions'
+import { registerAction } from '../../../redux/slices/auth.slice'
 
 const schema = yup.object({
   name: yup

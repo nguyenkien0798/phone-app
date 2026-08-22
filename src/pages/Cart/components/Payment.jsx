@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Form, Button, Row, Col, Radio, Space } from "antd";
 
-import { orderCartAction } from "../../../redux/actions";
+import { orderCartAction } from "../../../redux/slices/order.slice";
 
 const Payment = ({ setCheckoutStep }) => {
   const [paymentForm] = Form.useForm();

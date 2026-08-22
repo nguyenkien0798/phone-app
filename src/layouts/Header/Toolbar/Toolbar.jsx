@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Button, Space, Dropdown, Menu, Drawer, Input } from 'antd'
 import { ShoppingCartOutlined, UserOutlined, MenuOutlined } from '@ant-design/icons'
 import { ROUTER } from '../../../constants/router';
-import { logoutAction } from '../../../redux/actions'
+import { logoutAction } from '../../../redux/slices/auth.slice'
 import { 
   HomeOutlined, 
   StarOutlined, 

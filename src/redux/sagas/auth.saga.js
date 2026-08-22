@@ -1,7 +1,8 @@
 import { put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
-import { AUTH_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
+import { AUTH_ACTION, SUCCESS, FAIL } from "../constants";
+import { loginAction, registerAction, getUserInfoAction, changePasswordAction } from "../slices/auth.slice";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -104,8 +105,8 @@ function* changePasswordSaga(action) {
 }
 
 export default function* authSaga() {
-  yield takeEvery(REQUEST(AUTH_ACTION.LOGIN), loginSaga);
-  yield takeEvery(REQUEST(AUTH_ACTION.REGISTER), registerSaga);
-  yield takeEvery(REQUEST(AUTH_ACTION.GET_USER_INFO), getUserInfoSaga);
-  yield takeEvery(REQUEST(AUTH_ACTION.CHANGE_PASSWORD), changePasswordSaga);
+  yield takeEvery(loginAction.type, loginSaga);
+  yield takeEvery(registerAction.type, registerSaga);
+  yield takeEvery(getUserInfoAction.type, getUserInfoSaga);
+  yield takeEvery(changePasswordAction.type, changePasswordSaga);
 }

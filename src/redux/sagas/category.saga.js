@@ -1,13 +1,14 @@
-import { put, takeEvery } from "redux-saga/effects";
+import { put, takeEvery, call } from "redux-saga/effects";
 import axios from "axios";
 
-import { CATEGORY_ACTION, REQUEST, SUCCESS, FAIL } from "../constants";
+import { CATEGORY_ACTION, SUCCESS, FAIL } from "../constants";
+import { getCategoryListAction } from "../slices/category.slice";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function* getCategoryListSaga(action) {
   try {
-    const result = yield axios.get(`${API_URL}/categories`);
+    const result = yield call(axios.get, `${API_URL}/categories`);
     yield put({
       type: SUCCESS(CATEGORY_ACTION.GET_CATEGORY_LIST),
       payload: {
@@ -21,5 +22,5 @@ function* getCategoryListSaga(action) {
 
 
 export default function* categorySaga() {
-  yield takeEvery(REQUEST(CATEGORY_ACTION.GET_CATEGORY_LIST), getCategoryListSaga);
+  yield takeEvery(getCategoryListAction.type, getCategoryListSaga);
 }
