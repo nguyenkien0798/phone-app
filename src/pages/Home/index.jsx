@@ -1,10 +1,10 @@
-import React from 'react'
-import Slide from './Slide'
-import ProductListHome from './ProductListHome'
-import Brand from './Brand'
-import RegisterForm from './RegisterForm'
+import React from "react";
+import Slide from "./Slide";
+import Brand from "./Brand";
+import ProductListHome from "./ProductListHome";
+import RegisterForm from "./RegisterForm";
 
-import * as S from './styles'
+import * as S from "./styles";
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
       <ProductListHome />
       <RegisterForm />
     </S.HomeContainer>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HomeContainer = styled.div`
-  background-color: #cd1817;
-  max-width: 100%;
+  background: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 20px;
 `;

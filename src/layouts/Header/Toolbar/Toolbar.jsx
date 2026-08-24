@@ -13,13 +13,14 @@ import {
   SearchOutlined
    } from '@ant-design/icons'
 
-import logo from '../../../assets/images/logo.png'
+import logo from '../../../assets/images/brand/phone-store-mark.svg'
 import * as S from "./styles";
 
 const Toolbar = () => {
   const history = useHistory();
 
   const [visible, setVisible] = useState(false);
+  const [keyword, setKeyword] = useState("");
 
   const { userInfo } = useSelector((state) => state.authReducer);
   const { cartList } = useSelector((state) => state.cartReducer);
@@ -33,7 +34,11 @@ const Toolbar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(ROUTER.USER.PRODUCT_LIST)
+    const search = keyword.trim();
+    history.push({
+      pathname: ROUTER.USER.PRODUCT_LIST,
+      search: search ? `?q=${encodeURIComponent(search)}` : "",
+    });
   }
 
   const showDrawer = () => {
@@ -46,7 +51,7 @@ const Toolbar = () => {
   return (
     <S.Toolbar>
         <S.ToolbarIconMenu>
-          <MenuOutlined onClick={showDrawer} style={{ color: "#fff" }}/>
+          <MenuOutlined onClick={showDrawer} style={{ color: "#17212b" }}/>
           <Drawer title="Menu" placement="right" onClose={onClose} visible={visible}>
             <Link to={ROUTER.USER.HOME} style={{ color: "#cd1817" }} ><HomeOutlined />TRANG CHỦ</Link><br/>
             <Link to={ROUTER.USER.PRODUCT_LIST} style={{ color: "#cd1817" }} ><MobileOutlined />SẢN PHẨM</Link><br/>
@@ -56,7 +61,8 @@ const Toolbar = () => {
         </S.ToolbarIconMenu>
         <S.ToolbarLogo>
           <Link to={ROUTER.USER.HOME}>
-              <h3>PhoneStore</h3>
+              <img src={logo} alt="Volt Store" />
+              <h3>Volt Store</h3>
           </Link>
         </S.ToolbarLogo>
         {/* <S.ToolbarMenu>
@@ -77,8 +83,13 @@ const Toolbar = () => {
         </S.ToolbarMenu> */}
         <S.ToolbarSearch>
           <form onSubmit={handleSubmit}>
-            <Input size="large" placeholder="Nhập tên điện thoại, laptop, phụ kiện... cần tìm" prefix={<SearchOutlined />} />
-            <Button><SearchOutlined onClick={() => history.push(ROUTER.USER.PRODUCT_LIST)}/></Button>
+            <Input
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              placeholder="Tìm iPhone, MacBook, iPad, AirPods, Apple Watch..."
+              prefix={<SearchOutlined />}
+            />
+            <Button htmlType="submit" aria-label="Tìm kiếm"><SearchOutlined /></Button>
           </form>
         </S.ToolbarSearch>
         <S.ToolbarItem>                    
@@ -109,8 +120,8 @@ const Toolbar = () => {
               }
             >
               <Space>
-                <UserOutlined style={{ color: "#fff" }} />
-                <S.Username style={{ color: "#fff" }}>{userInfo.data.name}</S.Username>
+                <UserOutlined style={{ color: "#17212b" }} />
+                <S.Username style={{ color: "#17212b" }}>{userInfo.data.name}</S.Username>
               </Space>
             </Dropdown>
           ) : (

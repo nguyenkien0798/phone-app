@@ -8,8 +8,7 @@ function Footer() {
         <S.FooterItem>
           <S.FooterTitle>GIỚI THIỆU</S.FooterTitle>
           <p className="footer-desc">
-            Phone Store trang mua sắm trực tuyến của các thương hiệu điện thoại, giúp bạn tiếp cận những công nghệ
-             mới nhất.
+            Volt Store - Đại lý bán lẻ ủy quyền chính thức của Apple (Apple Authorised Reseller), chuyên cung cấp iPhone, iPad, MacBook, Apple Watch, AirPods và phụ kiện Apple chính hãng.
           </p>          
           <div className="footer-social">
             <a href="/">
@@ -94,7 +93,7 @@ function Footer() {
         </S.FooterItem>
       </S.FooterContainer>
       <S.CopyRight>
-        <span>Copyright © 2021 Phone Store. </span>
+        <span>Copyright © 2021 Volt Store. </span>
         <a href="/">
           Code by Nguyễn Đình Kiên
         </a>

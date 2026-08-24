@@ -1,5 +1,5 @@
-import React, { Fragment , useEffect } from 'react';
-import { BrowserRouter, useLocation, withRouter } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
 import "moment/locale/vi";
@@ -22,8 +22,6 @@ import { ROUTER } from "./constants/router";
 
 import { getUserInfoAction } from "./redux/slices/auth.slice";
 import { getCartListAction } from "./redux/slices/cart.slice";
-import { Switch, Route } from 'react-router';
-
 import './App.css';
 import 'antd/dist/antd.css';
 

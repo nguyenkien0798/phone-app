@@ -7,9 +7,9 @@ export const Toolbar = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 8px 16px;
-  background-color: #cd1817;
-  min-height: 60px;
+  padding: 12px 20px;
+  min-height: 68px;
+  background: #f7f9fb;
 `;
 
 export const ToolbarLogo = styled.div`
@@ -19,9 +19,25 @@ export const ToolbarLogo = styled.div`
   
   h3 {
     margin: 0;
-    color: #fff;
-    font-weight: bolder;
+    color: #17212b;
+    font-size: 23px;
+    letter-spacing: 0.02em;
+    font-weight: 800;
     white-space: nowrap;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #17212b;
+    text-decoration: none;
+  }
+
+  img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
   }
 
   @media screen and (max-width: 950px) {
@@ -68,15 +84,22 @@ export const ToolbarSearch = styled.div`
   }
 
   .ant-input-affix-wrapper {
-    border-radius: 4px 0 0 4px;
+    flex: 1;
+    height: 38px;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .ant-input-affix-wrapper {
+    border-radius: 7px 0 0 7px;
   }
 
   .ant-btn {
     color: #fff;
-    height: 40px;
-    background-color: #333;
+    height: 38px;
+    background-color: #17212b;
     border: 0;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 7px 7px 0;
 
     &:hover {
       color: #333;
@@ -102,7 +125,7 @@ export const ToolbarItem = styled.div`
 export const Username = styled.div`
   display: flex;
   align-items: center;
-  color: #fff;
+  color: #17212b;
 `;
 
 export const Badge = styled.div`
@@ -110,7 +133,8 @@ export const Badge = styled.div`
   align-items: center;
   
   .ant-btn {
-    color: #fff;
+    color: #17212b;
+    font-size: 21px;
   }
 
   ul {
@@ -128,7 +152,7 @@ export const Badge = styled.div`
   }
 
   a {
-    color: #fff;
+    color: #17212b;
     text-decoration: none;
     font-weight: bold;
     
@@ -147,6 +171,13 @@ export const Badge = styled.div`
 export const LoginItem = styled.div`
   display: flex;
   align-items: center;
+
+  .ant-btn {
+    border: 0;
+    border-radius: 6px;
+    color: #17212b;
+    font-weight: 700;
+  }
 `;
 
 export const ToolbarIconMenu = styled.div`

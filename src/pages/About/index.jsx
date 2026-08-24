@@ -17,15 +17,12 @@ const AboutPage = () => {
       <TopWrapper titlePage="Giới thiệu" breadcrumb={BREADCRUMB} />
       <S.AboutContainer>
         <S.AboutContent>
-          <h3>Phone Store là website thương mại điện tử cung cấp các sản phẩm điện thoại chính hãng</h3>
-          <p>Ra mắt năm 2020, nền tảng thương mại Shopee được xây dựng nhằm cung cấp cho người sử dùng những 
-            trải nghiệm dễ dàng, an toàn và nhanh chóng khi mua sắm trực tuyến thông qua hệ thống hỗ trợ thanh 
-            toán và vận hành vững mạnh.</p>
-          <p>Chúng tôi có niềm tin mạnh mẽ rằng trải nghiệm mua sắm trực tuyến phải đơn giản, dễ dàng và mang đến 
-            cảm xúc vui thích. Niềm tin này truyền cảm hứng và thúc đẩy chúng tôi mỗi ngày tại Phone Store.</p>
+          <h3>Volt Store là hệ thống bán lẻ ủy quyền chính thức các sản phẩm Apple chính hãng (Apple Authorised Reseller)</h3>
+          <p>Chúng tôi chuyên cung cấp và phân phối toàn diện hệ sinh thái sản phẩm Apple: iPhone, MacBook, iPad, Apple Watch, AirPods và các phụ kiện Apple chính hãng với chất lượng và tiêu chuẩn bảo hành cao nhất.</p>
+          <p>Với cam kết 100% hàng chính hãng Apple VN/A, bảo hành 12 tháng tại các Trung tâm bảo hành ủy quyền Apple trên toàn quốc và dịch vụ chăm sóc khách hàng chuyên nghiệp, Volt Store luôn là điểm đến tin cậy hàng đầu cho các tín đồ công nghệ Apple.</p>
           <img src={image_about} alt='Image About'/>
           <Row justify="center" style={{ marginTop: 42 }}>
-            <Button style={{marginBottom: 42 }} onClick={() => history.push(ROUTER.USER.HOME)}>Tìm hiểu Phone Store</Button>
+            <Button style={{marginBottom: 42 }} onClick={() => history.push(ROUTER.USER.HOME)}>Khám phá hệ sinh thái Apple</Button>
           </Row>
         </S.AboutContent>
       </S.AboutContainer>

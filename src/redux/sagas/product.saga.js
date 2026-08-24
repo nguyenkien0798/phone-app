@@ -13,27 +13,21 @@ function* getProductListSaga(action) {
     const {
       limit,
       page,
-      categoryFilter,
       priceFilter,
       keyword,
       sortFilter,
       more,
+      categoryFilter,
     } = action.payload;
-    let categoryParam = "";
-    if (categoryFilter) {
-      categoryFilter.forEach((filterItem, filterIndex) => {
-        const paramAnd = filterIndex === 0 ? "" : "&";
-        categoryParam =
-          categoryParam + `${paramAnd}categoryId=${filterItem.id}`;
-      });
-    }
+    const categoryParam = categoryFilter?.length
+      ? categoryFilter.map((filterItem) => `categoryId=${filterItem.id}`).join("&")
+      : "";
     const result = yield axios.get(
       `${API_URL}/products?${categoryParam}`,
       {
         params: {
           _limit: limit,
           _page: page,
-          _expand: "category",
           ...(priceFilter &&
             (priceFilter[0] !== DEFAULT_PRICE_FILTER[0] ||
               priceFilter[1] !== DEFAULT_PRICE_FILTER[1]) && {
@@ -41,6 +35,7 @@ function* getProductListSaga(action) {
               price_lte: priceFilter[1],
             }),
           ...(keyword && { q: keyword }),
+          _expand: "category",
           ...(sortFilter && { _sort: "price", _order: sortFilter }),
         },
       }

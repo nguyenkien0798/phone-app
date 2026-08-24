@@ -2,16 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { 
-  HomeOutlined,
   AppleOutlined, 
-  CustomerServiceOutlined, 
   LaptopOutlined,
-  DesktopOutlined, 
   MobileOutlined, 
   DollarOutlined, 
   RedoOutlined,
-  FireOutlined, 
-  SketchOutlined } from '@ant-design/icons'
+  CustomerServiceOutlined,
+  SafetyCertificateOutlined,
+  TabletOutlined,
+  ClockCircleOutlined,
+  ThunderboltOutlined
+} from '@ant-design/icons'
 
 import * as S from './styles'
 
@@ -19,52 +20,52 @@ const MenuTop = () => {
     const arrMenuSidebar = [
         {
             image: <MobileOutlined />,
-            title: 'Điện thoại',
-            endPoint: 'products'
-        },
-        {
-            image: <AppleOutlined />,
-            title: 'Apple',
-            endPoint: 'products'
-        },
-        {
-            image: <DesktopOutlined />,
-            title: 'PC - Linh kiện',
-            endPoint: 'products'
+            title: 'iPhone',
+            endPoint: 'products?categoryId=1'
         },
         {
             image: <LaptopOutlined />,
-            title: 'Laptop',
-            endPoint: 'products'
+            title: 'MacBook & Mac',
+            endPoint: 'products?categoryId=2'
         },
         {
-            image: <HomeOutlined />,
-            title: 'Hàng gia dụng',
-            endPoint: 'products'
-        },        
+            image: <TabletOutlined />,
+            title: 'iPad',
+            endPoint: 'products?categoryId=3'
+        },
+        {
+            image: <ClockCircleOutlined />,
+            title: 'Apple Watch',
+            endPoint: 'products?categoryId=4'
+        },
         {
             image: <CustomerServiceOutlined />,
-            title: 'Phụ kiện',
-            endPoint: 'products'
+            title: 'AirPods & Âm Thanh',
+            endPoint: 'products?categoryId=5'
+        },        
+        {
+            image: <AppleOutlined />,
+            title: 'Phụ Kiện Apple',
+            endPoint: 'products?categoryId=6'
         },
         {
             image: <RedoOutlined />,
-            title: 'Máy cũ giá rẻ',
+            title: 'Apple Like New',
+            endPoint: 'products?q=iPhone'
+        },
+        {
+            image: <SafetyCertificateOutlined />,
+            title: 'Apple Care+',
             endPoint: 'products'
         },
         {
-            image: <SketchOutlined />,
-            title: 'Khuyến mãi',
-            endPoint: 'products'
-        },
-        {
-            image: <FireOutlined />,
-            title: 'Sim & Thẻ',
+            image: <ThunderboltOutlined />,
+            title: 'Thu Cũ Đổi Mới',
             endPoint: 'products'
         },
         {
             image: <DollarOutlined />,
-            title: 'Trả góp 0%',
+            title: 'Trả Góp 0%',
             endPoint: 'products'
         }
     ]

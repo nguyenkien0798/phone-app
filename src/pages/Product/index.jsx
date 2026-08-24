@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { useHistory, generatePath } from "react-router-dom";
+import { useHistory, generatePath, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
@@ -31,6 +31,7 @@ const ProductListPage = () => {
   const [sortFilter, setSortFilter] = useState("");
 
   const history = useHistory();
+  const location = useLocation();
 
   const { productList } = useSelector((state) => state.productReducer);
   const { categoryList } = useSelector((state) => state.categoryReducer);
@@ -38,9 +39,24 @@ const ProductListPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProductListAction({ limit: PAGE_SIZE.USER_PRODUCT, page: 1 }));
+    const params = new URLSearchParams(location.search);
+    const keyword = params.get("q") || "";
+    const categoryId = params.get("categoryId");
+    setKeywordFilter(keyword);
+
+    const initialCategoryFilter = categoryId ? [{ id: parseInt(categoryId, 10) }] : [];
+    setCategoryFilter(initialCategoryFilter);
+
+    dispatch(
+      getProductListAction({
+        limit: PAGE_SIZE.USER_PRODUCT,
+        page: 1,
+        keyword,
+        categoryFilter: initialCategoryFilter,
+      })
+    );
     dispatch(getCategoryListAction());
-  }, []);
+  }, [location.search, dispatch]);
 
   const handleSelectCategoryFilter = (e) => {
     const { value, checked } = e.target;
@@ -176,11 +192,10 @@ const ProductListPage = () => {
   };
 
   const renderCategoryList = useMemo(() => {
-    return categoryList.data.map((categoryItem, categoryIndex) => {
-      const checked =
-        categoryFilter.findIndex(
-          (filterItem) => filterItem.id === categoryItem.id
-        ) !== -1;
+    return categoryList.data.map((categoryItem) => {
+      const checked = categoryFilter.some(
+        (filterItem) => filterItem.id === categoryItem.id
+      );
       return (
         <S.FilterItem key={categoryItem.id}>
           <Checkbox
@@ -196,16 +211,20 @@ const ProductListPage = () => {
   }, [categoryList.data, categoryFilter]);
 
   const renderCategoryFilterTags = useMemo(() => {
-    return categoryFilter.map((categoryFilterItem, categoryFilterIndex) => (
-      <Tag
-        key={categoryFilterItem.id}
-        closable
-        onClose={() => handleClearCategoryFilter(categoryFilterItem)}
-      >
-        {categoryFilterItem.name}
-      </Tag>
-    ));
-  }, [categoryFilter]);
+    return categoryFilter.map((categoryFilterItem) => {
+      const matched = categoryList.data?.find((c) => c.id === categoryFilterItem.id);
+      const displayName = categoryFilterItem.name || matched?.name || `Danh mục ${categoryFilterItem.id}`;
+      return (
+        <Tag
+          key={categoryFilterItem.id}
+          closable
+          onClose={() => handleClearCategoryFilter(categoryFilterItem)}
+        >
+          {displayName}
+        </Tag>
+      );
+    });
+  }, [categoryFilter, categoryList.data]);
 
   const renderProductList = useMemo(() => {
     return productList.data.map((item, index) => (
@@ -218,10 +237,13 @@ const ProductListPage = () => {
           }
         >
           {item.isNew && <div className="new">NEW</div>}
-          <img src={item.image} className="image" alt="" />
+          <div className="image-wrap">
+            <img src={item.image} className="image" alt={item.name} />
+          </div>
           <div className="card-content">
             <div className="name">{item.name}</div>
-            <div className="price">{item.price.toLocaleString()}</div>
+            <div className="price">{item.price.toLocaleString()} <span>đ</span></div>
+            <div className="view-detail">Xem chi tiết <span aria-hidden="true">→</span></div>
           </div>
         </S.ProductItem>
       </Col>
@@ -235,7 +257,7 @@ const ProductListPage = () => {
         <Row gutter={16}>
           <Col md={6} xs={24}>
             <S.FilterContainer>
-              <S.FilterTitle>Hãng điện thoại</S.FilterTitle>
+              <S.FilterTitle>Dòng sản phẩm Apple</S.FilterTitle>
               {renderCategoryList}
             </S.FilterContainer>
             <S.FilterContainer>

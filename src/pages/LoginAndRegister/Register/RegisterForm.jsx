@@ -28,7 +28,7 @@ const schema = yup.object({
     .oneOf([yup.ref("password")], "Mật khẩu không khớp"),
 });
 
-const RegisterFormPage = ({ userList, setUserList, setIsLogin }) => {
+const RegisterFormPage = ({ setIsLogin }) => {
   const {
     control,
     watch,

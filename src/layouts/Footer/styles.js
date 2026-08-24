@@ -11,7 +11,9 @@ export const container = styled.div`
 export const Footer = styled.div`
   max-width: 100%;
   margin: 0 auto;
-  border-top: 3px solid #333;
+  color: #dce3e8;
+  background: #17212b;
+  border-top: 4px solid #d92d35;
 `;
 
 export const FooterContainer = styled(container)`
@@ -142,13 +144,15 @@ export const FooterTitle = styled.h4`
   line-height: 22px;
   letter-spacing: 0.02em;
   margin-bottom: 20px;
+  color: #fff;
   text-transform: uppercase;
   font-weight: 600;
   word-break: break-all;
 `;
 
 export const CopyRight = styled.div`
-  border-top: 1px dashed #e0d9d6;
+  color: #94a3ad;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding: 24px 15px;
   text-align: center;
   span {
@@ -159,7 +163,7 @@ export const CopyRight = styled.div`
   }
   a {
     text-decoration: none;
-    color: unset;
+    color: #fff;
     font-weight: 600;
   }
 `;

@@ -9,19 +9,24 @@ export const MenuList = styled.div`
     background-color: #333;
     max-width: 1280px;
     width: 100%;
-    height: 40px;
+    min-height: 40px;
+    height: auto;
     margin: 0 auto;
     display: flex;
     align-items: center;
 
     ul {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 4px 12px;
         align-items: center;
         width: 100%;
         margin: 0;
         padding: 0;
         list-style: none;
+        min-width: 0;
+        padding: 4px 8px;
 
         a {
             text-decoration: none;
@@ -75,6 +80,7 @@ export const MenuList = styled.div`
     @media (max-width: 800px) {
         height: auto;
         ul {
+            min-width: 0;
             flex-wrap: wrap;
             justify-content: flex-start;
             

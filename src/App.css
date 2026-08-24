@@ -1,0 +1,20 @@
+ :root {
+	--brand: #d92d35;
+	--brand-dark: #a91928;
+	--ink: #17212b;
+}
+
+body {
+	min-width: 320px;
+}
+
+.ant-btn-primary {
+	background: var(--brand);
+	border-color: var(--brand);
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+	background: var(--brand-dark);
+	border-color: var(--brand-dark);
+}
