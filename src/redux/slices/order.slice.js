@@ -16,7 +16,7 @@ const orderSlice = createSlice({
   },
   extraReducers: {
     [SUCCESS(ORDER_ACTION.GET_ORDER_LIST)]: (state, action) => {
-      state.orderList = { data: action.payload.data, loading: false, error: null };
+      state.orderList = { data: Array.isArray(action.payload.data) ? action.payload.data : [], loading: false, error: null };
     },
     [FAIL(ORDER_ACTION.GET_ORDER_LIST)]: (state, action) => {
       state.orderList.loading = false;

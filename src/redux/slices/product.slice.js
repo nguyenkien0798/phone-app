@@ -30,7 +30,21 @@ const productSlice = createSlice({
       state.productList = { ...state.productList, data: more ? [...state.productList.data, ...products] : products, meta, loading: false, error: null };
     },
     [FAIL(PRODUCT_ACTION.GET_PRODUCT_LIST)]: (state, action) => { state.productList.loading = false; state.productList.error = action.payload.error; },
-    [SUCCESS(PRODUCT_ACTION.GET_PRODUCT_DETAIL)]: (state, action) => { state.productDetail = { data: action.payload.data, loading: false, error: null }; },
+    [SUCCESS(PRODUCT_ACTION.GET_PRODUCT_DETAIL)]: (state, action) => {
+      const responseData = action.payload.data;
+      const product = responseData && typeof responseData === "object" && !Array.isArray(responseData)
+        ? responseData
+        : {};
+      state.productDetail = {
+        data: {
+          ...product,
+          productOptions: Array.isArray(product.productOptions) ? product.productOptions : [],
+          favorites: Array.isArray(product.favorites) ? product.favorites : [],
+        },
+        loading: false,
+        error: null,
+      };
+    },
     [FAIL(PRODUCT_ACTION.GET_PRODUCT_DETAIL)]: (state, action) => { state.productDetail.loading = false; state.productDetail.error = action.payload.error; },
     [SUCCESS(PRODUCT_ACTION.CREATE_PRODUCT)]: (state) => { state.actionLoading.createProduct = false; },
     [FAIL(PRODUCT_ACTION.CREATE_PRODUCT)]: (state) => { state.actionLoading.createProduct = false; },

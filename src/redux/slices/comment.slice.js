@@ -15,7 +15,7 @@ const commentSlice = createSlice({
   },
   extraReducers: {
     [SUCCESS(COMMENT_ACTION.GET_COMMENT_LIST)]: (state, action) => {
-      state.commentList = { data: action.payload.data, loading: false, error: null };
+      state.commentList = { data: Array.isArray(action.payload.data) ? action.payload.data : [], loading: false, error: null };
     },
     [FAIL(COMMENT_ACTION.GET_COMMENT_LIST)]: (state, action) => {
       state.commentList.loading = false;

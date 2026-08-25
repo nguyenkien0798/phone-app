@@ -19,7 +19,17 @@ const cartSlice = createSlice({
     setSelectedCartsAction: (state, action) => { state.selectedCarts = action.payload; },
   },
   extraReducers: {
-    [SUCCESS(CART_ACTION.GET_CART_LIST)]: (state, action) => { state.cartList = { ...state.cartList, data: action.payload.data, loading: false, error: null }; },
+    [SUCCESS(CART_ACTION.GET_CART_LIST)]: (state, action) => {
+      const responseData = action.payload.data;
+      const carts = Array.isArray(responseData)
+        ? responseData
+        : Array.isArray(responseData?.carts)
+        ? responseData.carts
+        : Array.isArray(responseData?.data)
+        ? responseData.data
+        : [];
+      state.cartList = { ...state.cartList, data: carts, loading: false, error: null };
+    },
     [FAIL(CART_ACTION.GET_CART_LIST)]: (state, action) => { state.cartList.loading = false; state.cartList.error = action.payload.error; },
     [SUCCESS(CART_ACTION.ADD_TO_CART)]: (state, action) => { state.cartList.data.push(action.payload.data); state.actionLoading.addToCart = false; },
     [FAIL(CART_ACTION.ADD_TO_CART)]: (state, action) => { state.actionLoading.addToCart = false; state.cartList.error = action.payload.error; },

@@ -30,7 +30,7 @@ const OrderHistory = () => {
       dataIndex: "productCount",
       key: "productCount",
       render: (_, record) =>
-        record.products
+        (Array.isArray(record.products) ? record.products : [])
           .map((item) => `${item.name} x ${item.quantity}`)
           .join(", "),
       ellipsis: true,
@@ -67,7 +67,7 @@ const OrderHistory = () => {
         columns={orderColumns}
         expandable={{
           expandedRowRender: (record) => {
-            return record.products.map((item) => (
+            return (Array.isArray(record.products) ? record.products : []).map((item) => (
               <p key={item.id}>
                 <b>{item.name}</b> x {item.quantity}
               </p>

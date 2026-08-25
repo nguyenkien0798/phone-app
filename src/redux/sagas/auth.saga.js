@@ -31,8 +31,8 @@ function* loginSaga(action) {
       type: FAIL(AUTH_ACTION.LOGIN),
       payload: {
         error:
-          (e.response.data === "Cannot find user" ||
-            e.response.data === "Incorrect password") &&
+          (e.response?.data === "Cannot find user" ||
+            e.response?.data === "Incorrect password") &&
           "Đăng nhập thất bại",
       },
     });
@@ -50,7 +50,7 @@ function* registerSaga(action) {
       type: FAIL(AUTH_ACTION.REGISTER),
       payload: {
         error:
-          e.response.data === "Email already exists"
+          e.response?.data === "Email already exists"
             ? "Email đã tồn tại"
             : "Đăng ký không thành công",
       },

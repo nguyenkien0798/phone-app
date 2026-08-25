@@ -21,9 +21,9 @@ const commonSlice = createSlice({
     getWardListAction: () => {},
   },
   extraReducers: {
-    [SUCCESS(COMMON_ACTION.GET_CITY_LIST)]: (state, action) => { state.cityList = { data: action.payload.data, loading: false, error: null }; },
-    [SUCCESS(COMMON_ACTION.GET_DISTRICT_LIST)]: (state, action) => { state.districtList = { data: action.payload.data, loading: false, error: null }; },
-    [SUCCESS(COMMON_ACTION.GET_WARD_LIST)]: (state, action) => { state.wardList = { data: action.payload.data, loading: false, error: null }; },
+    [SUCCESS(COMMON_ACTION.GET_CITY_LIST)]: (state, action) => { state.cityList = { data: Array.isArray(action.payload.data) ? action.payload.data : [], loading: false, error: null }; },
+    [SUCCESS(COMMON_ACTION.GET_DISTRICT_LIST)]: (state, action) => { state.districtList = { data: Array.isArray(action.payload.data) ? action.payload.data : [], loading: false, error: null }; },
+    [SUCCESS(COMMON_ACTION.GET_WARD_LIST)]: (state, action) => { state.wardList = { data: Array.isArray(action.payload.data) ? action.payload.data : [], loading: false, error: null }; },
     [FAIL(COMMON_ACTION.GET_CITY_LIST)]: (state, action) => { state.cityList.error = action.payload.error; },
     [FAIL(COMMON_ACTION.GET_DISTRICT_LIST)]: (state, action) => { state.districtList.error = action.payload.error; },
     [FAIL(COMMON_ACTION.GET_WARD_LIST)]: (state, action) => { state.wardList.error = action.payload.error; },

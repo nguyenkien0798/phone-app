@@ -11,8 +11,16 @@ const categorySlice = createSlice({
   },
   extraReducers: {
     [SUCCESS(CATEGORY_ACTION.GET_CATEGORY_LIST)]: (state, action) => {
+      const responseData = action.payload.data;
+      const categories = Array.isArray(responseData)
+        ? responseData
+        : Array.isArray(responseData?.categories)
+        ? responseData.categories
+        : Array.isArray(responseData?.data)
+        ? responseData.data
+        : [];
       state.categoryList = { 
-        data: action.payload.data,
+        data: categories,
         loading: false,
         error: null
       };
