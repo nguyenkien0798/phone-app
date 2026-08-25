@@ -1,19 +1,15 @@
 import { put, takeEvery } from "redux-saga/effects";
-import axios from "axios";
 import { notification } from "antd";
 import moment from "moment";
 
 import { DISCOUNT_ACTION, SUCCESS, FAIL } from "../constants";
 import { checkDiscountAction } from "../slices/discount.slice";
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { checkDiscountApi } from "../../services/discount.service";
 
 function* checkDiscountSaga(action) {
   try {
     const { code } = action.payload;
-    const result = yield axios.get(
-      `${API_URL}/discounts?code=${code}`
-    );
+    const result = yield checkDiscountApi(code);
     if (result.data.length > 0) {
       if (result.data[0].endDate > moment().valueOf()) {
         yield put({

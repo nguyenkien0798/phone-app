@@ -1,14 +1,12 @@
 import { put, takeEvery } from "redux-saga/effects";
-import axios from "axios";
 
 import { COMMON_ACTION, SUCCESS, FAIL } from "../constants";
 import { getCityListAction, getDistrictListAction, getWardListAction } from "../slices/common.slice";
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { getCityListApi, getDistrictListApi, getWardListApi } from "../../services/common.service";
 
 function* getCityListSaga(action) {
   try {
-    const result = yield axios.get(`${API_URL}/cities`);
+    const result = yield getCityListApi();
     yield put({
       type: SUCCESS(COMMON_ACTION.GET_CITY_LIST),
       payload: {
@@ -18,14 +16,14 @@ function* getCityListSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(COMMON_ACTION.GET_CITY_LIST),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }
 
 function* getDistrictListSaga(action) {
   try {
-    const result = yield axios.get(`${API_URL}/districts`);
+    const result = yield getDistrictListApi();
     yield put({
       type: SUCCESS(COMMON_ACTION.GET_DISTRICT_LIST),
       payload: {
@@ -35,14 +33,14 @@ function* getDistrictListSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(COMMON_ACTION.GET_DISTRICT_LIST),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }
 
 function* getWardListSaga(action) {
   try {
-    const result = yield axios.get(`${API_URL}/wards`);
+    const result = yield getWardListApi();
     yield put({
       type: SUCCESS(COMMON_ACTION.GET_WARD_LIST),
       payload: {
@@ -52,7 +50,7 @@ function* getWardListSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(COMMON_ACTION.GET_WARD_LIST),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }

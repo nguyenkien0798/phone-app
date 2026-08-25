@@ -1,14 +1,12 @@
 import { put, takeEvery, call } from "redux-saga/effects";
-import axios from "axios";
 
 import { CATEGORY_ACTION, SUCCESS, FAIL } from "../constants";
 import { getCategoryListAction } from "../slices/category.slice";
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { getCategoryListApi } from "../../services/category.service";
 
 function* getCategoryListSaga(action) {
   try {
-    const result = yield call(axios.get, `${API_URL}/categories`);
+    const result = yield call(getCategoryListApi);
     yield put({
       type: SUCCESS(CATEGORY_ACTION.GET_CATEGORY_LIST),
       payload: {
@@ -16,7 +14,7 @@ function* getCategoryListSaga(action) {
       },
     });
   } catch (e) {
-    yield put({ type: FAIL(CATEGORY_ACTION.GET_CATEGORY_LIST), payload: { error: 'Lấy không được' } });
+    yield put({ type: FAIL(CATEGORY_ACTION.GET_CATEGORY_LIST), payload: { error: 'Lấy dữ liệu không thành công' } });
   }
 }
 

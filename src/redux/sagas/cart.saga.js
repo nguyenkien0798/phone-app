@@ -1,18 +1,14 @@
 import { put, takeEvery } from "redux-saga/effects";
-import axios from "axios";
 import { notification } from "antd";
 
 import { CART_ACTION, SUCCESS, FAIL } from "../constants";
 import { getCartListAction, addToCartAction, updateCartProductAction, removeCartProductAction } from "../slices/cart.slice";
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { getCartListApi, addToCartApi, updateCartProductApi, removeCartProductApi } from "../../services/cart.service";
 
 function* getCartListSaga(action) {
   try {
     const { userId } = action.payload;
-    const result = yield axios.get(
-      `${API_URL}/carts?userId=${userId}&_expand=product&_expand=productOption`
-    );
+    const result = yield getCartListApi(userId);
     yield put({
       type: SUCCESS(CART_ACTION.GET_CART_LIST),
       payload: {
@@ -22,7 +18,7 @@ function* getCartListSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(CART_ACTION.GET_CART_LIST),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }
@@ -30,10 +26,7 @@ function* getCartListSaga(action) {
 function* addToCartSaga(action) {
   try {
     const { userId } = action.payload;
-    const result = yield axios.post(
-      `${API_URL}/carts`,
-      action.payload
-    );
+    const result = yield addToCartApi(action.payload);
     yield put({
       type: getCartListAction.type,
       payload: {
@@ -60,9 +53,7 @@ function* addToCartSaga(action) {
 function* updateCartProductSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.patch(`${API_URL}/carts/${data.id}`, {
-      quantity: data.quantity,
-    });
+    yield updateCartProductApi(data.id, data.quantity);
     yield put({
       type: SUCCESS(CART_ACTION.UPDATE_CART_PRODUCT),
       payload: {
@@ -81,7 +72,7 @@ function* updateCartProductSaga(action) {
 function* removeCartProductSaga(action) {
   try {
     const { id } = action.payload;
-    yield axios.delete(`${API_URL}/carts/${id}`);
+    yield removeCartProductApi(id);
     yield put({
       type: SUCCESS(CART_ACTION.REMOVE_CART_PRODUCT),
       payload: {

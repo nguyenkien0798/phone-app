@@ -1,15 +1,13 @@
 import { put, takeEvery } from "redux-saga/effects";
-import axios from "axios";
 
 import { AUTH_ACTION, SUCCESS, FAIL } from "../constants";
 import { loginAction, registerAction, getUserInfoAction, changePasswordAction } from "../slices/auth.slice";
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { loginApi, registerApi, getUserInfoApi, verifyPasswordApi, changePasswordApi } from "../../services/auth.service";
 
 function* loginSaga(action) {
   try {
     const { data, callback } = action.payload;
-    const result = yield axios.post(`${API_URL}/login`, data);
+    const result = yield loginApi(data);
     yield localStorage.setItem(
       "userInfo",
       JSON.stringify({
@@ -44,7 +42,7 @@ function* loginSaga(action) {
 function* registerSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.post(`${API_URL}/register`, data);
+    yield registerApi(data);
     yield put({ type: SUCCESS(AUTH_ACTION.REGISTER) });
     yield callback.goBackLogin();
   } catch (e) {
@@ -63,7 +61,7 @@ function* registerSaga(action) {
 function* getUserInfoSaga(action) {
   try {
     const { id } = action.payload;
-    const result = yield axios.get(`${API_URL}/users/${id}`);
+    const result = yield getUserInfoApi(id);
     yield put({
       type: SUCCESS(AUTH_ACTION.GET_USER_INFO),
       payload: {
@@ -74,7 +72,7 @@ function* getUserInfoSaga(action) {
     yield put({
       type: FAIL(AUTH_ACTION.GET_USER_INFO),
       payload: {
-        error: "Lấy không được",
+        error: "Lấy dữ liệu không thành công",
       },
     });
   }
@@ -83,13 +81,8 @@ function* getUserInfoSaga(action) {
 function* changePasswordSaga(action) {
   try {
     const { id, data, callback } = action.payload;
-    yield axios.post(`${API_URL}/login`, {
-      email: data.email,
-      password: data.oldPassword,
-    });
-    yield axios.patch(`${API_URL}/users/${id}`, {
-      password: data.newPassword,
-    });
+    yield verifyPasswordApi(data.email, data.oldPassword);
+    yield changePasswordApi(id, data.newPassword);
     yield callback.clearForm();
     yield put({
       type: SUCCESS(AUTH_ACTION.CHANGE_PASSWORD),
@@ -98,7 +91,7 @@ function* changePasswordSaga(action) {
     yield put({
       type: FAIL(AUTH_ACTION.CHANGE_PASSWORD),
       payload: {
-        error: "Lấy không được",
+        error: "Đổi mật khẩu không thành công",
       },
     });
   }

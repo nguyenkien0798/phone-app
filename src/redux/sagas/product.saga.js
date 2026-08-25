@@ -1,11 +1,9 @@
 import { put, takeEvery } from "redux-saga/effects";
-import axios from "axios";
 
 import { PRODUCT_ACTION, SUCCESS, FAIL } from "../constants";
 import { DEFAULT_PRICE_FILTER } from "../../pages/Product/constants";
 import { getProductListAction, getProductDetailAction, createProductAction, updateProductAction, deleteProductAction } from "../slices/product.slice";
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { getProductListApi, getProductDetailApi, createProductApi, updateProductApi, deleteProductApi } from "../../services/product.service";
 
 function* getProductListSaga(action) {
   // Gọi API lấy danh sách sản phẩm từ server
@@ -19,27 +17,8 @@ function* getProductListSaga(action) {
       more,
       categoryFilter,
     } = action.payload;
-    const categoryParam = categoryFilter?.length
-      ? categoryFilter.map((filterItem) => `categoryId=${filterItem.id}`).join("&")
-      : "";
-    const result = yield axios.get(
-      `${API_URL}/products?${categoryParam}`,
-      {
-        params: {
-          _limit: limit,
-          _page: page,
-          ...(priceFilter &&
-            (priceFilter[0] !== DEFAULT_PRICE_FILTER[0] ||
-              priceFilter[1] !== DEFAULT_PRICE_FILTER[1]) && {
-              price_gte: priceFilter[0],
-              price_lte: priceFilter[1],
-            }),
-          ...(keyword && { q: keyword }),
-          _expand: "category",
-          ...(sortFilter && { _sort: "price", _order: sortFilter }),
-        },
-      }
-    );
+
+    const result = yield getProductListApi({ limit, page, priceFilter, keyword, sortFilter, categoryFilter, DEFAULT_PRICE_FILTER });
     yield put({
       type: SUCCESS(PRODUCT_ACTION.GET_PRODUCT_LIST),
       payload: {
@@ -54,7 +33,7 @@ function* getProductListSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(PRODUCT_ACTION.GET_PRODUCT_LIST),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }
@@ -62,9 +41,7 @@ function* getProductListSaga(action) {
 function* getProductDetailSaga(action) {
   try {
     const { id } = action.payload;
-    const result = yield axios.get(
-      `${API_URL}/products/${id}?_embed=productOptions&_embed=favorites`
-    );
+    const result = yield getProductDetailApi(id);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.GET_PRODUCT_DETAIL),
       payload: { data: result.data },
@@ -72,7 +49,7 @@ function* getProductDetailSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(PRODUCT_ACTION.GET_PRODUCT_DETAIL),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }
@@ -80,7 +57,7 @@ function* getProductDetailSaga(action) {
 function* createProductSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.post(`${API_URL}/products`, data);
+    yield createProductApi(data);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.CREATE_PRODUCT),
     });
@@ -88,7 +65,7 @@ function* createProductSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(PRODUCT_ACTION.CREATE_PRODUCT),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }
@@ -96,7 +73,7 @@ function* createProductSaga(action) {
 function* updateProductSaga(action) {
   try {
     const { id, data, callback } = action.payload;
-    yield axios.patch(`${API_URL}/products/${id}`, data);
+    yield updateProductApi(id, data);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.UPDATE_PRODUCT),
     });
@@ -104,7 +81,7 @@ function* updateProductSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(PRODUCT_ACTION.UPDATE_PRODUCT),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }
@@ -112,7 +89,7 @@ function* updateProductSaga(action) {
 function* deleteProductSaga(action) {
   try {
     const { id } = action.payload;
-    yield axios.delete(`${API_URL}/products/${id}`);
+    yield deleteProductApi(id);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.DELETE_PRODUCT),
     });
@@ -123,7 +100,7 @@ function* deleteProductSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(PRODUCT_ACTION.DELETE_PRODUCT),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }

@@ -1,21 +1,13 @@
 import { put, takeEvery } from "redux-saga/effects";
-import axios from "axios";
 
 import { ORDER_ACTION, SUCCESS, FAIL } from "../constants";
 import { getOrderListAction, orderCartAction } from "../slices/order.slice";
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { getOrderListApi, createOrderApi, deleteCartItemApi } from "../../services/order.service";
 
 function* getOrderListSaga(action) {
   try {
     const { id } = action.payload;
-    const result = yield axios.get(`${API_URL}/orders`, {
-      params: {
-        userId: id,
-        _order: "desc",
-        _sort: "createdAt",
-      },
-    });
+    const result = yield getOrderListApi(id);
     yield put({
       type: SUCCESS(ORDER_ACTION.GET_ORDER_LIST),
       payload: {
@@ -25,7 +17,7 @@ function* getOrderListSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(ORDER_ACTION.GET_ORDER_LIST),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }
@@ -33,9 +25,9 @@ function* getOrderListSaga(action) {
 function* orderCartSaga(action) {
   try {
     const { data, callback } = action.payload;
-    yield axios.post(`${API_URL}/orders`, data);
+    yield createOrderApi(data);
     yield data.products.forEach((productItem) => {
-      axios.delete(`${API_URL}/carts/${productItem.cartId}`);
+      deleteCartItemApi(productItem.cartId);
     });
 
     yield callback.success();
@@ -48,7 +40,7 @@ function* orderCartSaga(action) {
   } catch (e) {
     yield put({
       type: FAIL(ORDER_ACTION.ORDER_CART),
-      payload: { error: "Lấy không được" },
+      payload: { error: "Lấy dữ liệu không thành công" },
     });
   }
 }
