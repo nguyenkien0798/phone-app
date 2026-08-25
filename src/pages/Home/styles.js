@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HomeContainer = styled.div`
-  background: #f8fafc;
+  background: transparent;
   min-height: 100vh;
-  padding-bottom: 20px;
+  padding-bottom: 24px;
 `;

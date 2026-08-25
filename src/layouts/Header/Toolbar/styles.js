@@ -9,7 +9,7 @@ export const Toolbar = styled.div`
   margin: 0 auto;
   padding: 12px 20px;
   min-height: 68px;
-  background: #f7f9fb;
+  background: transparent;
 `;
 
 export const ToolbarLogo = styled.div`

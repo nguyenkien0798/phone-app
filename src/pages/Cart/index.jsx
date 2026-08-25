@@ -6,7 +6,6 @@ import {
   CreditCardOutlined,
   CheckCircleOutlined,
 } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
 
 import TopWrapper from "../../components/TopWrapper";
 import Checkout from "./components/Checkout";
@@ -20,27 +19,38 @@ import * as S from "./styles";
 const CartPage = () => {
   const [checkoutStep, setCheckoutStep] = useState(0);
 
-  const { t } = useTranslation();
-
   return (
     <>
-      <TopWrapper titlePage="Giỏ hàng" breadcrumb={BREADCRUMB} />
+      <TopWrapper
+        titlePage="Đặt Hàng & Thanh Toán"
+        subtitle="Kiểm tra giỏ hàng — Điền thông tin — Chọn thanh toán — Xác nhận đơn hàng"
+        icon={<ShoppingCartOutlined />}
+        breadcrumb={BREADCRUMB}
+      />
       <S.CartContainer>
-        <Steps current={checkoutStep} style={{ marginBottom: 24 }} responsive>
+        <Steps current={checkoutStep} className="custom-steps" responsive>
           <Steps.Step
             title="Giỏ hàng"
+            description="Kiểm tra thiết bị"
             icon={<ShoppingCartOutlined />}
           />
-          <Steps.Step title="Thông tin" icon={<IdcardOutlined />} />
+          <Steps.Step
+            title="Địa chỉ"
+            description="Thông tin nhận hàng"
+            icon={<IdcardOutlined />}
+          />
           <Steps.Step
             title="Thanh toán"
+            description="Phương thức & vận chuyển"
             icon={<CreditCardOutlined />}
           />
           <Steps.Step
             title="Hoàn tất"
+            description="Xác nhận đơn hàng"
             icon={<CheckCircleOutlined />}
           />
         </Steps>
+
         {checkoutStep === 0 && <Checkout setCheckoutStep={setCheckoutStep} />}
         {checkoutStep === 1 && <Info setCheckoutStep={setCheckoutStep} />}
         {checkoutStep === 2 && <Payment setCheckoutStep={setCheckoutStep} />}

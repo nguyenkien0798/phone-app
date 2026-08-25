@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Avatar, Space } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, IdcardFilled } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 
 import TopWrapper from "../../components/TopWrapper";
@@ -33,7 +33,12 @@ const ProfilePage = () => {
 
   return (
     <>
-      <TopWrapper titlePage="Trang cá nhân" breadcrumb={BREADCRUMB} />
+      <TopWrapper
+        titlePage="Trang Cá Nhân"
+        subtitle={`Xin chào, ${userInfo.data.name || 'Thành viên'} — Quản lý đơn hàng và thông tin tài khoản`}
+        icon={<IdcardFilled />}
+        breadcrumb={BREADCRUMB}
+      />
       <S.ProfileWrapper>
         <S.ProfileContainer>
           <S.LeftContainer>

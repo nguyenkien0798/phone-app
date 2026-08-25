@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router';
 import { Button, Row } from 'antd';
+import { AppleFilled } from "@ant-design/icons";
 
 import TopWrapper from "../../components/TopWrapper";
 import { BREADCRUMB } from "./constants";
@@ -14,7 +15,12 @@ const AboutPage = () => {
 
   return (
     <>
-      <TopWrapper titlePage="Giới thiệu" breadcrumb={BREADCRUMB} />
+      <TopWrapper
+        titlePage="Apple Authorised Reseller"
+        subtitle="Hệ thống phân phối thiết bị Apple chính hãng VN/A uy tín hàng đầu Việt Nam"
+        icon={<AppleFilled />}
+        breadcrumb={BREADCRUMB}
+      />
       <S.AboutContainer>
         <S.AboutContent>
           <h3>Volt Store là hệ thống bán lẻ ủy quyền chính thức các sản phẩm Apple chính hãng (Apple Authorised Reseller)</h3>

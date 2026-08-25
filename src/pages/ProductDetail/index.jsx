@@ -29,14 +29,16 @@ import {
   DatabaseOutlined,
   HddOutlined,
   DashboardOutlined,
-  CheckCircleOutlined,
-  FireOutlined,
-  TagOutlined,
-  CreditCardOutlined,
+  CheckCircleFilled,
+  FireFilled,
+  TagFilled,
+  CreditCardFilled,
   AppstoreOutlined,
-  CheckOutlined,
   FileTextOutlined,
   MessageOutlined,
+  CheckOutlined,
+  ThunderboltFilled,
+  StarFilled,
 } from "@ant-design/icons";
 
 import TopWrapper from "../../components/TopWrapper";
@@ -80,7 +82,6 @@ const ProductDetailPage = ({ match }) => {
     }
   }, [dispatch, id]);
 
-  // Set default selected option when options are loaded
   useEffect(() => {
     if (productDetail.data.productOptions?.length > 0 && !selectedOption) {
       setSelectedOption(productDetail.data.productOptions[0]);
@@ -218,7 +219,7 @@ const ProductDetailPage = ({ match }) => {
 
   const productRate = useMemo(() => {
     let total = 0;
-    if (!commentList.data.length) return 5.0;
+    if (!commentList.data.length) return "5.0";
     commentList.data.forEach((item) => {
       total += item.rate || 5;
     });
@@ -233,8 +234,7 @@ const ProductDetailPage = ({ match }) => {
 
   const originalPriceNumber = useMemo(() => {
     if (!currentPriceNumber) return 0;
-    // Estimate original price (+12%) for realistic discount effect
-    return Math.round(currentPriceNumber * 1.12);
+    return Math.round(currentPriceNumber * 1.15);
   }, [currentPriceNumber]);
 
   const techSpecs = useMemo(() => {
@@ -276,13 +276,13 @@ const ProductDetailPage = ({ match }) => {
         value: data.pin,
       },
       {
-        label: "Thẻ SIM",
+        label: "Thẻ SIM / Kết nối",
         icon: <AppstoreOutlined className="spec-icon" />,
         value: data.sim,
       },
       {
         label: "Hệ điều hành",
-        icon: <CheckCircleOutlined className="spec-icon" />,
+        icon: <CheckCircleFilled className="spec-icon" />,
         value: data.hdh,
       },
     ].filter((item) => item.value);
@@ -291,28 +291,31 @@ const ProductDetailPage = ({ match }) => {
   return (
     <div>
       <TopWrapper
+        titlePage={productDetail.data.name || "Chi Tiết Sản Phẩm Apple"}
+        subtitle="Apple Authorised Reseller · Bảo hành chính hãng VN/A 12 tháng · Giao siêu tốc 2H"
         breadcrumb={[
           ...BREADCRUMB,
           {
             title: productDetail.data.name || "Chi tiết sản phẩm",
           },
         ]}
-        height={80}
       />
       <S.ProductDetailContainer>
-        {/* TOP MAIN CARD: GALLERY + BUY BOX */}
-        <S.MainCard>
-          <Row gutter={[32, 24]}>
-            {/* Image gallery column */}
-            <Col lg={10} md={11} xs={24}>
-              <S.ImageGalleryWrapper>
-                <S.MainImageContainer>
-                  <S.ProductBadge>
-                    <FireOutlined /> HOT SALE
-                  </S.ProductBadge>
-                  <S.GenuineTag>
-                    <CheckOutlined /> 100% Chính Hãng
-                  </S.GenuineTag>
+        {/* ================= 1. MAIN HERO SHOWCASE CARD ================= */}
+        <S.MainShowcaseCard>
+          <Row gutter={[36, 32]}>
+            {/* Left Column: Image Showcase + Policies */}
+            <Col lg={11} md={12} xs={24}>
+              <S.ImageStageWrapper>
+                <div className="product-image-stage">
+                  <div className="badge-row">
+                    <span className="badge-hot">
+                      <FireFilled /> HOT DEAL
+                    </span>
+                    <span className="badge-official">
+                      <CheckOutlined /> 100% Chính Hãng VN/A
+                    </span>
+                  </div>
 
                   {productDetail.loading ? (
                     <S.SkeletonImage>
@@ -321,233 +324,250 @@ const ProductDetailPage = ({ match }) => {
                   ) : (
                     <img
                       src={productDetail.data.image}
-                      alt={productDetail.data.name || "Product Image"}
+                      alt={productDetail.data.name || "Apple Product"}
                     />
                   )}
-                </S.MainImageContainer>
+                </div>
 
-                <S.PolicyBar>
-                  <S.PolicyItem>
-                    <CarOutlined className="policy-icon" />
-                    <span>Miễn phí giao hàng toàn quốc</span>
-                  </S.PolicyItem>
-                  <S.PolicyItem>
-                    <SafetyCertificateOutlined className="policy-icon" />
-                    <span>Bảo hành chính hãng 12T</span>
-                  </S.PolicyItem>
-                  <S.PolicyItem>
-                    <SyncOutlined className="policy-icon" />
-                    <span>1 đổi 1 trong 30 ngày</span>
-                  </S.PolicyItem>
-                  <S.PolicyItem>
-                    <CreditCardOutlined className="policy-icon" />
-                    <span>Trả góp 0% lãi suất</span>
-                  </S.PolicyItem>
-                </S.PolicyBar>
-              </S.ImageGalleryWrapper>
+                {/* 4 Apple Trust Highlights */}
+                <S.TrustGrid>
+                  <div className="trust-tile">
+                    <CarOutlined className="tile-icon blue" />
+                    <div className="tile-info">
+                      <strong>Giao Siêu Tốc 2H</strong>
+                      <span>Miễn phí nội thành</span>
+                    </div>
+                  </div>
+                  <div className="trust-tile">
+                    <SafetyCertificateOutlined className="tile-icon green" />
+                    <div className="tile-info">
+                      <strong>Bảo Hành 12 Tháng</strong>
+                      <span>Chính hãng Apple VN</span>
+                    </div>
+                  </div>
+                  <div className="trust-tile">
+                    <SyncOutlined className="tile-icon purple" />
+                    <div className="tile-info">
+                      <strong>1 Đổi 1 Trong 30 Ngày</strong>
+                      <span>Yên tâm tuyệt đối</span>
+                    </div>
+                  </div>
+                  <div className="trust-tile">
+                    <CreditCardFilled className="tile-icon orange" />
+                    <div className="tile-info">
+                      <strong>Trả Góp 0%</strong>
+                      <span>Xét duyệt 5 phút</span>
+                    </div>
+                  </div>
+                </S.TrustGrid>
+              </S.ImageStageWrapper>
             </Col>
 
-            {/* Product info & purchase column */}
-            <Col lg={14} md={13} xs={24}>
+            {/* Right Column: Product Specs & Buying Box */}
+            <Col lg={13} md={12} xs={24}>
               {productDetail.loading ? (
-                <Skeleton active paragraph={{ rows: 8 }} />
+                <Skeleton active paragraph={{ rows: 10 }} />
               ) : (
-                <S.ProductInfoWrapper>
-                  <div>
-                    <S.ProductTitle>{productDetail.data.name}</S.ProductTitle>
+                <S.ProductBuyBox>
+                  <div className="product-header">
+                    <div className="category-tag">
+                      {productDetail.data.categoryId === 1
+                        ? "Điện thoại iPhone"
+                        : productDetail.data.categoryId === 2
+                        ? "Máy tính Mac & MacBook"
+                        : productDetail.data.categoryId === 3
+                        ? "Máy tính bảng iPad"
+                        : productDetail.data.categoryId === 4
+                        ? "Đồng hồ Apple Watch"
+                        : productDetail.data.categoryId === 5
+                        ? "Tai nghe Apple AirPods"
+                        : "Thiết bị Apple chính hãng"}
+                    </div>
+                    <h1 className="product-title">{productDetail.data.name}</h1>
 
-                    <S.MetaBar>
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                    {/* Rating and Meta Bar */}
+                    <div className="meta-stats-row">
+                      <div className="rating-box">
                         <Rate
                           allowHalf
                           disabled
                           value={parseFloat(productRate)}
-                          style={{ fontSize: 15, color: "#f59e0b" }}
+                          style={{ fontSize: 14, color: "#f59e0b" }}
                         />
-                        <span className="rating-score">{productRate}</span>
+                        <span className="rate-num">{productRate}</span>
                       </div>
-
-                      <div className="divider" />
-
-                      <span className="review-count">
+                      <span className="dot-divider">•</span>
+                      <span className="comment-count">
                         {commentList.data.length > 0
-                          ? `${commentList.data.length} Đánh giá`
+                          ? `${commentList.data.length} đánh giá`
                           : "Chưa có đánh giá"}
                       </span>
-
-                      <div className="divider" />
-
-                      <div className="stock-status">
-                        <span className="dot" />
-                        Còn hàng
+                      <span className="dot-divider">•</span>
+                      <div className="stock-pill">
+                        <span className="pulse-dot" /> Còn hàng (Sẵn sàng giao)
                       </div>
-                    </S.MetaBar>
+                    </div>
+                  </div>
 
-                    {/* Price Card */}
-                    <S.PriceCard>
-                      <S.CurrentPrice>
-                        <span className="amount">
-                          {currentPriceNumber.toLocaleString("vi-VN")}
-                          <span className="currency">₫</span>
+                  {/* Price Banner Card */}
+                  <S.PriceHeroBox>
+                    <div className="price-primary">
+                      <span className="val">
+                        {currentPriceNumber.toLocaleString("vi-VN")}
+                      </span>
+                      <span className="sym">₫</span>
+                    </div>
+                    {originalPriceNumber > currentPriceNumber && (
+                      <div className="price-secondary">
+                        <span className="original">
+                          {originalPriceNumber.toLocaleString("vi-VN")} ₫
                         </span>
-                        {originalPriceNumber > currentPriceNumber && (
-                          <>
-                            <span className="original-price">
-                              {originalPriceNumber.toLocaleString("vi-VN")}₫
-                            </span>
-                            <span className="discount-chip">-12%</span>
-                          </>
-                        )}
-                      </S.CurrentPrice>
-                      <S.PromoTag>
-                        <TagOutlined /> Tiết kiệm thêm với voucher giảm 5% khi thanh toán trực tuyến
-                      </S.PromoTag>
-                    </S.PriceCard>
-
-                    {/* Variant options */}
-                    {productDetail.data.productOptions?.length > 0 && (
-                      <S.VariantOptions>
-                        <S.SectionLabel>
-                          Chọn phiên bản / dung lượng:
-                        </S.SectionLabel>
-                        <Radio.Group
-                          value={selectedOption}
-                          onChange={(e) => setSelectedOption(e.target.value)}
-                        >
-                          {productDetail.data.productOptions.map((option) => (
-                            <Radio.Button key={option.id} value={option}>
-                              <span>{option.name}</span>
-                            </Radio.Button>
-                          ))}
-                        </Radio.Group>
-                      </S.VariantOptions>
+                        <span className="save-chip">Tiết kiệm 15%</span>
+                      </div>
                     )}
+                    <div className="promo-note">
+                      <TagFilled /> Hỗ trợ thu cũ đổi mới trợ giá lên đến 2.000.000₫
+                    </div>
+                  </S.PriceHeroBox>
 
-                    {/* Quantity Selection */}
-                    <S.QuantitySection>
-                      <S.SectionLabel style={{ marginBottom: 0 }}>
-                        Số lượng:
-                      </S.SectionLabel>
+                  {/* Variant / Option Selector */}
+                  {productDetail.data.productOptions?.length > 0 && (
+                    <S.OptionSelectorGroup>
+                      <div className="group-label">Chọn phiên bản / màu sắc:</div>
+                      <Radio.Group
+                        value={selectedOption}
+                        onChange={(e) => setSelectedOption(e.target.value)}
+                        className="option-radio-group"
+                      >
+                        {productDetail.data.productOptions.map((opt) => (
+                          <Radio.Button key={opt.id} value={opt} className="option-pill">
+                            <span className="opt-name">{opt.name}</span>
+                            {opt.price > 0 && (
+                              <span className="opt-plus">
+                                +{opt.price.toLocaleString("vi-VN")}₫
+                              </span>
+                            )}
+                          </Radio.Button>
+                        ))}
+                      </Radio.Group>
+                    </S.OptionSelectorGroup>
+                  )}
+
+                  {/* Quantity & CTA Buttons */}
+                  <S.PurchaseControls>
+                    <div className="quantity-row">
+                      <span className="qty-label">Số lượng:</span>
                       <InputNumber
                         min={1}
                         max={10}
                         value={productQuantity}
-                        onChange={(value) => setProductQuantity(value || 1)}
+                        onChange={(val) => setProductQuantity(val || 1)}
+                        className="qty-input"
                       />
-                      <span style={{ fontSize: 13, color: "#64748b" }}>
-                        (Tối đa 10 sản phẩm / đơn)
-                      </span>
-                    </S.QuantitySection>
-                  </div>
+                      <span className="qty-hint">Bảo hiểm rơi vỡ 12T tặng kèm</span>
+                    </div>
 
-                  {/* Actions */}
-                  <S.ActionButtonGroup>
-                    <Button
-                      className="add-cart-btn"
-                      icon={<ShoppingCartOutlined style={{ fontSize: 18 }} />}
-                      onClick={() => handleAddToCart(false)}
-                    >
-                      Thêm vào giỏ
-                    </Button>
-                    <Button
-                      className="buy-now-btn"
-                      onClick={() => handleAddToCart(true)}
-                    >
-                      Mua ngay
-                    </Button>
-                    <Tooltip
-                      title={
-                        isFavorite ? "Đã yêu thích" : "Thêm vào danh sách yêu thích"
-                      }
-                    >
+                    <div className="action-buttons-grid">
                       <Button
-                        className={`favorite-btn ${isFavorite ? "favorited" : ""}`}
-                        icon={
-                          isFavorite ? (
-                            <HeartFilled style={{ color: "#e11d48", fontSize: 18 }} />
-                          ) : (
-                            <HeartOutlined style={{ fontSize: 18 }} />
-                          )
-                        }
-                        onClick={handleFavoriteProduct}
+                        className="btn-add-cart"
+                        icon={<ShoppingCartOutlined style={{ fontSize: 18 }} />}
+                        onClick={() => handleAddToCart(false)}
                       >
-                        {productDetail.data.favorites?.length
-                          ? `(${productDetail.data.favorites.length})`
-                          : "Thích"}
+                        Thêm vào giỏ
                       </Button>
-                    </Tooltip>
-                  </S.ActionButtonGroup>
-                </S.ProductInfoWrapper>
+                      <Button
+                        className="btn-buy-now"
+                        icon={<ThunderboltFilled />}
+                        onClick={() => handleAddToCart(true)}
+                      >
+                        Mua ngay (Giao 2H)
+                      </Button>
+                      <Tooltip
+                        title={
+                          isFavorite ? "Đã yêu thích" : "Lưu vào danh sách thích"
+                        }
+                      >
+                        <Button
+                          className={`btn-fav ${isFavorite ? "active" : ""}`}
+                          icon={
+                            isFavorite ? (
+                              <HeartFilled style={{ color: "#e11d48", fontSize: 18 }} />
+                            ) : (
+                              <HeartOutlined style={{ fontSize: 18 }} />
+                            )
+                          }
+                          onClick={handleFavoriteProduct}
+                        />
+                      </Tooltip>
+                    </div>
+                  </S.PurchaseControls>
+                </S.ProductBuyBox>
               )}
             </Col>
           </Row>
-        </S.MainCard>
+        </S.MainShowcaseCard>
 
-        {/* BOTTOM SECTION: SPECS + DESCRIPTION + COMMENTS */}
-        <Row gutter={[24, 24]}>
-          {/* Main content: Description and Reviews */}
+        {/* ================= 2. CONTENT + REVIEWS + SPECS ================= */}
+        <Row gutter={[28, 28]}>
+          {/* Main Column: Details & Reviews */}
           <Col lg={{ span: 15, order: 1 }} xs={{ span: 24, order: 2 }}>
             {/* Description Card */}
-            <S.SectionCard>
-              <S.CardHeader>
-                <div className="title-group">
-                  <div className="icon-wrap">
-                    <FileTextOutlined />
-                  </div>
-                  <h3>Thông tin chi tiết sản phẩm</h3>
+            <S.DetailCard>
+              <S.DetailCardHeader>
+                <div className="header-icon-box blue">
+                  <FileTextOutlined />
                 </div>
-              </S.CardHeader>
+                <h3>Đặc Điểm Nổi Bật & Mô Tả Chi Tiết</h3>
+              </S.DetailCardHeader>
               {productDetail.loading ? (
                 <Skeleton active paragraph={{ rows: 6 }} />
               ) : (
-                <S.ProductDetailContent
+                <S.ArticleContent
                   dangerouslySetInnerHTML={{
                     __html:
                       productDetail.data.content ||
-                      "<p>Đang cập nhật nội dung chi tiết cho sản phẩm này...</p>",
+                      "<p>Sản phẩm Apple chính hãng phân phối tại Việt Nam. Thiết kế đẳng cấp, hiệu năng bứt phá và trải nghiệm hệ sinh thái mượt mà đỉnh cao.</p>",
                   }}
                 />
               )}
-            </S.SectionCard>
+            </S.DetailCard>
 
             {/* Reviews Card */}
-            <S.SectionCard id="reviews-section">
-              <S.CardHeader>
-                <div className="title-group">
-                  <div className="icon-wrap" style={{ background: "#fef3c7", color: "#d97706" }}>
-                    <MessageOutlined />
-                  </div>
-                  <h3>Đánh giá & Nhận xét ({commentList.data.length})</h3>
+            <S.DetailCard id="reviews-section">
+              <S.DetailCardHeader>
+                <div className="header-icon-box amber">
+                  <MessageOutlined />
                 </div>
-              </S.CardHeader>
+                <h3>Đánh Giá & Nhận Xét ({commentList.data.length})</h3>
+              </S.DetailCardHeader>
 
-              {/* Rating Overview */}
-              <S.ReviewSummary>
-                <div className="score-box">
-                  <span className="big-score">{productRate}</span>
+              {/* Rating Summary Bar */}
+              <S.RatingOverviewBox>
+                <div className="score-badge-area">
+                  <span className="big-rating">{productRate}</span>
                   <Rate
                     allowHalf
                     disabled
                     value={parseFloat(productRate)}
                     style={{ fontSize: 16, color: "#f59e0b" }}
-                    className="rating-stars"
                   />
-                  <span className="total-text">
-                    {commentList.data.length} lượt đánh giá
+                  <span className="count-lbl">
+                    {commentList.data.length} lượt đánh giá thực tế
                   </span>
                 </div>
-                <div className="score-divider" />
-                <div className="score-msg">
-                  <strong>Khách hàng nói gì về sản phẩm?</strong>
-                  <br />
-                  Sản phẩm nhận được phản hồi tích cực từ khách hàng về chất lượng và hiệu năng.
+                <div className="rating-divider" />
+                <div className="rating-desc">
+                  <strong>Khách hàng đánh giá thế nào?</strong>
+                  <p>
+                    100% đánh giá từ khách hàng đã trải nghiệm và mua sắm thiết bị Apple tại cửa hàng.
+                  </p>
                 </div>
-              </S.ReviewSummary>
+              </S.RatingOverviewBox>
 
-              {/* Review Input Form */}
+              {/* Submit Comment Form */}
               {userInfo.data.id ? (
-                <S.CommentFormCard>
-                  <div className="form-title">Gửi đánh giá của bạn</div>
+                <S.CommentFormContainer>
+                  <div className="form-heading">Gửi nhận xét của bạn</div>
                   <Form
                     form={commentForm}
                     layout="vertical"
@@ -555,9 +575,9 @@ const ProductDetailPage = ({ match }) => {
                     onFinish={handleSubmitComment}
                   >
                     <Form.Item
-                      label="Bạn cảm thấy sản phẩm này như thế nào?"
+                      label="Mức độ hài lòng của bạn:"
                       name="rate"
-                      rules={[{ required: true, message: "Vui lòng chọn số sao đánh giá" }]}
+                      rules={[{ required: true, message: "Vui lòng chọn số sao" }]}
                     >
                       <Rate
                         allowHalf
@@ -566,70 +586,51 @@ const ProductDetailPage = ({ match }) => {
                       />
                     </Form.Item>
                     <Form.Item
-                      label="Nhận xét chi tiết"
+                      label="Nội dung đánh giá:"
                       name="content"
-                      rules={[{ required: true, message: "Vui lòng nhập nhận xét của bạn" }]}
+                      rules={[{ required: true, message: "Vui lòng nhập nhận xét" }]}
                     >
                       <Input.TextArea
-                        placeholder="Hãy chia sẻ trải nghiệm của bạn về sản phẩm này nhé..."
+                        placeholder="Hãy chia sẻ cảm nhận của bạn về thiết kế, hiệu năng, thời lượng pin..."
                         autoSize={{ minRows: 3, maxRows: 6 }}
+                        className="custom-textarea"
                       />
                     </Form.Item>
-                    <Button type="primary" htmlType="submit" className="submit-btn">
+                    <Button type="primary" htmlType="submit" className="btn-post-review">
                       Gửi đánh giá
                     </Button>
                   </Form>
-                </S.CommentFormCard>
+                </S.CommentFormContainer>
               ) : (
-                <div
-                  style={{
-                    padding: "16px 20px",
-                    background: "#f8fafc",
-                    borderRadius: 12,
-                    border: "1px dashed #cbd5e1",
-                    marginBottom: 24,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    flexWrap: "wrap",
-                    gap: 12,
-                  }}
-                >
-                  <span style={{ color: "#64748b", fontSize: 14 }}>
-                    Đăng nhập để gửi đánh giá và nhận xét về sản phẩm này.
-                  </span>
-                  <Button
-                    type="primary"
-                    size="small"
-                    onClick={() => history.push("/login")}
-                    style={{ borderRadius: 6 }}
-                  >
+                <S.LoginPromptBox>
+                  <span>Đăng nhập để chia sẻ đánh giá và nhận voucher ưu đãi 50k.</span>
+                  <button onClick={() => history.push("/login")} className="btn-login-now">
                     Đăng nhập ngay
-                  </Button>
-                </div>
+                  </button>
+                </S.LoginPromptBox>
               )}
 
-              {/* Comments List */}
+              {/* Comment Items List */}
               {commentList.data.length > 0 ? (
-                <div>
+                <div className="comment-list-wrapper">
                   {commentList.data.map((item) => {
-                    const authorName = item.user?.name || "Khách hàng";
+                    const authorName = item.user?.name || "Khách hàng Apple";
                     const initialChar = authorName.charAt(0).toUpperCase();
 
                     return (
-                      <S.CommentItemWrapper key={item.id || item.createdAt}>
-                        <div className="avatar">{initialChar}</div>
-                        <div className="comment-content">
-                          <div className="header-row">
-                            <span className="author">{authorName}</span>
-                            <span className="verified-badge">
-                              <CheckCircleOutlined /> Đã mua hàng
+                      <S.ReviewItem key={item.id || item.createdAt}>
+                        <div className="avatar-circle">{initialChar}</div>
+                        <div className="review-main">
+                          <div className="review-meta">
+                            <span className="author-name">{authorName}</span>
+                            <span className="badge-bought">
+                              <CheckCircleFilled /> Đã mua hàng
                             </span>
-                            <span className="date">
+                            <span className="review-time">
                               {moment(item.createdAt).fromNow()}
                             </span>
                           </div>
-                          <div className="rating-row">
+                          <div className="star-row">
                             <Rate
                               disabled
                               value={item.rate || 5}
@@ -637,77 +638,67 @@ const ProductDetailPage = ({ match }) => {
                               style={{ fontSize: 13, color: "#f59e0b" }}
                             />
                           </div>
-                          <p className="body">{item.content}</p>
+                          <p className="review-text">{item.content}</p>
                         </div>
-                      </S.CommentItemWrapper>
+                      </S.ReviewItem>
                     );
                   })}
                 </div>
               ) : (
-                <div
-                  style={{
-                    textAlign: "center",
-                    padding: "32px 0",
-                    color: "#94a3b8",
-                    fontSize: 14,
-                  }}
-                >
-                  Chưa có đánh giá nào cho sản phẩm này. Hãy là người đầu tiên đánh giá!
+                <div className="no-reviews">
+                  Chưa có đánh giá nào. Hãy là khách hàng đầu tiên chia sẻ cảm nhận!
                 </div>
               )}
-            </S.SectionCard>
+            </S.DetailCard>
           </Col>
 
-          {/* Right Sidebar: Tech Specs & Support */}
+          {/* Right Sidebar: Tech Specs + Hotline */}
           <Col lg={{ span: 9, order: 2 }} xs={{ span: 24, order: 1 }}>
-            <div style={{ position: "sticky", top: 20 }}>
+            <div style={{ position: "sticky", top: 90 }}>
               {/* Tech Specs Card */}
-              <S.SectionCard>
-                <S.CardHeader>
-                  <div className="title-group">
-                    <div className="icon-wrap" style={{ background: "#ecfdf5", color: "#059669" }}>
-                      <MobileOutlined />
-                    </div>
-                    <h3>Thông số kĩ thuật</h3>
+              <S.DetailCard>
+                <S.DetailCardHeader>
+                  <div className="header-icon-box green">
+                    <MobileOutlined />
                   </div>
-                </S.CardHeader>
+                  <h3>Thông Số Kỹ Thuật</h3>
+                </S.DetailCardHeader>
 
                 {techSpecs.length > 0 ? (
-                  <S.SpecList>
-                    {techSpecs.map((spec, index) => (
-                      <S.SpecItem key={spec.label} striped={index % 2 === 1}>
-                        <div className="spec-label">
+                  <S.SpecsTable>
+                    {techSpecs.map((spec, idx) => (
+                      <div className={`spec-row ${idx % 2 === 1 ? "striped" : ""}`} key={spec.label}>
+                        <div className="spec-col-label">
                           {spec.icon}
                           <span>{spec.label}</span>
                         </div>
                         <div
-                          className="spec-value"
+                          className="spec-col-val"
                           dangerouslySetInnerHTML={{ __html: spec.value }}
                         />
-                      </S.SpecItem>
+                      </div>
                     ))}
-                  </S.SpecList>
+                  </S.SpecsTable>
                 ) : (
-                  <div style={{ color: "#94a3b8", fontSize: 13, textAlign: "center", padding: "16px 0" }}>
-                    Thông số kĩ thuật đang được cập nhật
+                  <div style={{ textAlign: "center", padding: "16px", color: "#94a3b8" }}>
+                    Thông số kỹ thuật đang được cập nhật
                   </div>
                 )}
-              </S.SectionCard>
+              </S.DetailCard>
 
-              {/* Support & Contact Card */}
-              <S.SupportBox>
-                <div className="support-icon">
+              {/* Customer Support Card */}
+              <S.SupportCard>
+                <div className="icon-wrapper">
                   <CustomerServiceOutlined />
                 </div>
-                <div className="support-text">
-                  <h4>Cần tư vấn hỗ trợ?</h4>
+                <div className="support-body">
+                  <h4>Tư Vấn Trực Tuyến 24/7</h4>
                   <p>
-                    Gọi ngay Hotline miễn phí: <span className="hotline">1800 6601</span>
-                    <br />
-                    (Hỗ trợ từ 8:00 - 22:00 hàng ngày)
+                    Hotline tư vấn miễn phí: <strong className="hotline-number">1800 6601</strong>
                   </p>
+                  <span>(Hỗ trợ kỹ thuật & đặt hàng từ 8:00 - 22:00)</span>
                 </div>
-              </S.SupportBox>
+              </S.SupportCard>
             </div>
           </Col>
         </Row>

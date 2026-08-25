@@ -11,13 +11,14 @@ import {
   StarFilled,
   CrownFilled,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
 import * as S from "./styles";
 
 import iphone13 from "../../../assets/images/slides/slide1.png";
 import iphone18 from "../../../assets/images/apple/iphone-18.jpg";
-import macbook from "../../../assets/images/apple/mackbook-neo.jpg";
-import airpods from "../../../assets/images/apple/tai-nghe-apple.jpg";
+import macbookAir from "../../../assets/images/apple/mackbook-neo.jpg";
+import macbookPro from "../../../assets/images/apple/macbook-pro.jpg";
+import airpodPro from "../../../assets/images/apple/airpod.jpg";
+import airpodsMax from "../../../assets/images/apple/tai-nghe-apple.jpg";
 
 const slides = [
   {
@@ -35,6 +36,32 @@ const slides = [
   },
   {
     id: 2,
+    image: macbookPro,
+    eyebrow: "Apple Mac Pro Series",
+    title: "MacBook Pro M3 Max",
+    subtitle: "Quái Vật Hiệu Năng",
+    desc: "Màn hình Liquid Retina XDR sắc nét đỉnh cao, chip Apple M3 Max siêu khủng cho đồ họa và tác vụ chuyên nghiệp. Màu Space Black sang trọng.",
+    badge: "Chính Hãng VN/A",
+    tagIcon: <CrownFilled />,
+    gradient: "linear-gradient(135deg, #18181b 0%, #27272a 50%, #09090b 100%)",
+    accentColor: "#a1a1aa",
+    textDark: false,
+  },
+  {
+    id: 3,
+    image: airpodPro,
+    eyebrow: "Apple AirPods Pro",
+    title: "AirPods Pro 2 USB-C",
+    subtitle: "Chống Ồn Đỉnh Cao",
+    desc: "Chip H2 nâng cấp khả năng khử tiếng ồn gấp 2 lần, âm thanh thích ứng Adaptive Audio, cổng sạc USB-C và chuẩn kháng nước bụi IP54.",
+    badge: "Giảm ngay 500k",
+    tagIcon: <ThunderboltFilled />,
+    gradient: "linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 50%, #f9fafb 100%)",
+    accentColor: "#111827",
+    textDark: true,
+  },
+  {
+    id: 4,
     image: iphone13,
     eyebrow: "Apple iPhone 13 Series",
     title: "iPhone 13 Pro Max",
@@ -47,8 +74,8 @@ const slides = [
     textDark: false,
   },
   {
-    id: 3,
-    image: macbook,
+    id: 5,
+    image: macbookAir,
     eyebrow: "Apple Mac Series",
     title: "MacBook Air M3",
     subtitle: "Mỏng Nhẹ – Mạnh Mẽ",
@@ -60,8 +87,8 @@ const slides = [
     textDark: true,
   },
   {
-    id: 4,
-    image: airpods,
+    id: 6,
+    image: airpodsMax,
     eyebrow: "Apple AirPods Max",
     title: "AirPods Max 2024",
     subtitle: "Âm Thanh Đỉnh Cao",
@@ -83,6 +110,7 @@ const Banner = () => {
       goNext();
     }, 5000);
     return () => clearInterval(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current]);
 
   const goTo = (index) => {

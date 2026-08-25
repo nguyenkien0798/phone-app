@@ -1,4 +1,5 @@
 import React, { input } from 'react'
+import { PhoneFilled } from "@ant-design/icons";
 import TopWrapper from "../../components/TopWrapper";
 import { BREADCRUMB } from "./constants";
 
@@ -7,7 +8,12 @@ import * as S from './styles';
 const Contact = () => {
   return (
     <S.ContactContainer>
-      <TopWrapper titlePage="Liên hệ" breadcrumb={BREADCRUMB} />
+      <TopWrapper
+        titlePage="Liên Hệ & Hỗ Trợ"
+        subtitle="Tư vấn chính hãng Apple miễn phí — Hotline 1800 6601 — Hỗ trợ 8:00 – 22:00 hàng ngày"
+        icon={<PhoneFilled />}
+        breadcrumb={BREADCRUMB}
+      />
       <S.Container>
         <S.ContactContent>
         <div id="contact" class="content-section">

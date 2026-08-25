@@ -255,10 +255,10 @@ export const BadgePill = styled.span`
 
 export const BannerImage = styled.div`
   position: absolute;
-  right: 0;
+  right: 24px;
   top: 0;
   bottom: 0;
-  width: 52%;
+  width: 48%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -266,12 +266,15 @@ export const BannerImage = styled.div`
   animation: ${slideInRight} 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 
   img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 92%;
+    max-height: 88%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     object-position: center;
     animation: ${float} 6s ease-in-out infinite;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.25));
+    border-radius: 16px;
   }
 
   /* Gradient fade to left */
