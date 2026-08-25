@@ -20,7 +20,14 @@ const productSlice = createSlice({
   extraReducers: {
     [SUCCESS(PRODUCT_ACTION.GET_PRODUCT_LIST)]: (state, action) => {
       const { data, meta, more } = action.payload;
-      state.productList = { ...state.productList, data: more ? [...state.productList.data, ...data] : data, meta, loading: false, error: null };
+      const products = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.products)
+        ? data.products
+        : Array.isArray(data?.data)
+        ? data.data
+        : [];
+      state.productList = { ...state.productList, data: more ? [...state.productList.data, ...products] : products, meta, loading: false, error: null };
     },
     [FAIL(PRODUCT_ACTION.GET_PRODUCT_LIST)]: (state, action) => { state.productList.loading = false; state.productList.error = action.payload.error; },
     [SUCCESS(PRODUCT_ACTION.GET_PRODUCT_DETAIL)]: (state, action) => { state.productDetail = { data: action.payload.data, loading: false, error: null }; },
