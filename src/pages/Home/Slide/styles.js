@@ -113,6 +113,10 @@ export const BannerContent = styled.div`
   align-items: flex-start;
   animation: ${slideInLeft} 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 
+  @media (max-width: 992px) {
+    padding: 32px 24px 32px 32px;
+  }
+
   @media (max-width: 768px) {
     flex: none;
     max-width: 100%;

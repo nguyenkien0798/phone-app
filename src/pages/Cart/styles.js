@@ -49,6 +49,17 @@ export const CartContainer = styled.div`
       font-size: 14px;
     }
   }
+
+  @media (max-width: 576px) {
+    .custom-steps {
+      padding: 14px 12px;
+      border-radius: 14px;
+
+      .ant-steps-item-title {
+        font-size: 12px;
+      }
+    }
+  }
 `;
 
 export const StepCard = styled.div`
@@ -214,9 +225,18 @@ export const CartItemCard = styled.div`
   @media (max-width: 768px) {
     flex-wrap: wrap;
     gap: 12px;
+    padding: 14px;
 
     .col-check { width: 10%; }
-    .col-prod { width: 80%; }
+    .col-prod {
+      width: 80%;
+      gap: 10px;
+
+      .img-box {
+        width: 56px;
+        height: 56px;
+      }
+    }
     .col-price { display: none; }
     .col-qty { width: 45%; text-align: left; }
     .col-total { width: 45%; text-align: right; }
@@ -230,6 +250,10 @@ export const SummaryStickyCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @media (max-width: 768px) {
+    position: static;
+  }
 `;
 
 export const VoucherCard = styled.div`
@@ -578,13 +602,30 @@ export const SuccessCard = styled.div`
       color: #0f172a;
       font-size: 14px;
       font-weight: 800;
-      border: 1.5px solid #cbd5e1;
+      border: 1.5px solid #e2e8f0;
       cursor: pointer;
       transition: all 0.2s ease;
 
       &:hover {
-        background: #f8fafc;
         border-color: #0f172a;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 40px 16px;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    .success-actions {
+      flex-direction: column;
+
+      .btn-home,
+      .btn-orders {
+        width: 100%;
       }
     }
   }

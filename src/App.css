@@ -6,6 +6,12 @@
 
 body {
 	min-width: 320px;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
 }
 
 .ant-btn-primary {

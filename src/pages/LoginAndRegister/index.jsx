@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginForm from "./Login/LoginForm";
 import RegisterForm from "./Register/RegisterForm";
-import { CheckCircleFilled, SafetyCertificateFilled, TruckFilled } from "@ant-design/icons";
+import { CheckCircleFilled, SafetyCertificateFilled, CarFilled } from "@ant-design/icons";
 
 import { USER_LIST } from '../../constants/user'
 
@@ -24,7 +24,7 @@ const LoginAndRegisterPage = () => {
         <S.BrandPerks>
           <span><CheckCircleFilled /> Chính hãng 100%</span>
           <span><SafetyCertificateFilled /> Bảo hành tận tâm</span>
-          <span><TruckFilled /> Giao hàng toàn quốc</span>
+          <span><CarFilled /> Giao hàng toàn quốc</span>
         </S.BrandPerks>
       </S.LoginBrand>
       <S.LoginForm>

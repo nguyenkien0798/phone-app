@@ -65,6 +65,7 @@ const OrderHistory = () => {
       Lịch sử đơn hàng
       <Table
         columns={orderColumns}
+        scroll={{ x: 800 }}
         expandable={{
           expandedRowRender: (record) => {
             return (Array.isArray(record.products) ? record.products : []).map((item) => (

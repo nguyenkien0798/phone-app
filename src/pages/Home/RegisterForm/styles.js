@@ -121,7 +121,9 @@ export const Register = styled.div`
           transition: all 0.2s ease;
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 6px;
+          white-space: nowrap;
 
           &:hover {
             background: linear-gradient(135deg, #be123c 0%, #9f1239 100%);
@@ -129,7 +131,29 @@ export const Register = styled.div`
             box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
           }
         }
+
+        @media (max-width: 480px) {
+          flex-direction: column;
+          padding: 10px;
+          gap: 8px;
+
+          input {
+            width: 100%;
+            padding: 12px 14px;
+          }
+
+          button {
+            width: 100%;
+            height: 44px;
+            padding: 0 16px;
+          }
+        }
       }
     }
+  }
+
+  @media (max-width: 576px) {
+    padding: 40px 16px;
+    border-radius: 18px;
   }
 `;

@@ -478,6 +478,21 @@ export const PurchaseControls = styled.div`
         background: #fff1f2;
       }
     }
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: stretch;
+
+      .btn-add-cart,
+      .btn-buy-now {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .btn-fav {
+        width: 100%;
+      }
+    }
   }
 `;
 
@@ -490,6 +505,11 @@ export const DetailCard = styled.div`
   padding: 28px;
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
   margin-bottom: 24px;
+
+  @media (max-width: 768px) {
+    padding: 18px 14px;
+    border-radius: 18px;
+  }
 `;
 
 export const DetailCardHeader = styled.div`
@@ -794,6 +814,18 @@ export const SpecsTable = styled.div`
       font-weight: 700;
       color: #0f172a;
     }
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 12px;
+
+      .spec-col-label,
+      .spec-col-val {
+        width: 100%;
+      }
+    }
   }
 `;
 
@@ -842,5 +874,11 @@ export const SupportCard = styled.div`
       font-size: 11px;
       color: #94a3b8;
     }
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
   }
 `;

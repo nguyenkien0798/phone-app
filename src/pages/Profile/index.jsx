@@ -43,10 +43,10 @@ const ProfilePage = () => {
         <S.ProfileContainer>
           <S.LeftContainer>
             <S.AvatarContainer>
-              <Avatar size={180} icon={<UserOutlined />} />
-              <h2 style={{ color: "white" }}>{userInfo.data.name}</h2>
+              <Avatar size={180} icon={<UserOutlined />} className="profile-avatar" />
+              <h2>{userInfo.data.name}</h2>
             </S.AvatarContainer>
-            {renderProfileTab()}
+            <S.TabsRow>{renderProfileTab()}</S.TabsRow>
           </S.LeftContainer>
           <S.RightContainer>
             {activeTab === 1 && <OrderHistory />}

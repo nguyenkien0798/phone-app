@@ -55,6 +55,11 @@ export const TopContainer = styled.div`
     z-index: 1;
     pointer-events: none;
   }
+
+  @media (max-width: 768px) {
+    min-height: ${(props) => Math.min(props.height || 320, 220)}px;
+    background-size: cover;
+  }
 `;
 
 export const TopInner = styled.div`
@@ -68,6 +73,10 @@ export const TopInner = styled.div`
   text-align: center;
   gap: 10px;
   width: 100%;
+
+  @media (max-width: 576px) {
+    padding: 28px 16px;
+  }
 `;
 
 export const BreadcrumbWrapper = styled.div`
@@ -133,6 +142,11 @@ export const TopSubtitle = styled.p`
   line-height: 1.6;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.01em;
+  padding: 0 8px;
+
+  @media (max-width: 576px) {
+    font-size: 13px;
+  }
 `;
 
 /* Kept for backwards compatibility — unused but safe */

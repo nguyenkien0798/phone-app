@@ -20,8 +20,15 @@ export const LoginContainer = styled.div`
     background: linear-gradient(90deg, #08111f 0%, rgba(8, 17, 31, 0.94) 38%, rgba(8, 17, 31, 0.3) 75%, rgba(8, 17, 31, 0.7) 100%);
   }
 
+  @media (max-width: 1024px) {
+    gap: 32px;
+    padding: 48px 24px;
+    background-size: 55% auto;
+  }
+
   @media (max-width: 760px) {
     justify-content: center;
+    gap: 0;
     padding: 32px 16px;
     background-position: 65% center;
     background-size: auto 100%;
@@ -201,6 +208,10 @@ export const FormHeading = styled.h2`
   font-size: 28px;
   line-height: 1.2;
   letter-spacing: 0;
+
+  @media (max-width: 400px) {
+    font-size: 22px;
+  }
 `;
 
 export const FormSubheading = styled.p`

@@ -52,11 +52,31 @@ const Toolbar = () => {
     <S.Toolbar>
         <S.ToolbarIconMenu>
           <MenuOutlined onClick={showDrawer} style={{ color: "#17212b" }}/>
-          <Drawer title="Menu" placement="right" onClose={onClose} visible={visible}>
-            <Link to={ROUTER.USER.HOME} style={{ color: "#cd1817" }} ><HomeOutlined />TRANG CHỦ</Link><br/>
-            <Link to={ROUTER.USER.PRODUCT_LIST} style={{ color: "#cd1817" }} ><MobileOutlined />SẢN PHẨM</Link><br/>
-            <Link to={ROUTER.USER.ABOUT} style={{ color: "#cd1817" }} ><StarOutlined />GIỚI THIỆU</Link><br/>
-            <Link to={ROUTER.USER.CONTACT} style={{ color: "#cd1817" }} ><ContactsOutlined />LIÊN HỆ</Link>
+          <Drawer title="Menu" placement="right" onClose={onClose} visible={visible} width={300}>
+            <S.DrawerSearch>
+              <form
+                onSubmit={(e) => {
+                  handleSubmit(e);
+                  onClose();
+                }}
+              >
+                <Input
+                  value={keyword}
+                  onChange={(e) => setKeyword(e.target.value)}
+                  placeholder="Tìm sản phẩm..."
+                  prefix={<SearchOutlined />}
+                />
+                <Button htmlType="submit" aria-label="Tìm kiếm" type="primary" block>
+                  Tìm kiếm
+                </Button>
+              </form>
+            </S.DrawerSearch>
+            <S.DrawerNav>
+              <Link to={ROUTER.USER.HOME} onClick={onClose}><HomeOutlined /> Trang chủ</Link>
+              <Link to={ROUTER.USER.PRODUCT_LIST} onClick={onClose}><MobileOutlined /> Sản phẩm</Link>
+              <Link to={ROUTER.USER.ABOUT} onClick={onClose}><StarOutlined /> Giới thiệu</Link>
+              <Link to={ROUTER.USER.CONTACT} onClick={onClose}><ContactsOutlined /> Liên hệ</Link>
+            </S.DrawerNav>
           </Drawer>
         </S.ToolbarIconMenu>
         <S.ToolbarLogo>
@@ -65,22 +85,6 @@ const Toolbar = () => {
               <h3>Volt Store</h3>
           </Link>
         </S.ToolbarLogo>
-        {/* <S.ToolbarMenu>
-          <ul>
-            <li>
-              <Link to={ROUTER.USER.HOME}>TRANG CHỦ</Link>
-            </li>
-            <li>
-              <Link to={ROUTER.USER.PRODUCT_LIST}>SẢN PHẨM</Link>
-            </li>            
-            <li>
-              <Link to={ROUTER.USER.ABOUT}>GIỚI THIỆU</Link>
-            </li>
-            <li>
-              <Link to={ROUTER.USER.CONTACT}>LIÊN HỆ</Link>
-            </li>
-          </ul>
-        </S.ToolbarMenu> */}
         <S.ToolbarSearch>
           <form onSubmit={handleSubmit}>
             <Input
@@ -126,7 +130,10 @@ const Toolbar = () => {
             </Dropdown>
           ) : (
             <S.LoginItem>              
-                <Button onClick={() => history.push(ROUTER.LOGIN)}>Đăng nhập</Button>              
+                <Button onClick={() => history.push(ROUTER.LOGIN)}>
+                  <span className="login-full">Đăng nhập</span>
+                  <span className="login-short">Login</span>
+                </Button>              
             </S.LoginItem>
           )}
         </S.ToolbarItem>

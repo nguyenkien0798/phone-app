@@ -87,6 +87,22 @@ export const HeroHeader = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 20px 16px;
+    border-radius: 18px;
+
+    .hero-stats {
+      width: 100%;
+      justify-content: space-between;
+
+      .stat-box {
+        flex: 1;
+        min-width: 0;
+        padding: 10px 8px;
+      }
+    }
+  }
 `;
 
 export const SidebarFilter = styled.div`
@@ -97,6 +113,12 @@ export const SidebarFilter = styled.div`
   border-radius: 24px;
   padding: 24px;
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+  }
 
   .filter-box-header {
     display: flex;
@@ -336,6 +358,27 @@ export const ToolbarCard = styled.div`
         background: #f8fafc !important;
         display: flex;
         align-items: center;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 12px;
+    flex-direction: column;
+    align-items: stretch;
+
+    .search-input-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .sort-wrapper {
+      width: 100%;
+      justify-content: space-between;
+
+      .sort-select {
+        flex: 1;
+        min-width: 0;
       }
     }
   }
