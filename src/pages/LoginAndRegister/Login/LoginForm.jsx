@@ -48,7 +48,7 @@ const LoginFormPage = ({ userList }) => {
         message: responseAction.login.error,
       });
     }
-  }, [responseAction.login])
+  }, [responseAction.login, setError])
 
   const onSubmit = (values) => {
     dispatch(loginAction({
@@ -63,14 +63,14 @@ const LoginFormPage = ({ userList }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div style={{ marginBottom: 16 }}>
-        <label style={{ display: 'block', marginBottom: 8 }}>Email</label>
+        <label style={{ display: 'block', marginBottom: 8 }}>Địa chỉ email</label>
         <Controller
           name="email"
           control={control}
           render={({ field }) => (
             <Input
               {...field}
-              placeholder="Enter email"
+              placeholder="you@example.com"
               status={errors.email ? 'error' : ''}
             />
           )}
@@ -79,14 +79,14 @@ const LoginFormPage = ({ userList }) => {
       </div>
 
       <div style={{ marginBottom: 16 }}>
-        <label style={{ display: 'block', marginBottom: 8 }}>Password</label>
+        <label style={{ display: 'block', marginBottom: 8 }}>Mật khẩu</label>
         <Controller
           name="password"
           control={control}
           render={({ field }) => (
             <Input.Password
               {...field}
-              placeholder="Password"
+              placeholder="Nhập mật khẩu của bạn"
               status={errors.password ? 'error' : ''}
             />
           )}
@@ -95,7 +95,7 @@ const LoginFormPage = ({ userList }) => {
       </div>
 
       <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
-        Submit
+        Đăng nhập
       </Button>
     </form>
   );

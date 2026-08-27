@@ -53,7 +53,7 @@ const RegisterFormPage = ({ setIsLogin }) => {
         message: responseAction.register.error,
       });
     }
-  }, [responseAction.register?.error])
+  }, [responseAction.register?.error, setError])
 
   const onSubmit = (values) => {
     dispatch(registerAction({
@@ -77,76 +77,76 @@ const RegisterFormPage = ({ setIsLogin }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div style={formItemStyle}>
-        <label style={labelStyle}>Name</label>
+        <label style={labelStyle}>Họ và tên</label>
         <Controller
           name="name"
           control={control}
           render={({ field }) => (
-            <Input {...field} placeholder="Enter name" status={errors.name ? 'error' : ''} />
+            <Input {...field} placeholder="Nguyễn Văn A" status={errors.name ? 'error' : ''} />
           )}
         />
         {errors.name && <span style={errorStyle}>{errors.name.message}</span>}
       </div>
 
       <div style={formItemStyle}>
-        <label style={labelStyle}>Email</label>
+        <label style={labelStyle}>Địa chỉ email</label>
         <Controller
           name="email"
           control={control}
           render={({ field }) => (
-            <Input {...field} placeholder="Enter email" status={errors.email ? 'error' : ''} />
+            <Input {...field} placeholder="you@example.com" status={errors.email ? 'error' : ''} />
           )}
         />
         {errors.email && <span style={errorStyle}>{errors.email.message}</span>}
       </div>
 
       <div style={formItemStyle}>
-        <label style={labelStyle}>Password</label>
+        <label style={labelStyle}>Mật khẩu</label>
         <Controller
           name="password"
           control={control}
           render={({ field }) => (
-            <Input.Password {...field} placeholder="Password" status={errors.password ? 'error' : ''} />
+            <Input.Password {...field} placeholder="Tạo mật khẩu 6-14 ký tự" status={errors.password ? 'error' : ''} />
           )}
         />
         {errors.password && <span style={errorStyle}>{errors.password.message}</span>}
       </div>
 
       <div style={formItemStyle}>
-        <label style={labelStyle}>Re-Password</label>
+        <label style={labelStyle}>Nhập lại mật khẩu</label>
         <Controller
           name="rePassword"
           control={control}
           render={({ field }) => (
-            <Input.Password {...field} placeholder="Re-Password" status={errors.rePassword ? 'error' : ''} />
+            <Input.Password {...field} placeholder="Nhập lại mật khẩu của bạn" status={errors.rePassword ? 'error' : ''} />
           )}
         />
         {errors.rePassword && <span style={errorStyle}>{errors.rePassword.message}</span>}
       </div>
 
       <div style={formItemStyle}>
-        <label style={labelStyle}>Gender</label>
+        <label style={labelStyle}>Giới tính</label>
         <Controller
           name="gender"
           control={control}
           render={({ field }) => (
             <Select {...field} style={{ width: '100%' }}>
-              <Select.Option value="male">Male</Select.Option>
-              <Select.Option value="female">Female</Select.Option>
+              <Select.Option value="male">Nam</Select.Option>
+              <Select.Option value="female">Nữ</Select.Option>
             </Select>
           )}
         />
       </div>
 
       <div style={formItemStyle}>
-        <label style={labelStyle}>Role</label>
+        <label style={labelStyle}>Loại tài khoản</label>
         <Controller
           name="role"
           control={control}
           render={({ field }) => (
             <Radio.Group {...field}>
-              <Radio value="user">User</Radio>
-              <Radio value="admin">Admin</Radio>
+              <Radio value="user">Khách hàng</Radio>
+              <Radio value="admin">Quản trị viên</Radio>
             </Radio.Group>
           )}
         />
@@ -165,7 +165,7 @@ const RegisterFormPage = ({ setIsLogin }) => {
       </div>
 
       <Button type="primary" htmlType="submit" style={{ width: '100%' }} disabled={!watch("isOK")}>
-        Submit
+        Tạo tài khoản
       </Button>
     </form>
   );
