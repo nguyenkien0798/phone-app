@@ -32,10 +32,14 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const localStorageUserInfo = JSON.parse(localStorage.getItem("userInfo"));
-    if (localStorageUserInfo) {
-      const decodedUserData = jwtDecode(localStorageUserInfo.accessToken);
-      dispatch(getUserInfoAction({ id: decodedUserData.sub }));
+    try {
+      const localStorageUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+      if (localStorageUserInfo?.accessToken) {
+        const decodedUserData = jwtDecode(localStorageUserInfo.accessToken);
+        dispatch(getUserInfoAction({ id: decodedUserData.sub }));
+      }
+    } catch (error) {
+      localStorage.removeItem("userInfo");
     }
   }, []);
 

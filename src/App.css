@@ -1,7 +1,10 @@
- :root {
+:root {
 	--brand: #d92d35;
 	--brand-dark: #a91928;
 	--ink: #17212b;
+	--scroll-track: #c5d0e0;
+	--scroll-thumb: #1e3a5f;
+	--scroll-thumb-hover: #0f2744;
 }
 
 body {
@@ -12,6 +15,42 @@ body {
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+
+/* Chromium / Safari / Edge */
+*::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+	background: var(--scroll-track);
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--scroll-track);
+	border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: var(--scroll-thumb);
+	border-radius: 999px;
+	border: 2px solid var(--scroll-track);
+	background-clip: padding-box;
+	min-height: 48px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: var(--scroll-thumb-hover);
+	border: 2px solid var(--scroll-track);
+	background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+	background: var(--scroll-track);
 }
 
 .ant-btn-primary {

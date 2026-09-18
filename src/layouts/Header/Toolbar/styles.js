@@ -249,20 +249,6 @@ export const LoginItem = styled.div`
     color: #17212b;
     font-weight: 700;
   }
-
-  .login-short {
-    display: none;
-  }
-
-  @media screen and (max-width: 480px) {
-    .login-full {
-      display: none;
-    }
-
-    .login-short {
-      display: inline;
-    }
-  }
 `;
 
 export const ToolbarIconMenu = styled.div`

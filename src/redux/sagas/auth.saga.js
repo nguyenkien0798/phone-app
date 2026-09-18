@@ -31,9 +31,10 @@ function* loginSaga(action) {
       type: FAIL(AUTH_ACTION.LOGIN),
       payload: {
         error:
-          (e.response?.data === "Cannot find user" ||
-            e.response?.data === "Incorrect password") &&
-          "Đăng nhập thất bại",
+          e.response?.data === "Cannot find user" ||
+          e.response?.data === "Incorrect password"
+            ? "Email hoặc mật khẩu không đúng"
+            : "Đăng nhập không thành công",
       },
     });
   }
@@ -69,6 +70,7 @@ function* getUserInfoSaga(action) {
       },
     });
   } catch (e) {
+    localStorage.removeItem("userInfo");
     yield put({
       type: FAIL(AUTH_ACTION.GET_USER_INFO),
       payload: {

@@ -129,11 +129,10 @@ const Toolbar = () => {
               </Space>
             </Dropdown>
           ) : (
-            <S.LoginItem>              
-                <Button onClick={() => history.push(ROUTER.LOGIN)}>
-                  <span className="login-full">Đăng nhập</span>
-                  <span className="login-short">Login</span>
-                </Button>              
+            <S.LoginItem>
+              <Button type="default" onClick={() => history.push(ROUTER.LOGIN)}>
+                Đăng nhập
+              </Button>
             </S.LoginItem>
           )}
         </S.ToolbarItem>

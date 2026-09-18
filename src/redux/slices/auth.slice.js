@@ -21,6 +21,9 @@ const authSlice = createSlice({
   },
   extraReducers: {
     [SUCCESS(AUTH_ACTION.GET_USER_INFO)]: (state, action) => { state.userInfo.data = action.payload.data; },
+    [FAIL(AUTH_ACTION.GET_USER_INFO)]: (state) => {
+      state.userInfo = { data: {}, loading: false };
+    },
     [SUCCESS(AUTH_ACTION.LOGIN)]: (state, action) => {
       state.userInfo.data = action.payload.data;
       state.responseAction.login = { loading: false, error: "" };
