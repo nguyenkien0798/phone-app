@@ -270,8 +270,10 @@ const Checkout = ({ setCheckoutStep }) => {
             </div>
             <div className="bill-row">
               <span>Phí vận chuyển</span>
-              <span className="val" style={{ color: "#16a34a" }}>
-                Miễn phí (Toàn quốc)
+              <span className="val" style={{ color: "#64748b", fontSize: 12, textAlign: "right" }}>
+                Miễn phí Đà Nẵng
+                <br />
+                Toàn quốc +35.000₫
               </span>
             </div>
             <div className="bill-row total-row">

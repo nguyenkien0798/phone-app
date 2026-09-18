@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, Radio } from "antd";
 import {
@@ -11,6 +11,12 @@ import {
 } from "@ant-design/icons";
 
 import { orderCartAction } from "../../../redux/slices/order.slice";
+import {
+  formatShippingFeeLabel,
+  getShippingFee,
+  isDaNangCity,
+  SHIPPING_FEE_NATIONWIDE,
+} from "../shipping";
 
 import * as S from "../styles";
 
@@ -22,6 +28,17 @@ const Payment = ({ setCheckoutStep }) => {
   const { orderInfo } = useSelector((state) => state.orderReducer);
   const { selectedCarts } = useSelector((state) => state.cartReducer);
   const { discountInfo } = useSelector((state) => state.discountReducer);
+
+  const daNangOrder = isDaNangCity(orderInfo.city);
+  const shippingFee = getShippingFee(orderInfo.city);
+  const shippingLabel = formatShippingFeeLabel(orderInfo.city);
+
+  useEffect(() => {
+    paymentForm.setFieldsValue({
+      shipper: daNangOrder ? "giaohangnhanh" : "giaohangtietkiem",
+      paymentType: "cod",
+    });
+  }, [daNangOrder, paymentForm]);
 
   const subtotal = selectedCarts.reduce((total, cartItem) => {
     const unitPrice = cartItem.productOption
@@ -39,7 +56,7 @@ const Payment = ({ setCheckoutStep }) => {
     }
   }
 
-  const finalTotal = Math.max(0, subtotal - discountAmount);
+  const finalTotal = Math.max(0, subtotal - discountAmount + shippingFee);
 
   const handleConfirmPayment = (values) => {
     const newValues = {
@@ -56,6 +73,7 @@ const Payment = ({ setCheckoutStep }) => {
           option: cartItem.productOption?.name || null,
         };
       }),
+      shippingFee,
       totalPrice: finalTotal,
       discountAmount,
       createdAt: new Date().toISOString(),
@@ -73,17 +91,18 @@ const Payment = ({ setCheckoutStep }) => {
 
   return (
     <Row gutter={[24, 24]}>
-      {/* Payment & Shipping Options */}
       <Col lg={16} xs={24}>
         <S.StepCard>
           <Form
             form={paymentForm}
             name="paymentForm"
             layout="vertical"
-            initialValues={{ shipper: "giaohangnhanh", paymentType: "cod" }}
+            initialValues={{
+              shipper: daNangOrder ? "giaohangnhanh" : "giaohangtietkiem",
+              paymentType: "cod",
+            }}
             onFinish={handleConfirmPayment}
           >
-            {/* 1. SHIPPING METHOD */}
             <div style={{ marginBottom: 28 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid #f1f5f9" }}>
                 <CarFilled style={{ fontSize: 20, color: "#2563eb" }} />
@@ -92,29 +111,62 @@ const Payment = ({ setCheckoutStep }) => {
                 </h3>
               </div>
 
+              <div
+                style={{
+                  marginBottom: 12,
+                  padding: "10px 12px",
+                  borderRadius: 10,
+                  background: daNangOrder ? "#ecfdf5" : "#fff7ed",
+                  border: `1px solid ${daNangOrder ? "#a7f3d0" : "#fed7aa"}`,
+                  fontSize: 13,
+                  color: "#334155",
+                }}
+              >
+                {daNangOrder ? (
+                  <>
+                    Địa chỉ tại <strong>Đà Nẵng</strong> —{" "}
+                    <strong style={{ color: "#059669" }}>miễn phí giao hàng</strong>.
+                  </>
+                ) : (
+                  <>
+                    Giao <strong>toàn quốc</strong> — phí vận chuyển{" "}
+                    <strong style={{ color: "#c2410c" }}>
+                      {SHIPPING_FEE_NATIONWIDE.toLocaleString("vi-VN")}₫
+                    </strong>
+                    .
+                  </>
+                )}
+              </div>
+
               <Form.Item name="shipper" style={{ marginBottom: 0 }}>
                 <Radio.Group style={{ width: "100%" }}>
-                  <Radio.Button
-                    value="giaohangnhanh"
-                    style={{
-                      display: "block",
-                      height: "auto",
-                      padding: "14px 18px",
-                      borderRadius: 14,
-                      marginBottom: 10,
-                      border: "1.5px solid #e2e8f0",
-                    }}
-                  >
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <div>
-                        <strong style={{ fontSize: 14, color: "#0f172a" }}>⚡ Giao Hàng Nhanh 2H (Đà Nẵng & Nội Thành)</strong>
-                        <span style={{ display: "block", fontSize: 12, color: "#64748b" }}>
-                          Nhận hàng trong ngày, hỗ trợ kiểm tra hàng trước khi thanh toán
+                  {daNangOrder && (
+                    <Radio.Button
+                      value="giaohangnhanh"
+                      style={{
+                        display: "block",
+                        height: "auto",
+                        padding: "14px 18px",
+                        borderRadius: 14,
+                        marginBottom: 10,
+                        border: "1.5px solid #e2e8f0",
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <div>
+                          <strong style={{ fontSize: 14, color: "#0f172a" }}>
+                            ⚡ Giao Hàng Nhanh 2H (Đà Nẵng)
+                          </strong>
+                          <span style={{ display: "block", fontSize: 12, color: "#64748b" }}>
+                            Nhận hàng trong ngày, kiểm tra máy trước khi thanh toán
+                          </span>
+                        </div>
+                        <span style={{ color: "#16a34a", fontWeight: 800, fontSize: 13 }}>
+                          Miễn phí
                         </span>
                       </div>
-                      <span style={{ color: "#16a34a", fontWeight: 800, fontSize: 13 }}>Miễn phí</span>
-                    </div>
-                  </Radio.Button>
+                    </Radio.Button>
+                  )}
 
                   <Radio.Button
                     value="giaohangtietkiem"
@@ -128,19 +180,32 @@ const Payment = ({ setCheckoutStep }) => {
                   >
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                       <div>
-                        <strong style={{ fontSize: 14, color: "#0f172a" }}>📦 Giao Hàng Tiêu Chuẩn Toàn Quốc</strong>
+                        <strong style={{ fontSize: 14, color: "#0f172a" }}>
+                          📦 Giao Hàng Toàn Quốc
+                        </strong>
                         <span style={{ display: "block", fontSize: 12, color: "#64748b" }}>
-                          Giao hàng từ 2 - 3 ngày làm việc, bảo hiểm hàng hóa 100%
+                          {daNangOrder
+                            ? "Giao tiêu chuẩn trong Đà Nẵng, 1-2 ngày"
+                            : "Giao 2-4 ngày làm việc, bảo hiểm hàng hóa 100%"}
                         </span>
                       </div>
-                      <span style={{ color: "#16a34a", fontWeight: 800, fontSize: 13 }}>Miễn phí</span>
+                      <span
+                        style={{
+                          color: daNangOrder ? "#16a34a" : "#c2410c",
+                          fontWeight: 800,
+                          fontSize: 13,
+                        }}
+                      >
+                        {daNangOrder
+                          ? "Miễn phí"
+                          : `${SHIPPING_FEE_NATIONWIDE.toLocaleString("vi-VN")}₫`}
+                      </span>
                     </div>
                   </Radio.Button>
                 </Radio.Group>
               </Form.Item>
             </div>
 
-            {/* 2. PAYMENT METHOD */}
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid #f1f5f9" }}>
                 <CreditCardFilled style={{ fontSize: 20, color: "#7c3aed" }} />
@@ -244,10 +309,8 @@ const Payment = ({ setCheckoutStep }) => {
         </S.StepCard>
       </Col>
 
-      {/* Summary Recap & Final Confirmation */}
       <Col lg={8} xs={24}>
         <S.SummaryStickyCard>
-          {/* Shipping Address Recap Card */}
           <S.StepCard style={{ padding: "18px 20px" }}>
             <div style={{ fontSize: 14, fontWeight: 800, color: "#0f172a", marginBottom: 10, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span>Địa Chỉ Nhận Hàng</span>
@@ -268,7 +331,6 @@ const Payment = ({ setCheckoutStep }) => {
             </div>
           </S.StepCard>
 
-          {/* Bill Summary */}
           <S.BillSummaryCard>
             <div className="bill-title">Chi Tiết Thanh Toán</div>
             <div className="bill-row">
@@ -285,7 +347,12 @@ const Payment = ({ setCheckoutStep }) => {
             </div>
             <div className="bill-row">
               <span>Phí giao hàng</span>
-              <span className="val" style={{ color: "#16a34a" }}>0 ₫ (Miễn phí)</span>
+              <span
+                className="val"
+                style={{ color: shippingLabel.free ? "#16a34a" : "#c2410c" }}
+              >
+                {shippingLabel.text}
+              </span>
             </div>
             <div className="bill-row total-row">
               <span>Tổng cần thanh toán</span>

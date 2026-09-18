@@ -16,6 +16,7 @@ import ProductDetail from './pages/ProductDetail'
 import CartPage from './pages/Cart'
 import ContactPage from './pages/Contact'
 import AboutPage from './pages/About'
+import ProductManagePage from './pages/ProductManage'
 
 
 import { ROUTER } from "./constants/router";
@@ -89,6 +90,11 @@ function App() {
           exact
           path={ROUTER.USER.PROFILE}
           component={ProfilePage}
+        />
+        <DefaultLayout
+          exact
+          path={ROUTER.USER.PRODUCT_MANAGE}
+          component={ProductManagePage}
         />
         <LoginRoute 
           exact

@@ -13,6 +13,7 @@ import {
   getDistrictListAction,
   getWardListAction,
 } from "../../../redux/slices/common.slice";
+import { DA_NANG_CITY_CODE, isDaNangCity } from "../shipping";
 
 import * as S from "../styles";
 
@@ -34,6 +35,28 @@ const Info = ({ setCheckoutStep }) => {
     dispatch(getDistrictListAction());
     dispatch(getWardListAction());
   }, [dispatch]);
+
+  // Ưu tiên chọn sẵn Đà Nẵng nếu có
+  useEffect(() => {
+    if (!cityList.data.length || !districtList.data.length) return;
+    const currentCity = infoForm.getFieldValue("city");
+    if (currentCity) return;
+
+    const daNang = cityList.data.find(
+      (city) =>
+        city.code === DA_NANG_CITY_CODE || isDaNangCity(city.name)
+    );
+    if (!daNang) return;
+
+    const districts = districtList.data.filter(
+      (district) => district.parentcode === daNang.code
+    );
+    setDistrictOptions(districts);
+    infoForm.setFieldsValue({
+      city: daNang.code,
+      address: "390 Phạm Xuân Ẩn",
+    });
+  }, [cityList.data, districtList.data, infoForm]);
 
   const handleConfirmInfo = (values) => {
     const city = cityList.data.find((c) => c.code === values.city);
@@ -71,14 +94,30 @@ const Info = ({ setCheckoutStep }) => {
 
   return (
     <Row gutter={[24, 24]}>
-      {/* Delivery Info Form Column */}
       <Col lg={16} xs={24}>
         <S.StepCard>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20, paddingBottom: 12, borderBottom: "1px solid #f1f5f9" }}>
-            <EnvironmentFilled style={{ fontSize: 20, color: "#2563eb" }} />
+            <EnvironmentFilled style={{ fontSize: 20, color: "#d92d35" }} />
             <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: "#0f172a" }}>
               Địa Chỉ & Thông Tin Nhận Hàng
             </h3>
+          </div>
+
+          <div
+            style={{
+              marginBottom: 16,
+              padding: "12px 14px",
+              borderRadius: 12,
+              background: "linear-gradient(135deg, #ecfdf5 0%, #fff7ed 100%)",
+              border: "1px solid #d1fae5",
+              fontSize: 13,
+              color: "#334155",
+              lineHeight: 1.5,
+            }}
+          >
+            <strong style={{ color: "#059669" }}>Miễn phí giao hàng tại Đà Nẵng.</strong>{" "}
+            Giao toàn quốc vẫn hỗ trợ, phí vận chuyển{" "}
+            <strong style={{ color: "#c2410c" }}>35.000₫</strong>.
           </div>
 
           <Form
@@ -127,6 +166,8 @@ const Info = ({ setCheckoutStep }) => {
                   rules={[{ required: true, message: "Vui lòng chọn Tỉnh/Thành" }]}
                 >
                   <Select
+                    showSearch
+                    optionFilterProp="children"
                     placeholder="Chọn Tỉnh/Thành"
                     style={{ width: "100%" }}
                     size="large"
@@ -135,6 +176,7 @@ const Info = ({ setCheckoutStep }) => {
                         (district) => district.parentcode === value
                       );
                       setDistrictOptions(newDistrictList);
+                      setWardOptions([]);
                       infoForm.setFieldsValue({ district: undefined, ward: undefined });
                     }}
                   >
@@ -154,6 +196,8 @@ const Info = ({ setCheckoutStep }) => {
                   rules={[{ required: true, message: "Vui lòng chọn Quận/Huyện" }]}
                 >
                   <Select
+                    showSearch
+                    optionFilterProp="children"
                     placeholder="Chọn Quận/Huyện"
                     style={{ width: "100%" }}
                     size="large"
@@ -182,6 +226,8 @@ const Info = ({ setCheckoutStep }) => {
                   rules={[{ required: true, message: "Vui lòng chọn Phường/Xã" }]}
                 >
                   <Select
+                    showSearch
+                    optionFilterProp="children"
                     placeholder="Chọn Phường/Xã"
                     style={{ width: "100%" }}
                     size="large"
@@ -202,7 +248,10 @@ const Info = ({ setCheckoutStep }) => {
               name="address"
               rules={[{ required: true, message: "Vui lòng nhập địa chỉ chi tiết" }]}
             >
-              <Input placeholder="Ví dụ: 123 Nguyễn Văn Linh..." style={{ height: 44, borderRadius: 12 }} />
+              <Input
+                placeholder="Ví dụ: 390 Phạm Xuân Ẩn..."
+                style={{ height: 44, borderRadius: 12 }}
+              />
             </Form.Item>
 
             <Form.Item label="Ghi chú giao hàng (Tùy chọn)" name="note">
@@ -216,7 +265,6 @@ const Info = ({ setCheckoutStep }) => {
         </S.StepCard>
       </Col>
 
-      {/* Right Sidebar: Selected Items & Navigation */}
       <Col lg={8} xs={24}>
         <S.SummaryStickyCard>
           <S.BillSummaryCard>
@@ -262,8 +310,14 @@ const Info = ({ setCheckoutStep }) => {
                     : "0 ₫"}
                 </span>
               </div>
+              <div className="bill-row">
+                <span>Phí vận chuyển</span>
+                <span className="val" style={{ color: "#64748b", fontSize: 12 }}>
+                  Tính theo địa chỉ
+                </span>
+              </div>
               <div className="bill-row total-row">
-                <span>Tổng thanh toán</span>
+                <span>Tổng tạm tính</span>
                 <span className="total-val">
                   {finalTotal.toLocaleString("vi-VN")} ₫
                 </span>

@@ -7,6 +7,7 @@ export const ROUTER = {
     PROFILE: "/profile",
     CONTACT: "/contact",
     ABOUT: "/about",
+    PRODUCT_MANAGE: "/admin/products",
   },
   LOGIN: '/login',
   NOT_FOUND: '/not-found',

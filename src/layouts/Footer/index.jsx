@@ -63,7 +63,7 @@ function Footer() {
           <ul className="footer-list">
             <li className="footer-item">
               <span className="footer-line">Địa chỉ: </span>
-              72 Nguyễn Văn Thoại, Ngũ Hành Sơn, Đà Nẵng
+              390 Phạm Xuân Ẩn, Phường Hòa Xuân, TP.Đà Nẵng
             </li>
             <li className="footer-item">
               <span className="footer-line">Điện thoại:</span> 1900.636.099

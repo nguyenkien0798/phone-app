@@ -7,7 +7,7 @@ export const BREADCRUMB = [
     icon: <HomeOutlined />,
   },
   {
-    title: "Liên hệ",
+    title: "Liên hệ",
     path: "/contact",
   },
 ];

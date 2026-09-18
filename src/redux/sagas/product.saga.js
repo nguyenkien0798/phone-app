@@ -88,19 +88,23 @@ function* updateProductSaga(action) {
 
 function* deleteProductSaga(action) {
   try {
-    const { id } = action.payload;
+    const { id, callback } = action.payload;
     yield deleteProductApi(id);
     yield put({
       type: SUCCESS(PRODUCT_ACTION.DELETE_PRODUCT),
     });
-    yield put({
-      type: getProductListAction.type,
-      payload: { limit: 10, page: 1 },
-    });
+    if (callback?.refreshList) {
+      yield callback.refreshList();
+    } else {
+      yield put({
+        type: getProductListAction.type,
+        payload: { limit: 10, page: 1 },
+      });
+    }
   } catch (e) {
     yield put({
       type: FAIL(PRODUCT_ACTION.DELETE_PRODUCT),
-      payload: { error: "Lấy dữ liệu không thành công" },
+      payload: { error: "Xóa sản phẩm không thành công" },
     });
   }
 }

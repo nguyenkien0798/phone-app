@@ -34,9 +34,7 @@ const LoginAndRegisterPage = () => {
           <span>
             <SafetyCertificateFilled /> Bảo hành tận tâm
           </span>
-          <span>
-            <CarFilled /> Giao hàng toàn quốc
-          </span>
+          <span><CarFilled /> Giao Đà Nẵng miễn phí</span>
         </S.BrandPerks>
       </S.LoginBrand>
 

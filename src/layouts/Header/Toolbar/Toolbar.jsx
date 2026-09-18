@@ -10,7 +10,8 @@ import {
   StarOutlined, 
   ContactsOutlined, 
   MobileOutlined,
-  SearchOutlined
+  SearchOutlined,
+  AppstoreOutlined
    } from '@ant-design/icons'
 
 import logo from '../../../assets/images/brand/phone-store-mark.svg'
@@ -74,6 +75,11 @@ const Toolbar = () => {
             <S.DrawerNav>
               <Link to={ROUTER.USER.HOME} onClick={onClose}><HomeOutlined /> Trang chủ</Link>
               <Link to={ROUTER.USER.PRODUCT_LIST} onClick={onClose}><MobileOutlined /> Sản phẩm</Link>
+              {userInfo.data.role === "admin" && (
+                <Link to={ROUTER.USER.PRODUCT_MANAGE} onClick={onClose}>
+                  <AppstoreOutlined /> Quản lý sản phẩm
+                </Link>
+              )}
               <Link to={ROUTER.USER.ABOUT} onClick={onClose}><StarOutlined /> Giới thiệu</Link>
               <Link to={ROUTER.USER.CONTACT} onClick={onClose}><ContactsOutlined /> Liên hệ</Link>
             </S.DrawerNav>
@@ -116,9 +122,19 @@ const Toolbar = () => {
             <Dropdown
               overlay={
                 <Menu>
-                  <Menu.Item key="1" onClick={() => history.push(ROUTER.USER.PROFILE)}>My Profile</Menu.Item>
+                  <Menu.Item key="1" onClick={() => history.push(ROUTER.USER.PROFILE)}>
+                    Trang cá nhân
+                  </Menu.Item>
+                  {userInfo.data.role === "admin" && (
+                    <Menu.Item
+                      key="products"
+                      onClick={() => history.push(ROUTER.USER.PRODUCT_MANAGE)}
+                    >
+                      Quản lý sản phẩm
+                    </Menu.Item>
+                  )}
                   <Menu.Item key="2" onClick={() => handleLogout()}>
-                    Logout
+                    Đăng xuất
                   </Menu.Item>
                 </Menu>
               }
