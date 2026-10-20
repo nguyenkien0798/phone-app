@@ -38,7 +38,8 @@
       "pin": "4352 mAh",
       "sim": "2, 1 eSIM, 1 Nano SIM",
       "hdh": "iOS 15",
-      "updatedAt": 1787392174161
+      "updatedAt": 1787392174161,
+      "stock": 20
     },
     {
       "id": 2,
@@ -56,7 +57,8 @@
       "pin": "3225 mAh",
       "sim": "2, 1 eSIM, 1 Nano SIM",
       "hdh": "iOS 15",
-      "updatedAt": 1787392174162
+      "updatedAt": 1787392174162,
+      "stock": 20
     },
     {
       "id": 3,
@@ -74,7 +76,8 @@
       "pin": "2406 mAh",
       "sim": "2, 1 eSIM, 1 Nano SIM",
       "hdh": "iOS 15",
-      "updatedAt": 1787392174162
+      "updatedAt": 1787392174162,
+      "stock": 20
     },
     {
       "id": 4,
@@ -92,7 +95,8 @@
       "pin": "3095 mAh",
       "sim": "2, 1 eSIM, 1 Nano SIM",
       "hdh": "iOS 15",
-      "updatedAt": 1787392174163
+      "updatedAt": 1787392174163,
+      "stock": 20
     },
     {
       "id": 5,
@@ -110,7 +114,8 @@
       "pin": "4352 mAh",
       "sim": "2, 1 eSIM, 1 Nano SIM",
       "hdh": "iOS 15",
-      "updatedAt": 1787392174163
+      "updatedAt": 1787392174163,
+      "stock": 20
     },
     {
       "name": "iPhone 12 Pro",
@@ -128,7 +133,8 @@
       "pin": "2815 mAh",
       "sim": "2, 1 eSIM, 1 Nano SIM",
       "hdh": "iOS 14",
-      "updatedAt": 1787392174163
+      "updatedAt": 1787392174163,
+      "stock": 20
     },
     {
       "id": 9,
@@ -146,7 +152,8 @@
       "pin": "3687 mAh",
       "sim": "2, 1 eSIM, 1 Nano SIM",
       "hdh": "iOS 14",
-      "updatedAt": 1787392174163
+      "updatedAt": 1787392174163,
+      "stock": 20
     },
     {
       "id": 11,
@@ -164,7 +171,8 @@
       "pin": "2658 mAh",
       "sim": "2, 1 eSIM, 1 Nano SIM",
       "hdh": "iOS 12",
-      "updatedAt": 1787392174164
+      "updatedAt": 1787392174164,
+      "stock": 20
     },
     {
       "id": 12,
@@ -182,7 +190,8 @@
       "pin": "3174 mAh",
       "sim": "2, 1 eSIM, 1 Nano SIM",
       "hdh": "iOS 12",
-      "updatedAt": 1787392174164
+      "updatedAt": 1787392174164,
+      "stock": 20
     },
     {
       "id": 13,
@@ -200,7 +209,8 @@
       "pin": "2691 mAh",
       "sim": "1 Nano SIM",
       "hdh": "iOS 11",
-      "updatedAt": 1787392174165
+      "updatedAt": 1787392174165,
+      "stock": 20
     },
     {
       "id": 14,
@@ -218,7 +228,8 @@
       "pin": "2691 mAh",
       "sim": "1 Nano SIM",
       "hdh": "iOS 11",
-      "updatedAt": 1787392174165
+      "updatedAt": 1787392174165,
+      "stock": 20
     },
     {
       "id": 15,
@@ -236,7 +247,8 @@
       "pin": "1960 mAh",
       "sim": "1 Nano SIM",
       "hdh": "iOS 10",
-      "updatedAt": 1787392174165
+      "updatedAt": 1787392174165,
+      "stock": 20
     },
     {
       "id": 16,
@@ -254,7 +266,8 @@
       "pin": "2900 mAh",
       "sim": "1 Nano SIM",
       "hdh": "iOS 10",
-      "updatedAt": 1787392174169
+      "updatedAt": 1787392174169,
+      "stock": 20
     },
     {
       "id": 17,
@@ -274,7 +287,8 @@
       "pin": "Lên đến 18 giờ",
       "sim": "Wi-Fi 6",
       "hdh": "macOS",
-      "updatedAt": 1787628347888
+      "updatedAt": 1787628347888,
+      "stock": 20
     },
     {
       "id": 18,
@@ -294,7 +308,8 @@
       "pin": "Lên đến 18 giờ",
       "sim": "Wi-Fi 6",
       "hdh": "iPadOS",
-      "updatedAt": 1787628347957
+      "updatedAt": 1787628347957,
+      "stock": 20
     },
     {
       "id": 19,
@@ -314,7 +329,8 @@
       "pin": "Lên đến 18 giờ",
       "sim": "Wi-Fi 6",
       "hdh": "watchOS",
-      "updatedAt": 1787628347991
+      "updatedAt": 1787628347991,
+      "stock": 20
     },
     {
       "id": 20,
@@ -334,7 +350,8 @@
       "pin": "Lên đến 18 giờ",
       "sim": "Wi-Fi 6",
       "hdh": "Firmware Apple",
-      "updatedAt": 1787628348015
+      "updatedAt": 1787628348015,
+      "stock": 20
     },
     {
       "id": 21,
@@ -354,7 +371,8 @@
       "pin": "Lên đến 18 giờ",
       "sim": "Wi-Fi 6",
       "hdh": "macOS",
-      "updatedAt": 1787628348059
+      "updatedAt": 1787628348059,
+      "stock": 20
     },
     {
       "id": 22,
@@ -374,7 +392,8 @@
       "pin": "Lên đến 18 giờ",
       "sim": "Wi-Fi 6",
       "hdh": "iOS 17",
-      "updatedAt": 1787392174171
+      "updatedAt": 1787392174171,
+      "stock": 20
     },
     {
       "id": 23,
@@ -394,7 +413,8 @@
       "pin": "Lên đến 18 giờ",
       "sim": "Wi-Fi 6",
       "hdh": "Tương thích iPadOS",
-      "updatedAt": 1787392174172
+      "updatedAt": 1787392174172,
+      "stock": 20
     },
     {
       "id": 24,
@@ -414,7 +434,8 @@
       "pin": "Lên đến 18 giờ",
       "sim": "Wi-Fi 6",
       "hdh": "Tương thích iPadOS",
-      "updatedAt": 1787392174172
+      "updatedAt": 1787392174172,
+      "stock": 20
     }
   ],
   "categories": [
@@ -751,7 +772,9 @@
       "totalPrice": 46000000,
       "createdAt": 1640076435466,
       "updatedAt": 1640076435467,
-      "id": 2
+      "id": 2,
+      "status": "processing",
+      "paymentStatus": "unpaid"
     },
     {
       "fullName": "Nguyễn Đình Kiên",
@@ -777,7 +800,9 @@
       "totalPrice": 50000000,
       "createdAt": 1640159645601,
       "updatedAt": 1640159645603,
-      "id": 3
+      "id": 3,
+      "status": "confirmed",
+      "paymentStatus": "paid"
     },
     {
       "fullName": "Nguyen Dinh Kien",
@@ -805,25 +830,35 @@
       "discountAmount": 0,
       "createdAt": 1787646589930,
       "updatedAt": 1787646589930,
-      "id": 4
+      "id": 4,
+      "status": "processing",
+      "paymentStatus": "unpaid"
     }
   ],
   "discounts": [
     {
       "id": 1,
-      "name": "Khuyến mãi giáng sinh 25%",
+      "name": "Khuyến mãi Volt Store 25%",
       "code": "KMGS25",
-      "endDate": 1639155599000,
+      "endDate": 1824016796007,
       "discountType": "percent",
       "discountValue": 25
     },
     {
-      "id": 1,
-      "name": "Khuyến mãi black friday",
+      "id": 2,
+      "name": "Black Friday 10%",
       "code": "KMBF",
-      "endDate": 1638403199000,
+      "endDate": 1824016796007,
       "discountType": "percent",
       "discountValue": 10
+    },
+    {
+      "id": 3,
+      "name": "Giảm 500.000đ",
+      "code": "GIAM500K",
+      "endDate": 1824016796007,
+      "discountType": "amount",
+      "discountValue": 500000
     }
   ],
   "productOptions": [
@@ -96469,5 +96504,8 @@
       "status": 1,
       "region": null
     }
-  ]
+  ],
+  "favorites": [],
+  "contacts": [],
+  "newsletters": []
 }

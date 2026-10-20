@@ -33,15 +33,29 @@ server.use(auth);
 
 server.use((req, res, next) => {
   if (req.method === "POST" && req.path === "/orders" && Array.isArray(req.body.products)) {
-    req.body.products.forEach((orderProduct) => {
+    const updates = [];
+
+    for (const orderProduct of req.body.products) {
       const product = server.db.get("products").find({ id: orderProduct.id });
       const currentProduct = product.value();
+      if (!currentProduct) continue;
 
-      if (currentProduct) {
-        product.assign({
-          soldCount: (currentProduct.soldCount || 0) + Number(orderProduct.quantity || 0),
-        }).write();
+      const qty = Number(orderProduct.quantity || 0);
+      const stock = Number(currentProduct.stock ?? 20);
+      if (stock < qty) {
+        return res.status(400).json({
+          message: `${currentProduct.name} chỉ còn ${stock} sản phẩm`,
+        });
       }
+      updates.push({
+        product,
+        soldCount: (currentProduct.soldCount || 0) + qty,
+        stock: stock - qty,
+      });
+    }
+
+    updates.forEach(({ product, soldCount, stock }) => {
+      product.assign({ soldCount, stock }).write();
     });
   }
 

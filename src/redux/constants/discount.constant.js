@@ -1,3 +1,0 @@
-export const DISCOUNT_ACTION = {
-  CHECK_DISCOUNT: "CHECK_DISCOUNT",
-};

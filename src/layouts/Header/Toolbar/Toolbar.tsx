@@ -1,0 +1,165 @@
+import React, { useState } from "react"
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks"
+import { Link, useHistory } from 'react-router-dom';
+import { Button, Space, Dropdown, Menu, Drawer, Input, Badge } from 'antd'
+import { ShoppingCartOutlined, UserOutlined, MenuOutlined, HeartOutlined } from '@ant-design/icons'
+import { ROUTER } from '../../../constants/router';
+import { logoutAction } from '../../../redux/slices/auth.slice'
+import { 
+  HomeOutlined, 
+  StarOutlined, 
+  ContactsOutlined, 
+  MobileOutlined,
+  SearchOutlined,
+  AppstoreOutlined
+   } from '@ant-design/icons'
+
+import logo from '../../../assets/images/brand/phone-store-mark.svg'
+import * as S from "./styles";
+
+const Toolbar = () => {
+  const history = useHistory();
+
+  const [visible, setVisible] = useState(false);
+  const [keyword, setKeyword] = useState("");
+
+  const { userInfo } = useAppSelector((state) => state.authReducer);
+  const { cartList } = useAppSelector((state) => state.cartReducer);
+  const dispatch = useAppDispatch();
+  
+
+  const handleLogout = () => {
+    localStorage.removeItem("userInfo");
+    dispatch(logoutAction());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const search = keyword.trim();
+    history.push({
+      pathname: ROUTER.USER.PRODUCT_LIST,
+      search: search ? `?q=${encodeURIComponent(search)}` : "",
+    });
+  }
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+  const onClose = () => {
+    setVisible(false);
+  };
+
+  return (
+    <S.Toolbar>
+        <S.ToolbarIconMenu>
+          <MenuOutlined onClick={showDrawer} style={{ color: "#17212b" }}/>
+          <Drawer title="Menu" placement="right" onClose={onClose} visible={visible} width={300}>
+            <S.DrawerSearch>
+              <form
+                onSubmit={(e) => {
+                  handleSubmit(e);
+                  onClose();
+                }}
+              >
+                <Input
+                  value={keyword}
+                  onChange={(e) => setKeyword(e.target.value)}
+                  placeholder="Tìm sản phẩm..."
+                  prefix={<SearchOutlined />}
+                />
+                <Button htmlType="submit" aria-label="Tìm kiếm" type="primary" block>
+                  Tìm kiếm
+                </Button>
+              </form>
+            </S.DrawerSearch>
+            <S.DrawerNav>
+              <Link to={ROUTER.USER.HOME} onClick={onClose}><HomeOutlined /> Trang chủ</Link>
+              <Link to={ROUTER.USER.PRODUCT_LIST} onClick={onClose}><MobileOutlined /> Sản phẩm</Link>
+              {userInfo.data.role === "admin" && (
+                <Link to={ROUTER.USER.PRODUCT_MANAGE} onClick={onClose}>
+                  <AppstoreOutlined /> Trang quản trị
+                </Link>
+              )}
+              <Link to={ROUTER.USER.ABOUT} onClick={onClose}><StarOutlined /> Giới thiệu</Link>
+              <Link to={ROUTER.USER.CONTACT} onClick={onClose}><ContactsOutlined /> Liên hệ</Link>
+            </S.DrawerNav>
+          </Drawer>
+        </S.ToolbarIconMenu>
+        <S.ToolbarLogo>
+          <Link to={ROUTER.USER.HOME}>
+              <img src={logo} alt="Volt Store" />
+              <h3>Volt Store</h3>
+          </Link>
+        </S.ToolbarLogo>
+        <S.ToolbarSearch>
+          <form onSubmit={handleSubmit}>
+            <Input
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              placeholder="Tìm iPhone, MacBook, iPad, AirPods, Apple Watch..."
+              prefix={<SearchOutlined />}
+            />
+            <Button htmlType="submit" aria-label="Tìm kiếm"><SearchOutlined /></Button>
+          </form>
+        </S.ToolbarSearch>
+        <S.ToolbarItem>                    
+          <S.Badge>
+            <ul>
+              <li className="ListMenu">
+                <Link to={ROUTER.USER.ABOUT}>GIỚI THIỆU</Link>
+              </li>
+              <li className="ListMenu">
+                <Link to={ROUTER.USER.CONTACT}>LIÊN HỆ</Link>
+              </li>
+              {userInfo.data.id && (
+                <Button
+                  icon={<HeartOutlined />}
+                  type="text"
+                  onClick={() => history.push(`${ROUTER.USER.PROFILE}?tab=2`)}
+                />
+              )}
+              <Badge count={cartList.data.length} size="small" color="#d92d35">
+                <Button
+                  icon={<ShoppingCartOutlined />}
+                  type="text"
+                  onClick={() => history.push(userInfo.data.id ? ROUTER.USER.CART : ROUTER.LOGIN)}
+                />
+              </Badge>
+            </ul>
+          </S.Badge>
+          {userInfo.data.name ? (
+            <Dropdown
+              overlay={
+                <Menu>
+                  <Menu.Item key="1" onClick={() => history.push(ROUTER.USER.PROFILE)}>
+                    Trang cá nhân
+                  </Menu.Item>
+                  {userInfo.data.role === "admin" && (
+                    <Menu.Item key="admin" onClick={() => history.push(ROUTER.USER.PRODUCT_MANAGE)}>
+                      Trang quản trị
+                    </Menu.Item>
+                  )}
+                  <Menu.Item key="2" onClick={() => handleLogout()}>
+                    Đăng xuất
+                  </Menu.Item>
+                </Menu>
+              }
+            >
+              <Space>
+                <UserOutlined style={{ color: "#17212b" }} />
+                <S.Username style={{ color: "#17212b" }}>{userInfo.data.name}</S.Username>
+              </Space>
+            </Dropdown>
+          ) : (
+            <S.LoginItem>
+              <Button type="default" onClick={() => history.push(ROUTER.LOGIN)}>
+                Đăng nhập
+              </Button>
+            </S.LoginItem>
+          )}
+        </S.ToolbarItem>
+    </S.Toolbar>
+  )
+}
+
+export default Toolbar

@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Volt Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Shop bán thiết bị Apple (React + Ant Design + json-server). Backend demo chạy local, dữ liệu nằm trong `db/db.json`.
 
-## Available Scripts
+## Chạy dự án
 
-In the project directory, you can run:
+Cần **2 terminal**:
 
-### `yarn start`
+```bash
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Tạo file `.env` (copy từ `.env.example`):
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+VITE_API_URL=http://localhost:4000
+```
 
-### `yarn test`
+```bash
+npm run server
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- API: http://localhost:4000
+- Web: http://localhost:3000
 
-### `yarn build`
+Cần **Node 24+**. Project dùng **Vite 5** (không còn Create React App / webpack).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tài khoản demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Vai trò | Email | Mật khẩu |
+| --- | --- | --- |
+| User | kiennguyen98@gmail.com | (mật khẩu đã hash trong db — đăng ký user mới nếu không nhớ) |
+| Admin | kiennguyen123@gmail.com | (tài khoản admin có sẵn trong `db.json`) |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Đăng ký trên web **luôn tạo tài khoản khách**. Admin chỉ gán tay trong `db.json`.
 
-### `yarn eject`
+Nếu quên mật khẩu admin: đăng ký user mới, rồi sửa `"role": "admin"` cho user đó trong `db/db.json` và restart `npm run server`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Mã giảm giá
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Còn hạn trong `db.json`:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- `KMGS25` — giảm 25%
+- `KMBF` — giảm 10%
+- `GIAM500K` — giảm 500.000₫
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Luồng chính
 
-## Learn More
+- Khách: xem sản phẩm, đăng nhập, thêm giỏ, checkout, xem đơn / yêu thích / sửa hồ sơ.
+- Admin: `/admin/products`, `/admin/orders`, `/admin/categories`, `/admin/discounts`.
+- Giao hàng miễn phí Đà Nẵng, toàn quốc +35.000₫.
+- COD = chưa thanh toán, MoMo/chuyển khoản = demo đã thanh toán.
+- Tồn kho trừ khi đặt hàng thành công.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Lưu ý
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Đây là backend json-server (file JSON), phù hợp đồ án / demo, không dùng cho production thật.
